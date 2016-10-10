@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('client');
             if (Schema::hasTable('clients')) {
                 $table->foreign('client')->references('id')->on('clients')
                     ->onDelete('cascade');
