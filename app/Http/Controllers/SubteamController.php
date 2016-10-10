@@ -51,7 +51,7 @@ class SubteamController extends BaseController
 
         $subteam->name = $request->input('name');
         $subteam->description = $request->input('description');
-        $subteam->numberOfPeople = $request->input('numberOfPeople');
+        $subteam->numberofpeople = $request->input('numberofpeople');
 
         $subteam->save();
 

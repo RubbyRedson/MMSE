@@ -13,5 +13,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    protected $fillable = ['title', 'description', 'authLevel'];
+    protected $fillable = ['title', 'description', 'auth'];
 }

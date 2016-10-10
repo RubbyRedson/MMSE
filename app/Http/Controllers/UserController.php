@@ -49,9 +49,9 @@ class UserController extends BaseController
     public function updateUser(Request $request,$id){
         $user  = User::find($id);
 
-        $user->title = $request->input('title');
-        $user->description = $request->input('description');
-        $user->authLevel = $request->input('authLevel');
+        $user->title = $request->input('name');
+        $user->description = $request->input('password');
+        $user->auth = $request->input('role');
 
         $user->save();
 

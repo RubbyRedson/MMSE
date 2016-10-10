@@ -13,16 +13,18 @@ class CreateProjectsTable extends Migration
      */
     public function up()
     {
-        $this->down();
+        Schema::enableForeignKeyConstraints();
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->foreign('client')->references('id')->on('clients');
+            if (Schema::hasTable('clients')) {
+                $table->foreign('client')->references('id')->on('clients')
+                    ->onDelete('cascade');
+            }
             $table->string('description');
             $table->integer('cost');
             $table->date('start');
             $table->date('stop');
-//            $table->timestamps();
         });
     }
 

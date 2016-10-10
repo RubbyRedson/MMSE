@@ -48,11 +48,9 @@ class RoleController extends BaseController
 
     public function updateRole(Request $request,$id){
         $role  = Role::find($id);
-
-        $role->name = $request->input('name');
-        $role->password = $request->input('password');
-        $role->role = $request->input('role');
-
+        $role->name = $request->input('title');
+        $role->password = $request->input('description');
+        $role->role = $request->input('auth');
         $role->save();
 
         return response()->json($role);

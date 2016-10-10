@@ -13,5 +13,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subteam extends Model
 {
-    protected $fillable = ['name', 'description', 'numberOfPeople'];
+    protected $fillable = ['name', 'description', 'numberofpeople'];
 }

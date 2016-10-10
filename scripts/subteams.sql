@@ -7,7 +7,7 @@ CREATE TABLE public.subteams
     id integer NOT NULL DEFAULT nextval('subteams_id_seq'::regclass),
     name character varying(255) COLLATE "default".pg_catalog NOT NULL,
     description character varying(255) COLLATE "default".pg_catalog NOT NULL,
-    "numberOfPeople" integer NOT NULL,
+    "numberofpeople" integer NOT NULL,
     CONSTRAINT subteams_pkey PRIMARY KEY (id)
 )
 WITH (
