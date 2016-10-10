@@ -31,7 +31,6 @@ class ClientController extends BaseController
     }
 
     public function saveClient(Request $request){
-
         $client = Client::create($request->all());
 
         return response()->json($client);
@@ -49,10 +48,9 @@ class ClientController extends BaseController
     public function updateClient(Request $request,$id){
         $client  = Client::find($id);
 
-
-        $user->name = $request->input('name');
-        $user->phone = $request->input('phone');
-        $user->discount = $request->input('discount');
+        $client->name = $request->input('name');
+        $client->phone = $request->input('phone');
+        $client->discount = $request->input('discount');
 
         $client->save();
 

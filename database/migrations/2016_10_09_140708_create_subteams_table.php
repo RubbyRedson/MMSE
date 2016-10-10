@@ -18,6 +18,7 @@ class CreateSubteamsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->integer('numberofpeople');
+            $table->timestamps();
         });
     }
 

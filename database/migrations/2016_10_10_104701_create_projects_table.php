@@ -26,6 +26,7 @@ class CreateProjectsTable extends Migration
             $table->integer('cost');
             $table->date('start');
             $table->date('stop');
+            $table->timestamps();
         });
     }
 
