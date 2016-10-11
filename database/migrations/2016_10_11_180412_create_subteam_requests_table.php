@@ -15,10 +15,15 @@ class CreateSubteamRequestsTable extends Migration
     {
         Schema::create('subteam_requests', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('reportedBySubteam');
+            $table->unsignedInteger('reportedBySubteam');
             $table->boolean('needMorePeople');
             $table->boolean('needBiggerBudget');
             $table->timestamps();
+        });
+
+        Schema::table('subteam_requests', function($table) {
+            $table->foreign('reportedBySubteam')->references('id')->on('subteams')
+                ->onDelete('cascade');
         });
     }
 
