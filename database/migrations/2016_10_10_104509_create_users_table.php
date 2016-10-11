@@ -18,12 +18,13 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('username');
             $table->string('password');
-            $table->integer('role');
-            if (Schema::hasTable('roles')) {
-                $table->foreign('role')->references('id')->on('roles')
-                    ->onDelete('cascade');
-            }
+            $table->unsignedInteger('role');
             $table->timestamps();
+        });
+
+        Schema::table('users', function($table) {
+            $table->foreign('role')->references('id')->on('roles')
+                ->onDelete('cascade');
         });
     }
 

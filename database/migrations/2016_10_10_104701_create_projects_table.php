@@ -17,16 +17,17 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('client');
-            if (Schema::hasTable('clients')) {
-                $table->foreign('client')->references('id')->on('clients')
-                    ->onDelete('cascade');
-            }
+            $table->unsignedInteger('client');
             $table->string('description');
             $table->integer('cost');
             $table->date('start');
             $table->date('stop');
             $table->timestamps();
+        });
+
+        Schema::table('projects', function($table) {
+            $table->foreign('client')->references('id')->on('clients')
+                ->onDelete('cascade');
         });
     }
 
