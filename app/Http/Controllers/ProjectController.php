@@ -60,4 +60,14 @@ class ProjectController extends Controller
 
         return response()->json($project);
     }
+
+    public function getTotalCost($clientId){
+
+        $projects  = Project::where('client', '=', $clientId)->get();
+        $total = 0.0;
+        foreach ($projects as &$project) {
+            $total += $project->cost;
+        }
+        return "{\"total\":" . $total . "}";
+    }
 }

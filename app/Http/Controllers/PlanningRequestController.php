@@ -49,6 +49,7 @@ class PlanningRequestController extends Controller
         $planningRequest  = PlanningRequest::find($id);
 
         $planningRequest->client = $request->input('client');
+        $planningRequest->status = $request->input('status');
         $planningRequest->feedback = $request->input('feedback');
 
         $planningRequest->save();

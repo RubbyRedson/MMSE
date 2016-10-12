@@ -15,7 +15,9 @@ class ClientTest extends TestCase
 
 
         $this->assertEquals(
-            $this->app->version(), $this->response->getContent()
+            "[{\"id\":1,\"name\":\"Pear LLC\",\"phone\":\"123321123\",\"discount\":0,\"created_at\":null,\"updated_at\""
+        .":null},{\"id\":2,\"name\":\"AEKI\",\"phone\":\"0987654321\",\"discount\":75,\"created_at\":null,\"updated_at\""
+        .":null}]", $this->response->getContent()
         );
     }
 }

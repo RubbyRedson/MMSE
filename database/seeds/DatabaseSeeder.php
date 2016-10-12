@@ -19,7 +19,11 @@ class DatabaseSeeder extends Seeder
         $this->call(ProjectsTableSeeder::class);
 
         $this->call(SubteamsTableSeeder::class);
-        $this->call(SubteamRequestsTableSeeder::class); // SubteamRequests must be after Subteams
+        $this->call(SubteamRequestStatusTableSeeder::class);  // SubteamRequestStatus must be before SubteamRequest
+        $this->call(SubteamRequestsTableSeeder::class); // SubteamRequests must be after Subteams and after Projects
+
+        $this->call(PlanningRequestStatusTableSeeder::class);  // PlanningRequestStatus must be before PlanningRequest
+        $this->call(PlanningRequestsTableSeeder::class);
     }
 }
 
@@ -41,6 +45,56 @@ class RolesTableSeeder extends Seeder
             'title' => 'Customer service manager',
             'description' => 'Description of Customer service manager',
             'auth' => 2,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Financial manager',
+            'description' => 'Description of Financial manager',
+            'auth' => 3,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Administration manager',
+            'description' => 'Description of Administration manager',
+            'auth' => 4,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Production manager',
+            'description' => 'Description of Production manager',
+            'auth' => 5,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'HR manager',
+            'description' => 'Description of HR manager',
+            'auth' => 6,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'HR team',
+            'description' => 'Description of HR team',
+            'auth' => 7,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Service manager',
+            'description' => 'Description of Service manager',
+            'auth' => 8,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Sub-team',
+            'description' => 'Description of Sub-team',
+            'auth' => 9,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Vice-president',
+            'description' => 'Description of Vice-president',
+            'auth' => 10,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Financial department',
+            'description' => 'Description of Financial department',
+            'auth' => 11,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Administration department',
+            'description' => 'Description of Administration department',
+            'auth' => 12,
         ]);
     }
 }
@@ -78,10 +132,12 @@ class PlanningRequestsTableSeeder extends Seeder
     {
         DB::table('planning_requests')->insert([
             'client' => 1,
+            'status' => 1,
             'feedback' => 'Feedback for request 1',
         ]);
         DB::table('planning_requests')->insert([
             'client' => 2,
+            'status' => 4,
             'feedback' => 'Feedback for request 2',
         ]);
     }
@@ -111,6 +167,14 @@ class ProjectsTableSeeder extends Seeder
             'cost' => 700,
             'start' => date('2007-11-13'),
             'stop' => date('2007-12-27'),
+        ]);
+        DB::table('projects')->insert([
+            'name' => 'Fika 2',
+            'client' => 2,
+            'description' => 'Fika 2 description',
+            'cost' => 700,
+            'start' => date('2008-11-13'),
+            'stop' => date('2008-12-27'),
         ]);
     }
 }
@@ -148,11 +212,15 @@ class SubteamRequestsTableSeeder extends Seeder
     {
         DB::table('subteam_requests')->insert([
             'reportedBySubteam' => 1,
+            'project' => 2,
+            'status' => 1,
             'needMorePeople' => false,
             'needBiggerBudget' => true,
         ]);
         DB::table('subteam_requests')->insert([
             'reportedBySubteam' => 2,
+            'project' => 1,
+            'status' => 2,
             'needMorePeople' => false,
             'needBiggerBudget' => true,
         ]);
@@ -223,6 +291,51 @@ class EmployeesTableSeeder extends Seeder
             'last_name' => 'Green',
             'phone' => '321321321',
             'user_id' => 2,
+        ]);
+    }
+}
+
+class PlanningRequestStatusTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('planning_request_status')->insert([
+            'status' => 'Pending Customer Manager Approval',
+        ]);
+        DB::table('planning_request_status')->insert([
+            'status' => 'Pending Financial Manager Feedback',
+        ]);
+        DB::table('planning_request_status')->insert([
+            'status' => 'Pending Administrative Manager Approval',
+        ]);
+        DB::table('planning_request_status')->insert([
+            'status' => 'Approved',
+        ]);
+        DB::table('planning_request_status')->insert([
+            'status' => 'Rejected',
+        ]);
+    }
+}
+
+class SubteamRequestStatusTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('subteam_request_status')->insert([
+            'status' => 'Approved',
+        ]);
+        DB::table('subteam_request_status')->insert([
+            'status' => 'Rejected',
         ]);
     }
 }
