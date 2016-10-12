@@ -2,6 +2,7 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+
 try {
     (new Dotenv\Dotenv(__DIR__.'/../'))->load();
 } catch (Dotenv\Exception\InvalidPathException $e) {
@@ -79,19 +80,7 @@ $app->singleton(
 |
 */
 
-/**
- * @author Victor Axelsson
- * Check what datasource to use from the environment variables
- * */
-$app->bind('\App\Data\DatabaseInterface', function ($app) {
-    if(getenv('USE_MOCK') == 'true'){
-        return new \App\Data\MockRepo();
-    }else{
-        return new \App\Data\SQLRepo();
-    }
-});
-
-// $app->register(App\Providers\AppServiceProvider::class);
+ $app->register(App\Providers\RepositoryProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 

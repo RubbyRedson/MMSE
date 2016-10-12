@@ -17,6 +17,7 @@ class ClientController extends Controller
 {
     public function index(){
 
+        $this->dataSource->getAllClients();
         $clients  = Client::all();
 
         return response()->json($clients);
