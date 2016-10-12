@@ -41,17 +41,12 @@ class SQLRepo implements DatabaseInterface
         // TODO: Implement getSubteamRequest() method.
     }
 
-    public function collectUnreadReports($userId)
-    {
-        // TODO: Implement collectUnreadReports() method.
-    }
-
-    public function findPlanningRequest($userId)
+    public function findPlanningRequest($clientId)
     {
         // TODO: Implement findPlanningRequest() method.
     }
 
-    public function findSubteamRequests($planningRequestId)
+    public function findSubteamRequests($subteamId)
     {
         // TODO: Implement findSubteamRequests() method.
     }

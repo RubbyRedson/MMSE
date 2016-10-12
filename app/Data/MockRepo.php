@@ -9,56 +9,109 @@
 namespace App\Data;
 
 
+use App\Client;
+use App\PlanningRequest;
+use App\Subteam;
+use App\SubteamRequest;
+
 class MockRepo implements DatabaseInterface
 {
 
     public function getAllClients()
     {
-        // TODO: Implement getAllClients() method.
+        $client1 = new Client();
+        $client1->name ='Pear LLC';
+        $client1->phone = '123123123';
+        $client1->discount = 0;
+
+        $client2 = new Client();
+        $client2->name ='AEKI';
+        $client2->phone = '0987654321';
+        $client2->discount = 75;
+
+        return [$client1, $client2];
     }
 
     public function getProjects()
     {
-        // TODO: Implement getProjects() method.
+        $first = new Subteam();
+        $first->name = 'Birthday Party';
+        $first->client = 1;
+        $first->description ='Birthday Party description';
+        $first->cost = 500;
+        $first->start = date('2001-10-05');
+        $first->stop = date('2001-10-27');
+
+        $second = new Subteam();
+        $second->name = 'Fika';
+        $second->client = 2;
+        $second->description ='Fika description';
+        $second->cost = 700;
+        $second->start = date('2007-11-13');
+        $second->stop = date('2007-12-27');
+
+        return [$first, $second];
     }
 
     public function updateClient($client)
     {
-        // TODO: Implement updateClient() method.
+        return $client;
     }
 
     public function getAllSubteams()
     {
-        // TODO: Implement getAllSubteams() method.
+        $first = new Subteam();
+        $first->name ='IT';
+        $first->description = 'IT description';
+        $first->numberofpeople = 7;
+
+        $second = new Subteam();
+        $second->name ='Music';
+        $second->description = 'Music description';
+        $second->numberofpeople = 7;
+
+        return [$first, $second];
     }
 
     public function saveSubteamRequest($subteamRequest)
     {
-        // TODO: Implement saveSubteamRequest() method.
+        return $subteamRequest;
     }
 
     public function getSubteamRequest($subteamId)
     {
-        // TODO: Implement getSubteamRequest() method.
+        $result = new SubteamRequest();
+
+        $result -> reportedBySubteam = 1;
+        $result -> needMorePeople = false;
+        $result -> needBiggerBudget = true;
+
+        return $result;
     }
 
-    public function collectUnreadReports($userId)
+    public function findPlanningRequest($clientId)
     {
-        // TODO: Implement collectUnreadReports() method.
+        $result = new PlanningRequest();
+
+        $result -> client = 1;
+        $result -> feedback = 'Test feedback';
+
+        return $result;
     }
 
-    public function findPlanningRequest($userId)
+    public function findSubteamRequests($subteamId)
     {
-        // TODO: Implement findPlanningRequest() method.
-    }
+        $result = new SubteamRequest();
 
-    public function findSubteamRequests($planningRequestId)
-    {
-        // TODO: Implement findSubteamRequests() method.
+        $result -> reportedBySubteam = $subteamId;
+        $result -> needMorePeople = false;
+        $result -> needBiggerBudget = true;
+
+        return $result;
     }
 
     public function savePlanningRequest($planningRequest)
     {
-        // TODO: Implement savePlanningRequest() method.
+        return $planningRequest;
     }
 }
