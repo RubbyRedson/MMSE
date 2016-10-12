@@ -19,8 +19,7 @@ interface DatabaseInterface
     public function getAllSubteams();
     public function saveSubteamRequest($subteamRequest);
     public function getSubteamRequest($subteamId);
-    public function collectUnreadReports($userId);
-    public function findPlanningRequest($userId);
-    public function findSubteamRequests($planningRequestId);
+    public function findPlanningRequest($clientId);
+    public function findSubteamRequests($subteamId);
     public function savePlanningRequest($planningRequest);
 }
