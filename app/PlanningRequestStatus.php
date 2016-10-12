@@ -9,7 +9,7 @@
 namespace App;
 
 
-class PlanningRequest extends Model
+class PlanningRequestStatus extends Model
 {
-    protected $fillable = ['client', 'status', 'feedback'];
+    protected $fillable = ['status'];
 }

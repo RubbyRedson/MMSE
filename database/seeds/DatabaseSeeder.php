@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(SubteamsTableSeeder::class);
         $this->call(SubteamRequestsTableSeeder::class); // SubteamRequests must be after Subteams and after Proejcts
+
+        $this->call(PlanningRequestStatusTableSeeder::class);  // PlanningRequestStatus must be before PlanningRequest
+        $this->call(PlanningRequestsTableSeeder::class);
     }
 }
 
@@ -128,10 +131,12 @@ class PlanningRequestsTableSeeder extends Seeder
     {
         DB::table('planning_requests')->insert([
             'client' => 1,
+            'status' => 1,
             'feedback' => 'Feedback for request 1',
         ]);
         DB::table('planning_requests')->insert([
             'client' => 2,
+            'status' => 4,
             'feedback' => 'Feedback for request 2',
         ]);
     }
@@ -283,6 +288,33 @@ class EmployeesTableSeeder extends Seeder
             'last_name' => 'Green',
             'phone' => '321321321',
             'user_id' => 2,
+        ]);
+    }
+}
+
+class PlanningRequestStatusTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('planing_request_status')->insert([
+            'status' => 'Pending Customer Manager Approval',
+        ]);
+        DB::table('planing_request_status')->insert([
+            'status' => 'Pending Financial Manager Feedback',
+        ]);
+        DB::table('planing_request_status')->insert([
+            'status' => 'Pending Administrative Manager Approval',
+        ]);
+        DB::table('planing_request_status')->insert([
+            'status' => 'Approved',
+        ]);
+        DB::table('planing_request_status')->insert([
+            'status' => 'Rejected',
         ]);
     }
 }

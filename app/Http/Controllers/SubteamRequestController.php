@@ -49,6 +49,7 @@ class SubteamRequestController extends Controller
         $subteamRequest  = SubteamRequest::find($id);
 
         $subteamRequest->reportedBySubteam = $request->input('reportedBySubteam');
+        $subteamRequest->project = $request->input('project');
         $subteamRequest->needMorePeople = $request->input('needMorePeople');
         $subteamRequest->needBiggerBudget = $request->input('needBiggerBudget');
 

@@ -17,12 +17,15 @@ class CreatePlanningRequestsTable extends Migration
         Schema::create('planning_requests', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('client');
+            $table->unsignedInteger('status');
             $table->string('feedback');
             $table->timestamps();
         });
 
         Schema::table('planning_requests', function($table) {
             $table->foreign('client')->references('id')->on('clients')
+                ->onDelete('cascade');
+            $table->foreign('status')->references('id')->on('planing_request_status')
                 ->onDelete('cascade');
         });
     }
