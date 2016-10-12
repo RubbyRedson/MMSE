@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesTableSeeder::class); // Roles must be before Users
         $this->call(UsersTableSeeder::class);
         $this->call(SelectionsTableSeeder::class); // Selections must be after Users
+        $this->call(EmployeesTableSeeder::class); // Employees must be after Users
 
         $this->call(ClientsTableSeeder::class); // Clients must be before Projects
         $this->call(ProjectsTableSeeder::class);
@@ -198,6 +199,30 @@ class UsersTableSeeder extends Seeder
             'username' => 'Bob',
             'password' => 'secret2',
             'role' => 1,
+        ]);
+    }
+}
+
+class EmployeesTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('employees')->insert([
+            'first_name' => 'Alice',
+            'last_name' => 'Brown',
+            'phone' => '123123123',
+            'user_id' => 1,
+        ]);
+        DB::table('employees')->insert([
+            'first_name' => 'Bob',
+            'last_name' => 'Green',
+            'phone' => '321321321',
+            'user_id' => 2,
         ]);
     }
 }
