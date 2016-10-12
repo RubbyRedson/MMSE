@@ -7,13 +7,13 @@
  */
 
 namespace App\Data;
-
+use App\Client;
 
 class SQLRepo implements DatabaseInterface
 {
     public function getAllClients()
     {
-        // TODO: Implement getAllClients() method.
+        return Client::all();
     }
 
     public function getProjects()

@@ -15,14 +15,11 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
+
     public function index(){
-
-        $this->dataSource->getAllClients();
-        $clients  = Client::all();
-
-        return response()->json($clients);
-
+        return response()->json($this->dataSource->getAllClients());
     }
+
 
     public function getClient($id){
 
