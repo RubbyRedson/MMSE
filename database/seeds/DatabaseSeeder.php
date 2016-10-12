@@ -42,6 +42,56 @@ class RolesTableSeeder extends Seeder
             'description' => 'Description of Customer service manager',
             'auth' => 2,
         ]);
+        DB::table('roles')->insert([
+            'title' => 'Financial manager',
+            'description' => 'Description of Financial manager',
+            'auth' => 3,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Administration manager',
+            'description' => 'Description of Administration manager',
+            'auth' => 4,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Production manager',
+            'description' => 'Description of Production manager',
+            'auth' => 5,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'HR manager',
+            'description' => 'Description of HR manager',
+            'auth' => 6,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'HR team',
+            'description' => 'Description of HR team',
+            'auth' => 7,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Service manager',
+            'description' => 'Description of Service manager',
+            'auth' => 8,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Sub-team',
+            'description' => 'Description of Sub-team',
+            'auth' => 9,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Vice-president',
+            'description' => 'Description of Vice-president',
+            'auth' => 10,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Financial department',
+            'description' => 'Description of Financial department',
+            'auth' => 11,
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Administration department',
+            'description' => 'Description of Administration department',
+            'auth' => 12,
+        ]);
     }
 }
 
