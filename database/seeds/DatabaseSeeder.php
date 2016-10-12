@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProjectsTableSeeder::class);
 
         $this->call(SubteamsTableSeeder::class);
-        $this->call(SubteamRequestsTableSeeder::class); // SubteamRequests must be after Subteams
+        $this->call(SubteamRequestsTableSeeder::class); // SubteamRequests must be after Subteams and after Proejcts
     }
 }
 
@@ -206,11 +206,13 @@ class SubteamRequestsTableSeeder extends Seeder
     {
         DB::table('subteam_requests')->insert([
             'reportedBySubteam' => 1,
+            'project' => 2,
             'needMorePeople' => false,
             'needBiggerBudget' => true,
         ]);
         DB::table('subteam_requests')->insert([
             'reportedBySubteam' => 2,
+            'project' => 1,
             'needMorePeople' => false,
             'needBiggerBudget' => true,
         ]);
