@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Http\Request;
 
 
-class PlanningRequestController extends BaseController
+class PlanningRequestController extends Controller
 {
     public function index(){
 

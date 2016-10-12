@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Http\Request;
 
 
-class RoleController extends BaseController
+class RoleController extends Controller
 {
     public function index(){
 

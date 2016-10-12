@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Http\Request;
 
 
-class SelectionController extends BaseController
+class SelectionController extends Controller
 {
     public function index(){
 

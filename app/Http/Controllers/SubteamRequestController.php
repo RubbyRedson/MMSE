@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Http\Request;
 
 
-class SubteamRequestController extends BaseController
+class SubteamRequestController extends Controller
 {
     public function index(){
 
