@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlanningRequestStatusTable extends Migration
+class CreateSubteamRequestStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePlanningRequestStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('planning_request_status', function (Blueprint $table) {
+        Schema::create('subteam_request_status', function (Blueprint $table) {
             $table->increments('id');
             $table->string('status');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreatePlanningRequestStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planning_request_status');
+        Schema::dropIfExists('subteam_request_status');
     }
 }

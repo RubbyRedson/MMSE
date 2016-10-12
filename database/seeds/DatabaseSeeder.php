@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ProjectsTableSeeder::class);
 
         $this->call(SubteamsTableSeeder::class);
-        $this->call(SubteamRequestsTableSeeder::class); // SubteamRequests must be after Subteams and after Proejcts
+        $this->call(SubteamRequestStatusTableSeeder::class);  // SubteamRequestStatus must be before SubteamRequest
+        $this->call(SubteamRequestsTableSeeder::class); // SubteamRequests must be after Subteams and after Projects
 
         $this->call(PlanningRequestStatusTableSeeder::class);  // PlanningRequestStatus must be before PlanningRequest
         $this->call(PlanningRequestsTableSeeder::class);
@@ -212,12 +213,14 @@ class SubteamRequestsTableSeeder extends Seeder
         DB::table('subteam_requests')->insert([
             'reportedBySubteam' => 1,
             'project' => 2,
+            'status' => 1,
             'needMorePeople' => false,
             'needBiggerBudget' => true,
         ]);
         DB::table('subteam_requests')->insert([
             'reportedBySubteam' => 2,
             'project' => 1,
+            'status' => 2,
             'needMorePeople' => false,
             'needBiggerBudget' => true,
         ]);
@@ -314,6 +317,24 @@ class PlanningRequestStatusTableSeeder extends Seeder
             'status' => 'Approved',
         ]);
         DB::table('planning_request_status')->insert([
+            'status' => 'Rejected',
+        ]);
+    }
+}
+
+class SubteamRequestStatusTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('subteam_request_status')->insert([
+            'status' => 'Approved',
+        ]);
+        DB::table('subteam_request_status')->insert([
             'status' => 'Rejected',
         ]);
     }

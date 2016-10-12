@@ -11,5 +11,5 @@ namespace App;
 
 class SubteamRequest extends Model
 {
-    protected $fillable = ['reportedBySubteam', 'project', 'needMorePeople', 'needBiggerBudget'];
+    protected $fillable = ['reportedBySubteam', 'status', 'project', 'needMorePeople', 'needBiggerBudget'];
 }

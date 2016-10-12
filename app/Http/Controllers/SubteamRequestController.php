@@ -50,6 +50,7 @@ class SubteamRequestController extends Controller
 
         $subteamRequest->reportedBySubteam = $request->input('reportedBySubteam');
         $subteamRequest->project = $request->input('project');
+        $subteamRequest->status = $request->input('status');
         $subteamRequest->needMorePeople = $request->input('needMorePeople');
         $subteamRequest->needBiggerBudget = $request->input('needBiggerBudget');
 

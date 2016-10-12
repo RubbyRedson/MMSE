@@ -17,6 +17,7 @@ class CreateSubteamRequestsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('reportedBySubteam');
             $table->unsignedInteger('project');
+            $table->unsignedInteger('status');
             $table->boolean('needMorePeople');
             $table->boolean('needBiggerBudget');
             $table->timestamps();
@@ -26,6 +27,8 @@ class CreateSubteamRequestsTable extends Migration
             $table->foreign('reportedBySubteam')->references('id')->on('subteams')
                 ->onDelete('cascade');
             $table->foreign('project')->references('id')->on('projects')
+                ->onDelete('cascade');
+            $table->foreign('status')->references('id')->on('subteam_request_status')
                 ->onDelete('cascade');
         });
     }
