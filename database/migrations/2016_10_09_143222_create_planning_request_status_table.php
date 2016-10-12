@@ -13,7 +13,7 @@ class CreatePlanningRequestStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('planing_request_status', function (Blueprint $table) {
+        Schema::create('planning_request_status', function (Blueprint $table) {
             $table->increments('id');
             $table->string('status');
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreatePlanningRequestStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planing_request_status');
+        Schema::dropIfExists('planning_request_status');
     }
 }

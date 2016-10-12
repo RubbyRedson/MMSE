@@ -301,19 +301,19 @@ class PlanningRequestStatusTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('planing_request_status')->insert([
+        DB::table('planning_request_status')->insert([
             'status' => 'Pending Customer Manager Approval',
         ]);
-        DB::table('planing_request_status')->insert([
+        DB::table('planning_request_status')->insert([
             'status' => 'Pending Financial Manager Feedback',
         ]);
-        DB::table('planing_request_status')->insert([
+        DB::table('planning_request_status')->insert([
             'status' => 'Pending Administrative Manager Approval',
         ]);
-        DB::table('planing_request_status')->insert([
+        DB::table('planning_request_status')->insert([
             'status' => 'Approved',
         ]);
-        DB::table('planing_request_status')->insert([
+        DB::table('planning_request_status')->insert([
             'status' => 'Rejected',
         ]);
     }

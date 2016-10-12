@@ -25,7 +25,7 @@ class CreatePlanningRequestsTable extends Migration
         Schema::table('planning_requests', function($table) {
             $table->foreign('client')->references('id')->on('clients')
                 ->onDelete('cascade');
-            $table->foreign('status')->references('id')->on('planing_request_status')
+            $table->foreign('status')->references('id')->on('planning_request_status')
                 ->onDelete('cascade');
         });
     }
