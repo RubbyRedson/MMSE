@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\User;
+use App\Session;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -31,8 +33,18 @@ class AuthServiceProvider extends ServiceProvider
         // the User instance via an API token or any other method necessary.
 
         $this->app['auth']->viaRequest('api', function ($request) {
-            if ($request->input('api_token')) {
-                return User::where('api_token', $request->input('api_token'))->first();
+            $token = $request->header('Authorization');
+            if ($token) {
+
+                $session = Session::where('token', $token)->first();
+
+                if($session){
+                    return User::where('id', $session->user_id)->first();
+                }else{
+                    return null;
+                }
+            }else{
+               return null;
             }
         });
     }
