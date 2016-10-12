@@ -50,7 +50,15 @@ class MockRepo implements DatabaseInterface
         $second->start = date('2007-11-13');
         $second->stop = date('2007-12-27');
 
-        return [$first, $second];
+        $third = new Subteam();
+        $third->name = 'Fika 2';
+        $third->client = 2;
+        $third->description ='Fika 2 description';
+        $third->cost = 700;
+        $third->start = date('2008-11-13');
+        $third->stop = date('2008-12-27');
+
+        return [$first, $second, $third];
     }
 
     public function updateClient($client)

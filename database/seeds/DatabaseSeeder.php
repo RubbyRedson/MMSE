@@ -162,6 +162,14 @@ class ProjectsTableSeeder extends Seeder
             'start' => date('2007-11-13'),
             'stop' => date('2007-12-27'),
         ]);
+        DB::table('projects')->insert([
+            'name' => 'Fika 2',
+            'client' => 2,
+            'description' => 'Fika 2 description',
+            'cost' => 700,
+            'start' => date('2008-11-13'),
+            'stop' => date('2008-12-27'),
+        ]);
     }
 }
 
