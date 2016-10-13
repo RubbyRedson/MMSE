@@ -18,13 +18,14 @@ $app->get('/', function() use ($app) {
 $app->post('api/user/login','AuthController@login');
 
 $app->group(['middleware' => 'auth'], function () use ($app) {
+    $app->group(['middleware' => 'authorize:customer_service'], function () use ($app) {
+        $app->get('api/client', 'App\Http\Controllers\ClientController@index');
+    });
 
-    $app->get('api/client','App\Http\Controllers\ClientController@index');
     $app->get('api/client/{id}','ClientController@getClient');
     $app->post('api/client','ClientController@saveClient');
     $app->put('api/client/{id}','ClientController@updateClient');
     $app->delete('api/client/{id}','ClientController@deleteClient');
-
 
     $app->get('api/user','UserController@index');
     $app->get('api/user/{id}','UserController@getUser');
