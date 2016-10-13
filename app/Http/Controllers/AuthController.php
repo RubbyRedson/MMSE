@@ -16,7 +16,24 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
 
+    private function isValidUser($user, $password){
+        return $user->password === sha1($user->salt .$password);
+    }
+
     public function login(Request $request){
-        return response()->json($request->input('username'));
+        $user = $this->dataSource->getUserByUsername($request->input('username'));
+
+
+        if($user && $this->isValidUser($user, $request->input('password'))){
+            $session =  $this->dataSource->createSession($user->id);
+
+            $user->token = $session->token;
+
+            return response()->json($user);
+        }else{
+            return response("Bad request", 400);
+        }
+
+       // return response()->json($request->input('username'));
     }
 }

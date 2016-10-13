@@ -8,6 +8,8 @@
 
 namespace App\Data;
 use App\Client;
+use App\User;
+use App\Session;
 
 class SQLRepo implements DatabaseInterface
 {
@@ -54,5 +56,23 @@ class SQLRepo implements DatabaseInterface
     public function savePlanningRequest($planningRequest)
     {
         // TODO: Implement savePlanningRequest() method.
+    }
+
+    public function getUserByUsername($username)
+    {
+        return User::where('username', $username)->first();
+    }
+
+    public function createSession($userId)
+    {
+        //Remove old sessions
+        Session::where('user_id', $userId)->delete();
+
+        //Crete a new one
+        $session = new Session();
+        $session->user_id = $userId;
+        $session->save();
+
+        return $session;
     }
 }

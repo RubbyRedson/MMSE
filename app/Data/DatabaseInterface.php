@@ -22,4 +22,6 @@ interface DatabaseInterface
     public function findPlanningRequest($clientId);
     public function findSubteamRequests($subteamId);
     public function savePlanningRequest($planningRequest);
+    public function getUserByUsername($username);
+    public function createSession($userId);
 }

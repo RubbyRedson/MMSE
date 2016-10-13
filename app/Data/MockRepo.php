@@ -11,6 +11,7 @@ namespace App\Data;
 
 use App\Client;
 use App\PlanningRequest;
+use app\Session;
 use App\Subteam;
 use App\SubteamRequest;
 
@@ -121,5 +122,22 @@ class MockRepo implements DatabaseInterface
     public function savePlanningRequest($planningRequest)
     {
         return $planningRequest;
+    }
+
+    public function getUserByUsername($username)
+    {
+        $client1 = new Client();
+        $client1->name ='Pear LLC';
+        $client1->phone = '123123123';
+        $client1->discount = 0;
+
+        return $client1;
+    }
+
+    public function createSession($userId)
+    {
+        $session = new Session();
+        $session->user_id = $userId;
+        return $session;
     }
 }
