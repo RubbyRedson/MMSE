@@ -251,6 +251,9 @@ class SubteamsTableSeeder extends Seeder
 
 class UsersTableSeeder extends Seeder
 {
+    private function getSalt(){
+        return bin2hex(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM));
+    }
     /**
      * Run the database seeds.
      *
@@ -258,14 +261,19 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        $salt1 = $this->getSalt();
+        $salt2 = $this->getSalt();
         DB::table('users')->insert([
             'username' => 'Alice',
-            'password' => 'secret1',
+            'salt' => $salt1,
+            'password' => sha1($salt1 ."abc123"),
             'role' => 2,
         ]);
         DB::table('users')->insert([
             'username' => 'Bob',
-            'password' => 'secret2',
+            'salt' => $salt2,
+            'password' => sha1($salt2 ."abc123"),
+            'salt' => $this->getSalt(),
             'role' => 1,
         ]);
     }
