@@ -60,7 +60,7 @@ class SQLRepo implements DatabaseInterface
 
     public function getUserByUsername($username)
     {
-        return User::where('username', $username)->first();
+        return User::where('username', $username)->with('role')->first();
     }
 
     public function createSession($userId)

@@ -22,7 +22,7 @@ class AuthController extends Controller
 
     public function login(Request $request){
         $user = $this->dataSource->getUserByUsername($request->input('username'));
-        
+
         if($user && $this->isValidUser($user, $request->input('password'))){
             $session =  $this->dataSource->createSession($user->id);
 
