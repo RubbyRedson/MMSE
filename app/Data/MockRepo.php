@@ -11,12 +11,20 @@ namespace App\Data;
 
 use App\Client;
 use App\PlanningRequest;
-use app\Session;
+use App\Role;
+use App\Session;
 use App\Subteam;
 use App\SubteamRequest;
+use App\User;
 
 class MockRepo implements DatabaseInterface
 {
+    private $salt1;
+
+    public function __construct()
+    {
+        $this->salt1 = bin2hex(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM));
+    }
 
     public function getAllClients()
     {
@@ -124,14 +132,27 @@ class MockRepo implements DatabaseInterface
         return $planningRequest;
     }
 
+    public function getUserById($id)
+    {
+        $user1 = new User();
+        $user1->id = $id;
+        $user1->salt = $this->salt1;
+        $user1->password = sha1($user1->salt ."abc123");
+        $user1->username = 'Alice';
+        $user1->role = 1;
+
+        return $user1;
+    }
+
     public function getUserByUsername($username)
     {
-        $client1 = new Client();
-        $client1->name ='Pear LLC';
-        $client1->phone = '123123123';
-        $client1->discount = 0;
+        $user1 = new User();
+        $user1->salt = $this->salt1;
+        $user1->password = sha1($user1->salt ."abc123");
+        $user1->username = $username;
+        $user1->role = 1;
 
-        return $client1;
+        return $user1;
     }
 
     public function createSession($userId)
@@ -139,5 +160,27 @@ class MockRepo implements DatabaseInterface
         $session = new Session();
         $session->user_id = $userId;
         return $session;
+    }
+
+    public function getSessionByToken($token)
+    {
+        $session = new Session();
+        $session->user_id = 1;
+        $session->token = $token;
+        $newExpiry = new \DateTime();
+        $newExpiry->setTimestamp((new \DateTime())->getTimestamp() + 3600);
+        $session->valid_to = $newExpiry;
+        return $session;
+    }
+
+    public function getRoleById($id)
+    {
+        $role = new Role();
+        $role -> id = $id;
+        $role -> title = 'do not know, do not care';
+        $role -> auth = 999;
+        $role -> tag = 'customer_service';
+
+        return $role;
     }
 }

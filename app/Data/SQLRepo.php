@@ -8,6 +8,7 @@
 
 namespace App\Data;
 use App\Client;
+use App\Role;
 use App\User;
 use App\Session;
 
@@ -58,6 +59,10 @@ class SQLRepo implements DatabaseInterface
         // TODO: Implement savePlanningRequest() method.
     }
 
+    public function getUserById($id)
+    {
+        return User::where('id', $id)->first();
+    }
     public function getUserByUsername($username)
     {
         return User::where('username', $username)->with('role')->first();
@@ -74,5 +79,15 @@ class SQLRepo implements DatabaseInterface
         $session->save();
 
         return $session;
+    }
+
+    public function getSessionByToken($token)
+    {
+        return Session::where('token', $token)->first();
+    }
+
+    public function getRoleById($id)
+    {
+        return Role::where('id', $id)->first();
     }
 }

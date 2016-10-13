@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Data\DatabaseInterface;
 use Closure;
 use App\Session;
 use App\User;
@@ -15,6 +16,7 @@ class Authenticate
      * @var \Illuminate\Contracts\Auth\Factory
      */
     protected $auth;
+    protected  $dataSource;
 
     /**
      * Create a new middleware instance.
@@ -22,8 +24,9 @@ class Authenticate
      * @param  \Illuminate\Contracts\Auth\Factory  $auth
      * @return void
      */
-    public function __construct(Auth $auth)
+    public function __construct(DatabaseInterface $ds, Auth $auth)
     {
+        $this->dataSource = $ds;
         $this->auth = $auth;
     }
 
@@ -46,11 +49,11 @@ class Authenticate
         if ($token) {
 
             //Get the session
-            $session = Session::where('token', $token)->first();
+            $session = $this->dataSource->getSessionByToken($token);
             if($session){
 
                 //Check for a user
-                $user =  User::where('id', $session->user_id)->first();
+                $user = $this->dataSource->getUserById($session->user_id);
                 if($user){
 
                     //Check if expired

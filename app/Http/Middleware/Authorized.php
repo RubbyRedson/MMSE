@@ -8,13 +8,18 @@
 
 namespace app\Http\Middleware;
 
-use App\Role;
+use App\Data\DatabaseInterface;
 use Closure;
-use App\Session;
-use App\User;
 
 class Authorized
 {
+    protected $dataSource;
+
+    public function __construct(DatabaseInterface $ds)
+    {
+        $this->dataSource = $ds;
+    }
+
     public function handle($request, Closure $next, $role_tag = null)
     {
 
@@ -27,14 +32,14 @@ class Authorized
         if ($token) {
 
             //Get the session
-            $session = Session::where('token', $token)->first();
+            $session = $this->dataSource->getSessionByToken($token);
             if ($session) {
 
                 //Check for a user
-                $user = User::where('id', $session->user_id)->first();
+                $user = $this->dataSource->getUserById($session->user_id);
                 if ($user) {
-                    $role = Role::where('id', $user->role)->first();
-                    $isAuthorized =  $role->tag == $role_tag;
+                    $role = $this->dataSource->getRoleById($user->role);
+                    $isAuthorized = $role->tag == $role_tag;
                 }
             }
         }
