@@ -68,7 +68,9 @@ $app->singleton(
 $app->routeMiddleware([
      'auth' => App\Http\Middleware\Authenticate::class,
 ]);
-
+$app->middleware([
+    'Vluzrmos\LumenCors\CorsMiddleware'
+]);
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -82,6 +84,7 @@ $app->routeMiddleware([
 
  $app->register(App\Providers\RepositoryProvider::class);
  $app->register(App\Providers\AuthServiceProvider::class);
+
 // $app->register(App\Providers\EventServiceProvider::class);
 
 /*
