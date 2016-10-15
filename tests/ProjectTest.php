@@ -11,7 +11,7 @@ class ProjectTest extends TestCase
      */
     public function testGetAll()
     {
-        $this->get('/api/project/total_cost/2');
+        $this->getWithAuth('/api/project/total_cost/2');
 
 
         $this->assertEquals(

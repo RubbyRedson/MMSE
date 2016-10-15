@@ -169,7 +169,7 @@ class MockRepo implements DatabaseInterface
         $session->token = $token;
         $newExpiry = new \DateTime();
         $newExpiry->setTimestamp((new \DateTime())->getTimestamp() + 3600);
-        $session->valid_to = $newExpiry;
+        $session->valid_to = $newExpiry->format('Y-m-d H:i:s');
         return $session;
     }
 

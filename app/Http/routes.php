@@ -110,79 +110,80 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
     });
 
 
-    $app->get('api/client/{id}','ClientController@getClient');
-    $app->post('api/client','ClientController@saveClient');
-    $app->put('api/client/{id}','ClientController@updateClient');
-    $app->delete('api/client/{id}','ClientController@deleteClient');
+    $app->get('api/client','App\Http\Controllers\ClientController@index');
+    $app->get('api/client/{id}','App\Http\Controllers\ClientController@getClient');
+    $app->post('api/client','App\Http\Controllers\ClientController@saveClient');
+    $app->put('api/client/{id}','App\Http\Controllers\ClientController@updateClient');
+    $app->delete('api/client/{id}','App\Http\Controllers\ClientController@deleteClient');
 
-    $app->get('api/user','UserController@index');
-    $app->get('api/user/{id}','UserController@getUser');
-    $app->post('api/user','UserController@saveUser');
-    $app->put('api/user/{id}','UserController@updateUser');
-    $app->delete('api/user/{id}','UserController@deleteUser');
-
-
-    $app->get('api/role','RoleController@index');
-    $app->get('api/role/{id}','RoleController@getRole');
-    $app->post('api/role','RoleController@saveRole');
-    $app->put('api/role/{id}','RoleController@updateRole');
-    $app->delete('api/role/{id}','RoleController@deleteRole');
+    $app->get('api/user','App\Http\Controllers\UserController@index');
+    $app->get('api/user/{id}','App\Http\Controllers\UserController@getUser');
+    $app->post('api/user','App\Http\Controllers\UserController@saveUser');
+    $app->put('api/user/{id}','App\Http\Controllers\UserController@updateUser');
+    $app->delete('api/user/{id}','App\Http\Controllers\UserController@deleteUser');
 
 
-    $app->get('api/project','ProjectController@index');
-    $app->get('api/project/{id}','ProjectController@getProject');
-    $app->post('api/project','ProjectController@saveProject');
-    $app->put('api/project/{id}','ProjectController@updateProject');
-    $app->delete('api/project/{id}','ProjectController@deleteProject');
+    $app->get('api/role','App\Http\Controllers\RoleController@index');
+    $app->get('api/role/{id}','App\Http\Controllers\RoleController@getRole');
+    $app->post('api/role','App\Http\Controllers\RoleController@saveRole');
+    $app->put('api/role/{id}','App\Http\Controllers\RoleController@updateRole');
+    $app->delete('api/role/{id}','App\Http\Controllers\RoleController@deleteRole');
 
 
-    $app->get('api/subteam','SubteamController@index');
-    $app->get('api/subteam/{id}','SubteamController@getSubteam');
-    $app->post('api/subteam','SubteamController@saveSubteam');
-    $app->put('api/subteam/{id}','SubteamController@updateSubteam');
-    $app->delete('api/subteam/{id}','SubteamController@deleteSubteam');
+    $app->get('api/project','App\Http\Controllers\ProjectController@index');
+    $app->get('api/project/{id}','App\Http\Controllers\ProjectController@getProject');
+    $app->post('api/project','App\Http\Controllers\ProjectController@saveProject');
+    $app->put('api/project/{id}','App\Http\Controllers\ProjectController@updateProject');
+    $app->delete('api/project/{id}','App\Http\Controllers\ProjectController@deleteProject');
 
 
-    $app->get('api/project','ProjectController@index');
-    $app->get('api/project/{id}','ProjectController@getProject');
-    $app->get('api/project/total_cost/{id}','ProjectController@getTotalCost');
-    $app->post('api/project','ProjectController@saveProject');
-    $app->put('api/project/{id}','ProjectController@updateProject');
-    $app->delete('api/project/{id}','ProjectController@deleteProject');
+    $app->get('api/subteam','App\Http\Controllers\SubteamController@index');
+    $app->get('api/subteam/{id}','App\Http\Controllers\SubteamController@getSubteam');
+    $app->post('api/subteam','App\Http\Controllers\SubteamController@saveSubteam');
+    $app->put('api/subteam/{id}','App\Http\Controllers\SubteamController@updateSubteam');
+    $app->delete('api/subteam/{id}','App\Http\Controllers\SubteamController@deleteSubteam');
 
 
-    $app->get('api/subteam','SubteamController@index');
-    $app->get('api/subteam/{id}','SubteamController@getSubteam');
-    $app->post('api/subteam','SubteamController@saveSubteam');
-    $app->put('api/subteam/{id}','SubteamController@updateSubteam');
-    $app->delete('api/subteam/{id}','SubteamController@deleteSubteam');
+    $app->get('api/project','App\Http\Controllers\ProjectController@index');
+    $app->get('api/project/{id}','App\Http\Controllers\ProjectController@getProject');
+    $app->get('api/project/total_cost/{id}','App\Http\Controllers\ProjectController@getTotalCost');
+    $app->post('api/project','App\Http\Controllers\ProjectController@saveProject');
+    $app->put('api/project/{id}','App\Http\Controllers\ProjectController@updateProject');
+    $app->delete('api/project/{id}','App\Http\Controllers\ProjectController@deleteProject');
 
 
-    $app->get('api/subteam_request','SubteamRequestController@index');
-    $app->get('api/subteam_request/{id}','SubteamRequestController@getSubteamRequest');
-    $app->post('api/subteam_request','SubteamRequestController@saveSubteamRequest');
-    $app->put('api/subteam_request/{id}','SubteamRequestController@updateSubteamRequest');
-    $app->delete('api/subteam_request/{id}','SubteamRequestController@deleteSubteamRequest');
+    $app->get('api/subteam','App\Http\Controllers\SubteamController@index');
+    $app->get('api/subteam/{id}','App\Http\Controllers\SubteamController@getSubteam');
+    $app->post('api/subteam','App\Http\Controllers\SubteamController@saveSubteam');
+    $app->put('api/subteam/{id}','App\Http\Controllers\SubteamController@updateSubteam');
+    $app->delete('api/subteam/{id}','App\Http\Controllers\SubteamController@deleteSubteam');
 
 
-    $app->get('api/planning_request','PlanningRequestController@index');
-    $app->get('api/planning_request/{id}','PlanningRequestController@getPlanningRequest');
-    $app->post('api/planning_request','PlanningRequestController@savePlanningRequest');
-    $app->put('api/planning_request/{id}','PlanningRequestController@updatePlanningRequest');
-    $app->delete('api/planning_request/{id}','PlanningRequestController@deletePlanningRequest');
+    $app->get('api/subteam_request','App\Http\Controllers\SubteamRequestController@index');
+    $app->get('api/subteam_request/{id}','App\Http\Controllers\SubteamRequestController@getSubteamRequest');
+    $app->post('api/subteam_request','App\Http\Controllers\SubteamRequestController@saveSubteamRequest');
+    $app->put('api/subteam_request/{id}','App\Http\Controllers\SubteamRequestController@updateSubteamRequest');
+    $app->delete('api/subteam_request/{id}','App\Http\Controllers\SubteamRequestController@deleteSubteamRequest');
 
 
-    $app->get('api/selection','SelectionController@index');
-    $app->get('api/selection/{id}','SelectionController@getSelection');
-    $app->post('api/selection','SelectionController@saveSelection');
-    $app->put('api/selection/{id}','SelectionController@updateSelection');
-    $app->delete('api/selection/{id}','SelectionController@deleteSelection');
+    $app->get('api/planning_request','App\Http\Controllers\PlanningRequestController@index');
+    $app->get('api/planning_request/{id}','App\Http\Controllers\PlanningRequestController@getPlanningRequest');
+    $app->post('api/planning_request','App\Http\Controllers\PlanningRequestController@savePlanningRequest');
+    $app->put('api/planning_request/{id}','App\Http\Controllers\PlanningRequestController@updatePlanningRequest');
+    $app->delete('api/planning_request/{id}','App\Http\Controllers\PlanningRequestController@deletePlanningRequest');
 
 
-    $app->get('api/employee','EmployeeController@index');
-    $app->get('api/employee/{id}','EmployeeController@getEmployee');
-    $app->post('api/employee','EmployeeController@saveEmployee');
-    $app->put('api/employee/{id}','EmployeeController@updateEmployee');
-    $app->delete('api/employee/{id}','EmployeeController@deleteEmployee');
+    $app->get('api/selection','App\Http\Controllers\SelectionController@index');
+    $app->get('api/selection/{id}','App\Http\Controllers\SelectionController@getSelection');
+    $app->post('api/selection','App\Http\Controllers\SelectionController@saveSelection');
+    $app->put('api/selection/{id}','App\Http\Controllers\SelectionController@updateSelection');
+    $app->delete('api/selection/{id}','App\Http\Controllers\SelectionController@deleteSelection');
+
+
+    $app->get('api/employee','App\Http\Controllers\EmployeeController@index');
+    $app->get('api/employee/{id}','App\Http\Controllers\EmployeeController@getEmployee');
+    $app->post('api/employee','App\Http\Controllers\EmployeeController@saveEmployee');
+    $app->put('api/employee/{id}','App\Http\Controllers\EmployeeController@updateEmployee');
+    $app->delete('api/employee/{id}','App\Http\Controllers\EmployeeController@deleteEmployee');
 
 });
