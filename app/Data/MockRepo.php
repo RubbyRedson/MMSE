@@ -183,4 +183,19 @@ class MockRepo implements DatabaseInterface
 
         return $role;
     }
+
+    public function getAllPlanningRequests()
+    {
+        // TODO: Implement getAllPlanningRequests() method.
+    }
+
+    public function getPlanningRequestsByStatusId($statusId)
+    {
+        // TODO: Implement getPlanningRequestsByStatusId() method.
+    }
+
+    public function setPlanningRequestsStatus($requestId, $statusId)
+    {
+        // TODO: Implement setPlanningRequestsStatus() method.
+    }
 }

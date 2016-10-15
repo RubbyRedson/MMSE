@@ -7,9 +7,9 @@
  */
 
 namespace App;
-
+use Illuminate\Database\Eloquent\Model;
 
 class PlanningRequest extends Model
 {
-    protected $fillable = ['client', 'status', 'feedback'];
+    protected $fillable = ['client', 'status', 'feedback', 'description'];
 }

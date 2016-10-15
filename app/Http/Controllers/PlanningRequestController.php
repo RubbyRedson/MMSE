@@ -16,11 +16,23 @@ use Illuminate\Http\Request;
 class PlanningRequestController extends Controller
 {
     public function index(){
+        $planningRequests = $this->dataSource->getAllPlanningRequests();
+        return response()->json($planningRequests);
+    }
 
-        $planningRequests  = PlanningRequest::all();
+    public function getPlanningRequestForCustomerServiceManager(){
+        $planningRequests = $this->dataSource->getPlanningRequestsByStatusId(1);
 
         return response()->json($planningRequests);
+    }
 
+    public function updatePlanningRequestFromCustomerServiceManager(Request $request, $id){
+        $statusId = $request->input("status");
+        if($statusId  == 2 || $statusId  == 5){
+            return $this->dataSource->setPlanningRequestsStatus($id, $statusId);
+        }else{
+            return response("Bad request. You cannot set this status.", 400);
+        }
     }
 
     public function getPlanningRequest($id){
@@ -31,10 +43,13 @@ class PlanningRequestController extends Controller
     }
 
     public function savePlanningRequest(Request $request){
-        $planningRequest = PlanningRequest::create($request->all());
 
-        return response()->json($planningRequest);
+        $r = new PlanningRequest($request->all());
+        $r->status = 1;
+        return $this->dataSource->savePlanningRequest($r);
 
+       // $planningRequest = PlanningRequest::create($request->all());
+       // return response()->json($planningRequest);
     }
 
     public function deletePlanningRequest($id){
