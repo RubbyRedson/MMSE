@@ -8,6 +8,7 @@
 
 namespace App\Data;
 use App\Client;
+use App\PlanningRequest;
 use App\Role;
 use App\User;
 use App\Session;
@@ -56,6 +57,10 @@ class SQLRepo implements DatabaseInterface
 
     public function savePlanningRequest($planningRequest)
     {
+
+        $planningRequest->save();
+
+        return $planningRequest;
         // TODO: Implement savePlanningRequest() method.
     }
 
@@ -89,5 +94,22 @@ class SQLRepo implements DatabaseInterface
     public function getRoleById($id)
     {
         return Role::where('id', $id)->first();
+    }
+
+    public function getAllPlanningRequests()
+    {
+        return  PlanningRequest::all();
+    }
+
+    public function getPlanningRequestsByStatusId($statusId)
+    {
+        return  PlanningRequest::where('status', $statusId)->get();
+    }
+
+    public function setPlanningRequestsStatus($requestId, $statusId)
+    {
+        $req = PlanningRequest::where('id', $requestId)->first();
+        $req->status = $statusId;
+        $req->save();
     }
 }

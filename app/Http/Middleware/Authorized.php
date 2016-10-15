@@ -10,6 +10,7 @@ namespace app\Http\Middleware;
 
 use App\Data\DatabaseInterface;
 use Closure;
+use Illuminate\Http\Request;
 
 class Authorized
 {
@@ -20,7 +21,7 @@ class Authorized
         $this->dataSource = $ds;
     }
 
-    public function handle($request, Closure $next, $role_tag = null)
+    public function handle(Request $request, Closure $next, $role_tag = null)
     {
 
         //Get the token from the header

@@ -22,14 +22,15 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
         $app->get('api/customer_service/client', 'App\Http\Controllers\ClientController@index');
 
         //To create new planning requests
-        $app->post('api/customer_service/planning_request','App\Http\Controllers\PlanningRequestController@savePlanningRequestController');
+        $app->post('api/customer_service/planning_request','App\Http\Controllers\PlanningRequestController@savePlanningRequest');
     });
 
     $app->group(['middleware' => 'authorize:customer_service_manager'], function () use ($app) {
+
         //To modify planning requests
-        $app->get('api/customer_service_manager/planning_request','App\Http\Controllers\PlanningRequestController@index');
+        $app->get('api/customer_service_manager/planning_request','App\Http\Controllers\PlanningRequestController@getPlanningRequestForCustomerServiceManager');
         $app->get('api/customer_service_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@getPlanningRequest');
-        $app->put('api/customer_service_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@updatePlanningRequest');
+        $app->put('api/customer_service_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@updatePlanningRequestFromCustomerServiceManager');
 
         //To modify projects
         $app->get('api/customer_service_manager/project','App\Http\Controllers\ProjectController@index');
