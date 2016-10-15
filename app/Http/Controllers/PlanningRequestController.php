@@ -31,10 +31,13 @@ class PlanningRequestController extends Controller
     }
 
     public function savePlanningRequest(Request $request){
-        $planningRequest = PlanningRequest::create($request->all());
 
-        return response()->json($planningRequest);
+        $r = new PlanningRequest($request->all());
+        $r->status = 1;
+        return $this->dataSource->savePlanningRequest($r);
 
+       // $planningRequest = PlanningRequest::create($request->all());
+       // return response()->json($planningRequest);
     }
 
     public function deletePlanningRequest($id){
