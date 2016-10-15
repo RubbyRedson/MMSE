@@ -193,4 +193,9 @@ class MockRepo implements DatabaseInterface
     {
         // TODO: Implement getPlanningRequestsByStatusId() method.
     }
+
+    public function setPlanningRequestsStatus($requestId, $statusId)
+    {
+        // TODO: Implement setPlanningRequestsStatus() method.
+    }
 }

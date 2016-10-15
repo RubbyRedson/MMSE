@@ -29,4 +29,5 @@ interface DatabaseInterface
     public function getRoleById($id);
     public function getAllPlanningRequests();
     public function getPlanningRequestsByStatusId($statusId);
+    public function setPlanningRequestsStatus($requestId, $statusId);
 }

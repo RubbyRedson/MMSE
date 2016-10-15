@@ -101,9 +101,15 @@ class SQLRepo implements DatabaseInterface
         return  PlanningRequest::all();
     }
 
-
     public function getPlanningRequestsByStatusId($statusId)
     {
         return  PlanningRequest::where('status', $statusId)->get();
+    }
+
+    public function setPlanningRequestsStatus($requestId, $statusId)
+    {
+        $req = PlanningRequest::where('id', $requestId)->first();
+        $req->status = $statusId;
+        $req->save();
     }
 }

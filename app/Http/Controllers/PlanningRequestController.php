@@ -26,6 +26,15 @@ class PlanningRequestController extends Controller
         return response()->json($planningRequests);
     }
 
+    public function updatePlanningRequestFromCustomerServiceManager(Request $request, $id){
+        $statusId = $request->input("status");
+        if($statusId  == 2 || $statusId  == 5){
+            return $this->dataSource->setPlanningRequestsStatus($id, $statusId);
+        }else{
+            return response("Bad request. You cannot set this status.", 400);
+        }
+    }
+
     public function getPlanningRequest($id){
 
         $planningRequest  = PlanningRequest::find($id);
