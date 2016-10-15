@@ -95,4 +95,15 @@ class SQLRepo implements DatabaseInterface
     {
         return Role::where('id', $id)->first();
     }
+
+    public function getAllPlanningRequests()
+    {
+        return  PlanningRequest::all();
+    }
+
+
+    public function getPlanningRequestsByStatusId($statusId)
+    {
+        return  PlanningRequest::where('status', $statusId)->get();
+    }
 }

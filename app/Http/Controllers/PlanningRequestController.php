@@ -16,11 +16,14 @@ use Illuminate\Http\Request;
 class PlanningRequestController extends Controller
 {
     public function index(){
+        $planningRequests = $this->dataSource->getAllPlanningRequests();
+        return response()->json($planningRequests);
+    }
 
-        $planningRequests  = PlanningRequest::all();
+    public function getPlanningRequestForCustomerServiceManager(){
+        $planningRequests = $this->dataSource->getPlanningRequestsByStatusId(1);
 
         return response()->json($planningRequests);
-
     }
 
     public function getPlanningRequest($id){

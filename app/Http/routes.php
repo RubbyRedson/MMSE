@@ -26,8 +26,9 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
     });
 
     $app->group(['middleware' => 'authorize:customer_service_manager'], function () use ($app) {
+
         //To modify planning requests
-        $app->get('api/customer_service_manager/planning_request','App\Http\Controllers\PlanningRequestController@index');
+        $app->get('api/customer_service_manager/planning_request','App\Http\Controllers\PlanningRequestController@getPlanningRequestForCustomerServiceManager');
         $app->get('api/customer_service_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@getPlanningRequest');
         $app->put('api/customer_service_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@updatePlanningRequest');
 

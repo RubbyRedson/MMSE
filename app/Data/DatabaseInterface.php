@@ -27,4 +27,6 @@ interface DatabaseInterface
     public function createSession($userId);
     public function getSessionByToken($token);
     public function getRoleById($id);
+    public function getAllPlanningRequests();
+    public function getPlanningRequestsByStatusId($statusId);
 }
