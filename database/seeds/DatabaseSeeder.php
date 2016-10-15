@@ -40,61 +40,73 @@ class RolesTableSeeder extends Seeder
             'title' => 'Customer service',
             'description' => 'Description of Customer service',
             'auth' => 1,
+            'tag' => 'customer_service',
         ]);
         DB::table('roles')->insert([
             'title' => 'Customer service manager',
             'description' => 'Description of Customer service manager',
             'auth' => 2,
+            'tag' => 'customer_service_manager',
         ]);
         DB::table('roles')->insert([
             'title' => 'Financial manager',
             'description' => 'Description of Financial manager',
             'auth' => 3,
+            'tag' => 'financial_manager',
         ]);
         DB::table('roles')->insert([
             'title' => 'Administration manager',
             'description' => 'Description of Administration manager',
             'auth' => 4,
+            'tag' => 'administration_manager',
         ]);
         DB::table('roles')->insert([
             'title' => 'Production manager',
             'description' => 'Description of Production manager',
             'auth' => 5,
+            'tag' => 'production_manager',
         ]);
         DB::table('roles')->insert([
             'title' => 'HR manager',
             'description' => 'Description of HR manager',
             'auth' => 6,
+            'tag' => 'hr_manager',
         ]);
         DB::table('roles')->insert([
             'title' => 'HR team',
             'description' => 'Description of HR team',
             'auth' => 7,
+            'tag' => 'hr_team',
         ]);
         DB::table('roles')->insert([
             'title' => 'Service manager',
             'description' => 'Description of Service manager',
             'auth' => 8,
+            'tag' => 'service_manager',
         ]);
         DB::table('roles')->insert([
             'title' => 'Sub-team',
             'description' => 'Description of Sub-team',
             'auth' => 9,
+            'tag' => 'sub_team',
         ]);
         DB::table('roles')->insert([
             'title' => 'Vice-president',
             'description' => 'Description of Vice-president',
             'auth' => 10,
+            'tag' => 'vice_president',
         ]);
         DB::table('roles')->insert([
             'title' => 'Financial department',
             'description' => 'Description of Financial department',
             'auth' => 11,
+            'tag' => 'financial_department',
         ]);
         DB::table('roles')->insert([
             'title' => 'Administration department',
             'description' => 'Description of Administration department',
             'auth' => 12,
+            'tag' => 'administration_department',
         ]);
     }
 }
@@ -261,20 +273,82 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $salt1 = $this->getSalt();
-        $salt2 = $this->getSalt();
+        $salt = $this->getSalt();
         DB::table('users')->insert([
             'username' => 'Alice',
-            'salt' => $salt1,
-            'password' => sha1($salt1 ."abc123"),
+            'salt' => $salt,
+            'password' => sha1($salt ."abc123"),
             'role' => 2,
         ]);
         DB::table('users')->insert([
             'username' => 'Bob',
-            'salt' => $salt2,
-            'password' => sha1($salt2 ."abc123"),
-            'salt' => $this->getSalt(),
+            'salt' => $salt,
+            'password' => sha1($salt ."abc123"),
             'role' => 1,
+        ]);
+
+
+        DB::table('users')->insert([
+            'username' => 'customer_service@sep.com',
+            'salt' => $salt,
+            'password' => sha1($salt ."abc123"),
+            'role' => 1,
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'customer_service_manager@sep.com',
+            'salt' => $salt,
+            'password' => sha1($salt ."abc123"),
+            'role' => 2,
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'financial_manager@sep.com',
+            'salt' => $salt,
+            'password' => sha1($salt ."abc123"),
+            'role' => 3,
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'administration_manager@sep.com',
+            'salt' => $salt,
+            'password' => sha1($salt ."abc123"),
+            'role' => 4,
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'department_manager@sep.com',
+            'salt' => $salt,
+            'password' => sha1($salt ."abc123"),
+            'role' => 5,
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'hr_team@sep.com',
+            'salt' => $salt,
+            'password' => sha1($salt ."abc123"),
+            'role' => 7,
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'sub_team@sep.com',
+            'salt' => $salt,
+            'password' => sha1($salt ."abc123"),
+            'role' => 9,
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'financial_department@sep.com',
+            'salt' => $salt,
+            'password' => sha1($salt ."abc123"),
+            'role' => 11,
+        ]);
+
+        DB::table('users')->insert([
+            'username' => 'administration_department@sep.com',
+            'salt' => $salt,
+            'password' => sha1($salt ."abc123"),
+            'role' => 12,
         ]);
     }
 }
