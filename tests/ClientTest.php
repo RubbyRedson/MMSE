@@ -44,6 +44,10 @@ class ClientTest extends TestCase
         $this->assertEquals($jsonArr['name'], 'Pear LLC 4');
         $this->assertEquals($jsonArr['phone'], '1233211233');
         $this->assertEquals($jsonArr['discount'], '1');
+
+        $id = $jsonArr['id'];
+
+        $this->deleteWithAuth('/api/client/'.$id);
     }
 
     /**
