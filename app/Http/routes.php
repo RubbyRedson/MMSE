@@ -22,7 +22,7 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
         $app->get('api/customer_service/client', 'App\Http\Controllers\ClientController@index');
 
         //To create new planning requests
-        $app->post('api/customer_service/planning_request','App\Http\Controllers\PlanningRequestController@savePlanningRequestController');
+        $app->post('api/customer_service/planning_request','App\Http\Controllers\PlanningRequestController@savePlanningRequest');
     });
 
     $app->group(['middleware' => 'authorize:customer_service_manager'], function () use ($app) {
