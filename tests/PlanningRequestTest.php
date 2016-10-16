@@ -68,7 +68,6 @@ class PlanningRequestTest extends TestCase
             true);
 
         //ensure format of output
-        $this->assertArrayHasKey('id', $res);
         $this->assertArrayHasKey('client', $res);
         $this->assertArrayHasKey('status', $res);
         $this->assertArrayHasKey('feedback', $res);
@@ -77,19 +76,20 @@ class PlanningRequestTest extends TestCase
 
     public function testGetPendingRequestFinancialManager()
     {
-        $expected = "[{\"id\":4,\"client\":1,\"status\":1,\"feedback\":\"\",\"created_at\":\"2016-10-15 14:30:19\",\"updated_at\":\"2016-10-15 16:17:47\",\"description\":\"kmkmk\"},{\"id\":1,\"client\":1,\"status\":1,\"feedback\":\"Feedback for request 1\",\"created_at\":null,\"updated_at\":\"2016-10-15 16:17:41\",\"description\":\"\"}]";
+        $expected = '[{"id":1,"client":1,"status":2,"feedback":"Feedback for request 1","description":'.
+            '"description for request 1"},{"id":1,"client":1,"status":2,"feedback":"Feedback for request 1",'.
+            '"description":"description for request 1"}]';
+
         $actual = $this->getWithAuth('api/financial_manager/planning_request', 3);
         $this->assertEquals($expected, $actual);
     }
 
     public function testUpdateRequestFinancialManager()
     {
-
-        // $app->put('api/financial_manager/planning_request/{id}',
-
-        $this->markTestIncomplete(
-            'updatePlanningRequestFromFinancialManager: test that the correct statuses are set. 3 vs 5 (maybe we need more that one test for this)'
-        );
+        $json = "{\"status\":3,\"feedback\":\"that's the stuff\"}";
+        $expected = '{"id":4,"client":1,"status":3,"feedback":"that\'s the stuff","description":"description for request 1"}';
+        $actual = $this->putWithAuth('api/financial_manager/planning_request/4', $json, 3);
+        $this->assertEquals($expected, $actual);
     }
 
     public function testGetPendingAdministrationManager()
