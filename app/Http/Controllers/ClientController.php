@@ -43,14 +43,20 @@ class ClientController extends Controller
     }
 
     public function updateClient(Request $request,$id){
-        $client  = Client::find($id);
+
+        $client = $this->dataSource->getClientById($id);
 
         $client->name = $request->input('name');
         $client->phone = $request->input('phone');
         $client->discount = $request->input('discount');
 
+        //TODO: Put this in the datasouce instead
         $client->save();
 
         return response()->json($client);
+    }
+
+    public function getProjectSum($id){
+        return $this->dataSource->getProjectCostSummation($id);
     }
 }

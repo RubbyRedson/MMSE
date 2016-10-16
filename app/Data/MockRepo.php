@@ -240,4 +240,9 @@ class MockRepo implements DatabaseInterface
     {
         // TODO: Implement getClientById() method.
     }
+
+    public function getProjectCostSummation($clientId)
+    {
+        return 200;
+    }
 }

@@ -9,6 +9,7 @@
 namespace App\Data;
 use App\Client;
 use App\PlanningRequest;
+use App\Project;
 use App\Role;
 use App\User;
 use App\Session;
@@ -123,5 +124,10 @@ class SQLRepo implements DatabaseInterface
     public function getClientById($id)
     {
         return Client::find($id);
+    }
+
+    public function getProjectCostSummation($clientId)
+    {
+        return Project::where('client', $clientId)->sum('cost');
     }
 }

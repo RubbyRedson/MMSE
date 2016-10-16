@@ -41,6 +41,7 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
         $app->delete('api/customer_service_manager/project/{id}','App\Http\Controllers\ProjectController@deleteProject');
 
         //To work with the client, give discounts, etc
+        $app->get('api/customer_service_manager/client/{id}/project_sum','App\Http\Controllers\ClientController@getProjectSum');
         $app->get('api/customer_service_manager/client/{id}','App\Http\Controllers\ClientController@getClient');
         $app->post('api/customer_service_manager/client','App\Http\Controllers\ClientController@saveClient');
         $app->put('api/customer_service_manager/client/{id}','App\Http\Controllers\ClientController@updateClient');

@@ -86,4 +86,13 @@ class ClientTest extends TestCase
 
         $this->assertEquals('"success"', $response);
     }
+
+    public function testGetClientProjectSum(){
+
+        // $app->get('api/customer_service_manager/client/{id}/project_sum'
+
+        $this->markTestIncomplete(
+            'This should return the sum of all previous projects for a customer or 0 if none'
+        );
+    }
 }

@@ -32,4 +32,5 @@ interface DatabaseInterface
     public function getPlanningRequestById($id);
     public function getPlanningRequestsByStatusId($statusId);
     public function setPlanningRequestsStatus($requestId, $statusId);
+    public function getProjectCostSummation($clientId);
 }
