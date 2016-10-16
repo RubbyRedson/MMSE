@@ -18,6 +18,7 @@ interface DatabaseInterface
     public function updateClient($client);
     public function getAllSubteams();
     public function saveSubteamRequest($subteamRequest);
+    public function saveProject($project);
     public function getSubteamRequest($subteamId);
     public function findPlanningRequest($clientId);
     public function findSubteamRequests($subteamId);

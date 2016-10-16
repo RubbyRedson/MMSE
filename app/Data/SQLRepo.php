@@ -11,6 +11,7 @@ use App\Client;
 use App\PlanningRequest;
 use App\Project;
 use App\Role;
+use App\Subteam;
 use App\User;
 use App\Session;
 
@@ -33,11 +34,13 @@ class SQLRepo implements DatabaseInterface
 
     public function getAllSubteams()
     {
+        return Subteam::all();
         // TODO: Implement getAllSubteams() method.
     }
 
     public function saveSubteamRequest($subteamRequest)
     {
+        return $subteamRequest->save();
         // TODO: Implement saveSubteamRequest() method.
     }
 
@@ -129,5 +132,11 @@ class SQLRepo implements DatabaseInterface
     public function getProjectCostSummation($clientId)
     {
         return Project::where('client', $clientId)->sum('cost');
+    }
+
+    public function saveProject($project)
+    {
+        return Project::create($project);
+        // TODO: Implement saveProject() method.
     }
 }

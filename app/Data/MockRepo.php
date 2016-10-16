@@ -245,4 +245,9 @@ class MockRepo implements DatabaseInterface
     {
         return 200;
     }
+
+    public function saveProject($project)
+    {
+        // TODO: Implement saveProject() method.
+    }
 }

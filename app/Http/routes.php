@@ -79,6 +79,7 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
     });
 
     $app->group(['middleware' => 'authorize:production_manager'], function () use ($app) {
+
         //To send resource requests from subteams to hr team
         $app->get('api/production_manager/subteam_request','App\Http\Controllers\SubteamRequestController@index');
         $app->get('api/production_manager/subteam_request/{id}','App\Http\Controllers\SubteamRequestController@getSubteamRequest');
@@ -89,6 +90,8 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
         //To modify projects, negotiations for budget
         $app->get('api/production_manager/project','App\Http\Controllers\ProjectController@index');
         $app->get('api/production_manager/project/{id}','App\Http\Controllers\ProjectController@getProject');
+
+        $app->post('api/production_manager/project','App\Http\Controllers\ProjectController@saveProductionManagerProject');
     });
 
     $app->group(['middleware' => 'authorize:hr_team'], function () use ($app) {
