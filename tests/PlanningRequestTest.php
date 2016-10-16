@@ -91,4 +91,32 @@ class PlanningRequestTest extends TestCase
         );
     }
 
+    public function testGetPendingAdministrationManager(){
+
+        //$app->get('api/administration_manager/planning_request'
+
+        $this->markTestIncomplete(
+            'Should not return other stuff that stuses 3 that is intended for administartion manager'
+        );
+    }
+
+    public function testUpdateRequestAdminManager(){
+
+        // $app->put('api/administration_manager/planning_request/{id}'
+
+        $this->markTestIncomplete(
+            'test that the correct statuses are set. 4 vs 5 (maybe we need more that one test for this)'
+        );
+    }
+
+    public function testGetAllFinishedPlanningRequests(){
+
+        // $app->get('api/customer_service_manager/finished_planning_request',
+
+        $this->markTestIncomplete(
+            'This shoudl onlu returned planning requests with status 4 or 5, Think about sorting also'
+        );
+    }
+
+
 }

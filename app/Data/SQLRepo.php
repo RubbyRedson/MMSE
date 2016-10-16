@@ -119,4 +119,9 @@ class SQLRepo implements DatabaseInterface
     {
         return PlanningRequest::find($id);
     }
+
+    public function getClientById($id)
+    {
+        return Client::find($id);
+    }
 }

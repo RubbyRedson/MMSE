@@ -29,6 +29,7 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 
         //To modify planning requests
         $app->get('api/customer_service_manager/planning_request','App\Http\Controllers\PlanningRequestController@getPlanningRequestForCustomerServiceManager');
+        $app->get('api/customer_service_manager/finished_planning_request','App\Http\Controllers\PlanningRequestController@getFinishedPlanningRequests');
         $app->get('api/customer_service_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@getPlanningRequest');
         $app->put('api/customer_service_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@updatePlanningRequestFromCustomerServiceManager');
 
@@ -62,9 +63,9 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 
     $app->group(['middleware' => 'authorize:administration_manager'], function () use ($app) {
         //To modify planning requests
-        $app->get('api/administration_manager/planning_request','App\Http\Controllers\PlanningRequestController@index');
+        $app->get('api/administration_manager/planning_request','App\Http\Controllers\PlanningRequestController@getPlanningRequestForAdministrationManager');
         $app->get('api/administration_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@getPlanningRequest');
-        $app->put('api/administration_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@updatePlanningRequest');
+        $app->put('api/administration_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@updatePlanningRequestFromAdministationManager');
     });
 
     $app->group(['middleware' => 'authorize:sub_team'], function () use ($app) {

@@ -26,8 +26,24 @@ class PlanningRequestController extends Controller
         return response()->json($planningRequests);
     }
 
+    public function getFinishedPlanningRequests(){
+        $approved = $this->dataSource->getPlanningRequestsByStatusId(4);
+        $rejected = $this->dataSource->getPlanningRequestsByStatusId(5);
+
+        $all = array_merge($approved->toArray(), $rejected->toArray());
+        return response()->json($all);
+    }
+
+
+
     public function getPlanningRequestForFinancialManager(){
         $planningRequests = $this->dataSource->getPlanningRequestsByStatusId(2);
+
+        return response()->json($planningRequests);
+    }
+
+    public function getPlanningRequestForAdministrationManager(){
+        $planningRequests = $this->dataSource->getPlanningRequestsByStatusId(3);
 
         return response()->json($planningRequests);
     }
@@ -35,6 +51,15 @@ class PlanningRequestController extends Controller
     public function updatePlanningRequestFromCustomerServiceManager(Request $request, $id){
         $statusId = $request->input("status");
         if($statusId  == 2 || $statusId  == 5){
+            return $this->dataSource->setPlanningRequestsStatus($id, $statusId);
+        }else{
+            return response("Bad request. You cannot set this status.", 400);
+        }
+    }
+
+    public function updatePlanningRequestFromAdministationManager(Request $request, $id){
+        $statusId = $request->input("status");
+        if($statusId  == 4 || $statusId  == 5){
             return $this->dataSource->setPlanningRequestsStatus($id, $statusId);
         }else{
             return response("Bad request. You cannot set this status.", 400);

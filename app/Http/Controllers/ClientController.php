@@ -22,7 +22,7 @@ class ClientController extends Controller
 
     public function getClient($id){
 
-        $client  = Client::find($id);
+        $client  = $this->dataSource->getClientById($id);
 
         return response()->json($client);
     }

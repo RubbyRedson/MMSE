@@ -235,4 +235,9 @@ class MockRepo implements DatabaseInterface
 
         return json_decode($res, true);
     }
+
+    public function getClientById($id)
+    {
+        // TODO: Implement getClientById() method.
+    }
 }
