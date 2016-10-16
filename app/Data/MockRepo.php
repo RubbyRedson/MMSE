@@ -209,6 +209,7 @@ class MockRepo implements DatabaseInterface
         $res->status = 1;
         $res->feedback = "Feedback for request 1";
         $res->description = "description for request 1";
+        $res->proposed_budget = 500;
 
         $res1 =  new PlanningRequest();
         $res1->id = 1;
@@ -216,6 +217,7 @@ class MockRepo implements DatabaseInterface
         $res1->status = 1;
         $res1->feedback = "Feedback for request 1";
         $res1->description = "description for request 1";
+        $res->proposed_budget = 700;
 
         return [$res, $res1];
     }
@@ -228,6 +230,7 @@ class MockRepo implements DatabaseInterface
         $res->status = $statusId;
         $res->feedback = "Feedback for request 1";
         $res->description = "description for request 1";
+        $res->proposed_budget = 500;
 
         $res1 =  new PlanningRequest();
         $res1->id = 1;
@@ -235,6 +238,7 @@ class MockRepo implements DatabaseInterface
         $res1->status = $statusId;
         $res1->feedback = "Feedback for request 1";
         $res1->description = "description for request 1";
+        $res1->proposed_budget = 700;
 
         return [$res, $res1];
     }
@@ -247,6 +251,7 @@ class MockRepo implements DatabaseInterface
         $res->status = $statusId;
         $res->feedback = "Feedback for request 1";
         $res->description = "description for request 1";
+        $res->proposed_budget = 500;
 
         return new PlanningRequest(json_decode($res, true));
     }
@@ -259,6 +264,7 @@ class MockRepo implements DatabaseInterface
         $res->status = 1;
         $res->feedback = "Feedback for request 1";
         $res->description = "description for request 1";
+        $res->proposed_budget = 500;
 
         return $res;
     }

@@ -110,6 +110,8 @@ class PlanningRequestController extends Controller
         $planningRequest->client = $request->input('client');
         $planningRequest->status = $request->input('status');
         $planningRequest->feedback = $request->input('feedback');
+        $planningRequest->description = $request->input('description');
+        $planningRequest->proposed_budget = $request->input('proposed_budget');
 
         $this->dataSource->savePlanningRequest($planningRequest);
 

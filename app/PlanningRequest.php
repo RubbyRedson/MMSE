@@ -11,5 +11,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PlanningRequest extends Model
 {
-    protected $fillable = ['client', 'status', 'feedback', 'description'];
+    protected $fillable = ['client', 'status', 'feedback', 'description', 'proposed_budget'];
 }

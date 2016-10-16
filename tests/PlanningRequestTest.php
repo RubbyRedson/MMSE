@@ -9,14 +9,6 @@
 class PlanningRequestTest extends TestCase
 {
 
-    public function testGetClients()
-    {
-        $validOutput = "[{\"name\":\"Pear LLC\",\"phone\":\"123123123\",\"discount\":0},{\"name\":\"AEKI\",\"phone\":\"0987654321\",\"discount\":75}]";
-
-        $res = $this->getWithAuth('api/customer_service/client');
-
-        $this->assertEquals($res, $validOutput);
-    }
 
     public function testCreatePlanningRequest()
     {
@@ -77,8 +69,8 @@ class PlanningRequestTest extends TestCase
     public function testGetPendingRequestFinancialManager()
     {
         $expected = '[{"id":1,"client":1,"status":2,"feedback":"Feedback for request 1","description":'.
-            '"description for request 1"},{"id":1,"client":1,"status":2,"feedback":"Feedback for request 1",'.
-            '"description":"description for request 1"}]';
+            '"description for request 1","proposed_budget":500},{"id":1,"client":1,"status":2,"feedback":"Feedback for request 1",'.
+            '"description":"description for request 1","proposed_budget":700}]';
 
         $actual = $this->getWithAuth('api/financial_manager/planning_request', 3);
         $this->assertEquals($expected, $actual);
@@ -87,7 +79,8 @@ class PlanningRequestTest extends TestCase
     public function testUpdateRequestFinancialManager()
     {
         $json = "{\"status\":3,\"feedback\":\"that's the stuff\"}";
-        $expected = '{"id":4,"client":1,"status":3,"feedback":"that\'s the stuff","description":"description for request 1"}';
+        $expected = '{"id":4,"client":1,"status":3,"feedback":"that\'s the stuff","description":'.
+            '"description for request 1","proposed_budget":500}';
         $actual = $this->putWithAuth('api/financial_manager/planning_request/4', $json, 3);
         $this->assertEquals($expected, $actual);
     }
@@ -103,8 +96,8 @@ class PlanningRequestTest extends TestCase
     public function testGetPendingAdministrationManager()
     {
         $expected = '[{"id":1,"client":1,"status":3,"feedback":"Feedback for request 1","description":'.
-            '"description for request 1"},{"id":1,"client":1,"status":3,"feedback":"Feedback for request 1",'.
-            '"description":"description for request 1"}]';
+            '"description for request 1","proposed_budget":500},{"id":1,"client":1,"status":3,"feedback":"Feedback for request 1",'.
+            '"description":"description for request 1","proposed_budget":700}]';
 
         $actual = $this->getWithAuth('api/administration_manager/planning_request', 4);
         $this->assertEquals($expected, $actual);
@@ -113,7 +106,7 @@ class PlanningRequestTest extends TestCase
     public function testUpdateRequestAdministrativeManager()
     {
         $json = "{\"status\":4,\"feedback\":\"that's the stuff\"}";
-        $expected = '{"client":1,"status":4,"feedback":"Feedback for request 1","description":"description for request 1"}';
+        $expected = '{"client":1,"status":4,"feedback":"Feedback for request 1","description":"description for request 1","proposed_budget":500}';
         $actual = $this->putWithAuth('api/administration_manager/planning_request/4', $json, 4);
         $this->assertEquals($expected, $actual);
     }
@@ -121,7 +114,7 @@ class PlanningRequestTest extends TestCase
     public function testRejectRequestAdministrativeManager()
     {
         $json = "{\"status\":5,\"feedback\":\"that's the stuff\"}";
-        $expected = '{"client":1,"status":5,"feedback":"Feedback for request 1","description":"description for request 1"}';
+        $expected = '{"client":1,"status":5,"feedback":"Feedback for request 1","description":"description for request 1","proposed_budget":500}';
         $actual = $this->putWithAuth('api/administration_manager/planning_request/4', $json, 4);
         $this->assertEquals($expected, $actual);
     }
@@ -137,10 +130,10 @@ class PlanningRequestTest extends TestCase
     public function testGetAllFinishedPlanningRequests()
     {
         $expected = '[{"id":1,"client":1,"status":4,"feedback":"Feedback for request 1","description":'.
-            '"description for request 1"},{"id":1,"client":1,"status":4,"feedback":"Feedback for request 1",'.
-            '"description":"description for request 1"},{"id":1,"client":1,"status":5,"feedback":"Feedback for request 1","description":'.
-            '"description for request 1"},{"id":1,"client":1,"status":5,"feedback":"Feedback for request 1",'.
-            '"description":"description for request 1"}]';
+            '"description for request 1","proposed_budget":500},{"id":1,"client":1,"status":4,"feedback":"Feedback for request 1",'.
+            '"description":"description for request 1","proposed_budget":700},{"id":1,"client":1,"status":5,"feedback":"Feedback for request 1","description":'.
+            '"description for request 1","proposed_budget":500},{"id":1,"client":1,"status":5,"feedback":"Feedback for request 1",'.
+            '"description":"description for request 1","proposed_budget":700}]';
 
         $actual = $this->getWithAuth('api/customer_service_manager/finished_planning_request', 2);
         $this->assertEquals($expected, $actual);

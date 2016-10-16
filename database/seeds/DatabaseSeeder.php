@@ -147,12 +147,14 @@ class PlanningRequestsTableSeeder extends Seeder
             'status' => 1,
             'feedback' => 'Feedback for request 1',
             'description' => 'description for request 1',
+            'proposed_budget' => 500,
         ]);
         DB::table('planning_requests')->insert([
             'client' => 2,
             'status' => 4,
             'feedback' => 'Feedback for request 2',
             'description' => 'description for request 2',
+            'proposed_budget' => 700,
         ]);
     }
 }

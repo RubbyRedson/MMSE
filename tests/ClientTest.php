@@ -16,6 +16,20 @@ class ClientTest extends TestCase
     }
 
     /**
+     * Test to get all of the clients with authorization.
+     *
+     * @return void
+     */
+    public function testGetClients()
+    {
+        $validOutput = "[{\"name\":\"Pear LLC\",\"phone\":\"123123123\",\"discount\":0},{\"name\":\"AEKI\",\"phone\":\"0987654321\",\"discount\":75}]";
+
+        $res = $this->getWithAuth('api/customer_service/client');
+
+        $this->assertEquals($res, $validOutput);
+    }
+
+    /**
      * Test to get one of the clients.
      *
      * @return void
