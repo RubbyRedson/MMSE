@@ -48,7 +48,7 @@ class ClientController extends Controller
         $client->phone = $request->input('phone');
         $client->discount = $request->input('discount');
 
-        $this->dataSource->saveClient($client);
+        $this->dataSource->updateClient($client);
 
         return response()->json($client);
     }
