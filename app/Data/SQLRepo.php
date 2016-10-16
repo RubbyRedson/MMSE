@@ -41,7 +41,8 @@ class SQLRepo implements DatabaseInterface
 
     public function saveSubteamRequest($subteamRequest)
     {
-        // TODO: Implement saveSubteamRequest() method.
+        $subteamRequest->save();
+        return $subteamRequest;
     }
 
     public function getSubteamRequest($subteamId)
