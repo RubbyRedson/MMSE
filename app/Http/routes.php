@@ -71,7 +71,7 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 
     $app->group(['middleware' => 'authorize:sub_team'], function () use ($app) {
         //To modify subteam requests for additional resources
-        $app->get('api/sub_team/subteam_request','App\Http\Controllers\SubteamRequestController@index');
+        $app->get('api/sub_team/subteam_request','App\Http\Controllers\SubteamRequestController@getPendingSubteamRequest');
         $app->get('api/sub_team/subteam_request/{id}','App\Http\Controllers\SubteamRequestController@getSubteamRequest');
         $app->post('api/sub_team/subteam_request','App\Http\Controllers\SubteamRequestController@saveSubteamRequest');
         $app->put('api/sub_team/subteam_request/{id}','App\Http\Controllers\SubteamRequestController@updateSubteamRequest');
@@ -91,7 +91,7 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
         $app->get('api/production_manager/project','App\Http\Controllers\ProjectController@index');
         $app->get('api/production_manager/project/{id}','App\Http\Controllers\ProjectController@getProject');
 
-        $app->post('api/production_manager/project','App\Http\Controllers\ProjectController@saveProductionManagerProject');
+        $app->post('api/production_manager/project','App\Http\Controllers\ProjectController@saveProductionmanagerProject');
     });
 
     $app->group(['middleware' => 'authorize:hr_team'], function () use ($app) {

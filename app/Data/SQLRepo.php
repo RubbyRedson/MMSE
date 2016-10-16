@@ -12,6 +12,7 @@ use App\PlanningRequest;
 use App\Project;
 use App\Role;
 use App\Subteam;
+use App\SubteamRequest;
 use App\User;
 use App\Session;
 
@@ -158,5 +159,10 @@ class SQLRepo implements DatabaseInterface
     public function deletePlanningRequestsById($requestId)
     {
         return PlanningRequest::find($requestId)->delete();
+    }
+
+    public function getSubteamRequestByStatus($status)
+    {
+        return SubteamRequest::where('status', $status)->get();
     }
 }

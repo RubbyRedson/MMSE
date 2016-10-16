@@ -283,4 +283,9 @@ class MockRepo implements DatabaseInterface
     {
         return $project;
     }
+
+    public function getSubteamRequestByStatus($status)
+    {
+        // TODO: Implement getSubteamRequestByStatus() method.
+    }
 }

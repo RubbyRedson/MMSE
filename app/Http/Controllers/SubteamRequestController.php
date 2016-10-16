@@ -23,6 +23,10 @@ class SubteamRequestController extends Controller
 
     }
 
+    function getPendingSubteamRequest(){
+        return $this->dataSource->getSubteamRequestByStatus(1);
+    }
+
     public function getSubteamRequest($id){
 
         $subteamRequest  = SubteamRequest::find($id);

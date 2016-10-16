@@ -32,7 +32,8 @@ interface DatabaseInterface
     public function saveProject($project);
     public function findSubteamRequests($subteamId);
     public function getSubteamRequest($subteamId);
-
+    public function getSubteamRequestByStatus($status);
+    
     //Planning Request
     public function findPlanningRequest($clientId);
     public function savePlanningRequest($planningRequest);
