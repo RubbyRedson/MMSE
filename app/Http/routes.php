@@ -48,9 +48,9 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 
     $app->group(['middleware' => 'authorize:financial_manager'], function () use ($app) {
         //To modify planning requests
-        $app->get('api/financial_manager/planning_request','App\Http\Controllers\PlanningRequestController@index');
+        $app->get('api/financial_manager/planning_request','App\Http\Controllers\PlanningRequestController@getPlanningRequestForFinancialManager');
         $app->get('api/financial_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@getPlanningRequest');
-        $app->put('api/financial_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@updatePlanningRequest');
+        $app->put('api/financial_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@updatePlanningRequestFromFinancialManager');
 
         //To modify projects, negotiations for budget with department manager
         $app->get('api/financial_manager/project','App\Http\Controllers\ProjectController@index');

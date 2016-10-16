@@ -73,6 +73,22 @@ class PlanningRequestTest extends TestCase
         $this->assertArrayHasKey('description', $res);
     }
 
-    
+    public function testGetPendingRequestFinancialManager(){
+
+        // $app->get('api/financial_manager/planning_request'
+
+        $this->markTestIncomplete(
+            'testGetPendingRequestFinancialManager: should not return other stuff than planning request intended for the financial manager'
+        );
+    }
+
+    public function testUpdateRequestFinancialManager(){
+
+        // $app->put('api/financial_manager/planning_request/{id}',
+
+        $this->markTestIncomplete(
+            'updatePlanningRequestFromFinancialManager: test that the correct statuses are set. 3 vs 5 (maybe we need more that one test for this)'
+        );
+    }
 
 }
