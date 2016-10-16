@@ -68,7 +68,7 @@ class PlanningRequestController extends Controller
 
     public function updatePlanningRequestFromFinancialManager(Request $request, $id){
         $statusId = $request->input("status");
-        if($statusId  == 3 || $statusId  == 5){
+        if($statusId  == 3){
 
             $planningRequest  = $this->dataSource->getPlanningRequestById($id);
 

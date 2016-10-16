@@ -136,4 +136,14 @@ class SQLRepo implements DatabaseInterface
         $client->save();
         return $client;
     }
+
+    public function createClient($requestData)
+    {
+        return Client::create($requestData);
+    }
+
+    public function deleteClientById($id)
+    {
+        return Client::find($id)->delete();
+    }
 }

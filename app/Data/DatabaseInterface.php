@@ -34,4 +34,6 @@ interface DatabaseInterface
     public function setPlanningRequestsStatus($requestId, $statusId);
     public function getProjectCostSummation($clientId);
     public function saveClient($client);
+    public function createClient($requestData);
+    public function deleteClientById($id);
 }

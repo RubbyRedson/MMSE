@@ -255,4 +255,20 @@ class MockRepo implements DatabaseInterface
     {
         return $client;
     }
+
+    public function createClient($requestData)
+    {
+        $client1 = new Client();
+        $client1->id = 1;
+        $client1->name = $requestData['name'];
+        $client1->phone = $requestData['phone'];
+        $client1->discount = $requestData['discount'];
+
+        return $client1;
+    }
+
+    public function deleteClientById($id)
+    {
+        // do nothing
+    }
 }

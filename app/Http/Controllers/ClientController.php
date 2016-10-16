@@ -22,22 +22,20 @@ class ClientController extends Controller
 
     public function getClient($id){
 
-        $client  = $this->dataSource->getClientById($id);
+        $client = $this->dataSource->getClientById($id);
 
         return response()->json($client);
     }
 
     public function saveClient(Request $request){
-        $client = Client::create($request->all());
+        $client = $this->dataSource->createClient($request->all());
 
         return response()->json($client);
 
     }
 
     public function deleteClient($id){
-        $client = Client::find($id);
-
-        $client->delete();
+        $this->dataSource->deleteClientById($id);
 
         return response()->json('success');
     }

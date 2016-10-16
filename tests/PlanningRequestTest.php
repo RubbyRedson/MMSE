@@ -1,17 +1,16 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: victoraxelsson
  * Date: 2016-10-16
  * Time: 10:12
  */
-
-
-
 class PlanningRequestTest extends TestCase
 {
 
-    public function testGetClients(){
+    public function testGetClients()
+    {
         $validOutput = "[{\"name\":\"Pear LLC\",\"phone\":\"123123123\",\"discount\":0},{\"name\":\"AEKI\",\"phone\":\"0987654321\",\"discount\":75}]";
 
         $res = $this->getWithAuth('api/customer_service/client');
@@ -19,7 +18,8 @@ class PlanningRequestTest extends TestCase
         $this->assertEquals($res, $validOutput);
     }
 
-    public function testCreatePlanningRequest(){
+    public function testCreatePlanningRequest()
+    {
 
         $validInput = [
             'description' => "Some mock description",
@@ -38,13 +38,14 @@ class PlanningRequestTest extends TestCase
         $this->assertEquals(1, $res['status']);
     }
 
-    public function testServicemanagerGetPlanningRequest(){
+    public function testServicemanagerGetPlanningRequest()
+    {
         $res = json_decode(
             $this->getWithAuth('api/customer_service_manager/planning_request', 2),
             true);
 
         //Check the format of each request
-        foreach ($res as $request){
+        foreach ($res as $request) {
             $this->assertArrayHasKey('id', $request);
             $this->assertArrayHasKey('client', $request);
             $this->assertArrayHasKey('status', $request);
@@ -55,7 +56,8 @@ class PlanningRequestTest extends TestCase
         }
     }
 
-    public function testUpdatePlanningRequest(){
+    public function testUpdatePlanningRequest()
+    {
 
         $validInput = [
             'status' => 5
@@ -73,16 +75,15 @@ class PlanningRequestTest extends TestCase
         $this->assertArrayHasKey('description', $res);
     }
 
-    public function testGetPendingRequestFinancialManager(){
-
-        // $app->get('api/financial_manager/planning_request'
-
-        $this->markTestIncomplete(
-            'testGetPendingRequestFinancialManager: should not return other stuff than planning request intended for the financial manager'
-        );
+    public function testGetPendingRequestFinancialManager()
+    {
+        $expected = "[{\"id\":4,\"client\":1,\"status\":1,\"feedback\":\"\",\"created_at\":\"2016-10-15 14:30:19\",\"updated_at\":\"2016-10-15 16:17:47\",\"description\":\"kmkmk\"},{\"id\":1,\"client\":1,\"status\":1,\"feedback\":\"Feedback for request 1\",\"created_at\":null,\"updated_at\":\"2016-10-15 16:17:41\",\"description\":\"\"}]";
+        $actual = $this->getWithAuth('api/financial_manager/planning_request', 3);
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testUpdateRequestFinancialManager(){
+    public function testUpdateRequestFinancialManager()
+    {
 
         // $app->put('api/financial_manager/planning_request/{id}',
 
@@ -91,7 +92,8 @@ class PlanningRequestTest extends TestCase
         );
     }
 
-    public function testGetPendingAdministrationManager(){
+    public function testGetPendingAdministrationManager()
+    {
 
         //$app->get('api/administration_manager/planning_request'
 
@@ -100,7 +102,8 @@ class PlanningRequestTest extends TestCase
         );
     }
 
-    public function testUpdateRequestAdminManager(){
+    public function testUpdateRequestAdminManager()
+    {
 
         // $app->put('api/administration_manager/planning_request/{id}'
 
@@ -109,7 +112,8 @@ class PlanningRequestTest extends TestCase
         );
     }
 
-    public function testGetAllFinishedPlanningRequests(){
+    public function testGetAllFinishedPlanningRequests()
+    {
 
         // $app->get('api/customer_service_manager/finished_planning_request',
 
