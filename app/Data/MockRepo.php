@@ -238,11 +238,21 @@ class MockRepo implements DatabaseInterface
 
     public function getClientById($id)
     {
-        // TODO: Implement getClientById() method.
+        $client1 = new Client();
+        $client1->id = $id;
+        $client1->name ='Pear LLC';
+        $client1->phone = '123123123';
+        $client1->discount = 0;
+        return $client1;
     }
 
     public function getProjectCostSummation($clientId)
     {
         return 200;
+    }
+
+    public function saveClient($client)
+    {
+        return $client;
     }
 }

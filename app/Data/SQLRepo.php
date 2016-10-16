@@ -130,4 +130,10 @@ class SQLRepo implements DatabaseInterface
     {
         return Project::where('client', $clientId)->sum('cost');
     }
+
+    public function saveClient($client)
+    {
+        $client->save();
+        return $client;
+    }
 }

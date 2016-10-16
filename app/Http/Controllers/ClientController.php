@@ -35,7 +35,7 @@ class ClientController extends Controller
     }
 
     public function deleteClient($id){
-        $client  = Client::find($id);
+        $client = Client::find($id);
 
         $client->delete();
 
@@ -50,8 +50,7 @@ class ClientController extends Controller
         $client->phone = $request->input('phone');
         $client->discount = $request->input('discount');
 
-        //TODO: Put this in the datasouce instead
-        $client->save();
+        $this->dataSource->saveClient($client);
 
         return response()->json($client);
     }
