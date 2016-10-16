@@ -10,67 +10,38 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\Http\Controllers\Controller as BaseController;
-use App\SubteamRequest;
 use Illuminate\Http\Request;
 
 
 class ProjectController extends Controller
 {
-    public function index(){
-
-        $projects  = Project::all();
-
+    public function index()
+    {
+        $projects = $this->dataSource->getAllProjects();
         return response()->json($projects);
-
     }
 
-    public function getProject($id){
-
-        $project  = Project::find($id);
-
+    public function getProject($id)
+    {
+        $project = $this->dataSource->getProjectById($id);
         return response()->json($project);
     }
 
-    public function saveProject(Request $request){
-
-        $project = Project::create($request->all());
-
+    public function saveProject(Request $request)
+    {
+        $project = $this->dataSource->saveProject(new Project($request->all()));
         return response()->json($project);
-
     }
 
-
-    public function saveProductionManagerProject(Request $request){
-        $project = $this->dataSource->saveProject($request->all());
-
-        $subteams = $this->dataSource->getAllSubteams()->toArray();
-
-        //Create a subteam request for all the subteams
-        foreach ($subteams as $subteam){
-            $sr = new SubteamRequest();
-            $sr->reportedBySubteam = $subteam['id'];
-            $sr->project = $project->id;
-            $sr->status = 1;
-            $sr->needMorePeople = 0;
-            $sr->needBiggerBudget = 0;
-
-            $this->dataSource->saveSubteamRequest($sr);
-        }
-
-
-        return $project;
-    }
-
-    public function deleteProject($id){
-        $project  = Project::find($id);
-
-        $project->delete();
-
+    public function deleteProject($id)
+    {
+        $this->dataSource->deleteProjectById($id);
         return response()->json('success');
     }
 
-    public function updateProject(Request $request,$id){
-        $project  = Project::find($id);
+    public function updateProject(Request $request, $id)
+    {
+        $project = $this->dataSource->getProjectById($id);
 
         $project->name = $request->input('name');
         $project->client = $request->input('client');
@@ -79,18 +50,14 @@ class ProjectController extends Controller
         $project->start = $request->input('start');
         $project->stop = $request->input('stop');
 
-        $project->save();
+        $this->dataSource->saveProject($project);
 
         return response()->json($project);
     }
 
-    public function getTotalCost($clientId){
-
-        $projects  = Project::where('client', '=', $clientId)->get();
-        $total = 0.0;
-        foreach ($projects as &$project) {
-            $total += $project->cost;
-        }
+    public function getTotalCost($clientId)
+    {
+        $total = $this->dataSource->getProjectCostSummation($clientId);
         return "{\"total\":" . $total . "}";
     }
 }

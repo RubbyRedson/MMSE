@@ -7,6 +7,7 @@
  */
 
 namespace App\Data;
+
 use App\Client;
 use App\PlanningRequest;
 use App\Project;
@@ -23,7 +24,7 @@ class SQLRepo implements DatabaseInterface
         return Client::all();
     }
 
-    public function getProjects()
+    public function getAllProjects()
     {
         // TODO: Implement getProjects() method.
     }
@@ -35,13 +36,11 @@ class SQLRepo implements DatabaseInterface
 
     public function getAllSubteams()
     {
-        return Subteam::all();
         // TODO: Implement getAllSubteams() method.
     }
 
     public function saveSubteamRequest($subteamRequest)
     {
-        return $subteamRequest->save();
         // TODO: Implement saveSubteamRequest() method.
     }
 
@@ -62,17 +61,15 @@ class SQLRepo implements DatabaseInterface
 
     public function savePlanningRequest($planningRequest)
     {
-
         $planningRequest->save();
-
         return $planningRequest;
-        // TODO: Implement savePlanningRequest() method.
     }
 
     public function getUserById($id)
     {
         return User::where('id', $id)->first();
     }
+
     public function getUserByUsername($username)
     {
         return User::where('username', $username)->with('role')->first();
@@ -135,11 +132,6 @@ class SQLRepo implements DatabaseInterface
         return Project::where('client', $clientId)->sum('cost');
     }
 
-    public function saveProject($project)
-    {
-        return Project::create($project);
-    }
-
     public function saveClient($client)
     {
         $client->save();
@@ -156,9 +148,56 @@ class SQLRepo implements DatabaseInterface
         return Client::find($id)->delete();
     }
 
-    public function deletePlanningRequestsById($requestId)
+    public function deletePlanningRequestById($id)
     {
-        return PlanningRequest::find($requestId)->delete();
+        return PlanningRequest::find($id)->delete();
+    }
+
+    public function getProjectById($id)
+    {
+        return Project::find($id);
+    }
+
+    public function saveProject($project)
+    {
+        $project->save();
+        return $project;
+    }
+
+    public function deleteProjectById($id)
+    {
+        return Project::find($id)->delete();
+    }
+
+    public function getAllRoles()
+    {
+        return Role::all();
+    }
+
+    public function saveRole($role)
+    {
+        $role->save();
+        return $role;
+    }
+
+    public function deleteRoleById($id)
+    {
+        return Role::find($id)->delete();
+    }
+
+    public function getSubteamRequestById($id)
+    {
+        return SubteamRequest::find($id);
+    }
+
+    public function deleteSubteamRequestById($id)
+    {
+        return SubteamRequest::find($id)->delete();
+    }
+
+    public function getAllSubteamRequests()
+    {
+        return SubteamRequest::all();
     }
 
     public function getSubteamRequestByStatus($status)

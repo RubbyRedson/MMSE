@@ -59,13 +59,8 @@ class ProjectTest extends TestCase
      */
     public function testUpdateExisting()
     {
-        $json1 = "{\"name\":\"Birthday Party 3\",\"client\":1,\"description\":\"Birthday Party description 3\",\"cost\":2500,\"start\":\"2003-10-05\",\"stop\":\"2003-10-27\"}";
-        $response1 = $this->postWithAuth('/api/project', $json1);
-        $jsonArr1 = json_decode($response1, true);
-        $id = $jsonArr1['id'];
-
         $json = "{\"name\":\"Birthday Party 2\",\"client\":1,\"description\":\"Birthday Party description 2\",\"cost\":1500,\"start\":\"2002-10-05\",\"stop\":\"2002-10-27\"}";
-        $response = $this->putWithAuth('/api/project/'.$id, $json);
+        $response = $this->putWithAuth('/api/project/1', $json);
         $jsonArr = json_decode($response, true);
 
         $this->assertEquals($jsonArr['name'], 'Birthday Party 2');
@@ -75,6 +70,7 @@ class ProjectTest extends TestCase
         $this->assertEquals($jsonArr['start'], '2002-10-05');
         $this->assertEquals($jsonArr['stop'], '2002-10-27');
     }
+
     /**
      * Test to delete existing project.
      *
@@ -82,13 +78,7 @@ class ProjectTest extends TestCase
      */
     public function testDeleteExisting()
     {
-        $json1 = "{\"name\":\"Birthday Party 3\",\"client\":1,\"description\":\"Birthday Party description 3\",\"cost\":2500,\"start\":\"2003-10-05\",\"stop\":\"2003-10-27\"}";
-        $response1 = $this->postWithAuth('/api/project', $json1);
-        $jsonArr1 = json_decode($response1, true);
-        $id = $jsonArr1['id'];
-
-        $response = $this->deleteWithAuth('/api/project/'.$id);
-
+        $response = $this->deleteWithAuth('/api/project/1');
         $this->assertEquals('"success"', $response);
     }
 }

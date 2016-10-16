@@ -9,18 +9,15 @@
 namespace App\Http\Controllers;
 
 use App\SubteamRequest;
-use App\Http\Controllers\Controller as BaseController;
+
 use Illuminate\Http\Request;
 
 
 class SubteamRequestController extends Controller
 {
     public function index(){
-
-        $subteamRequests  = SubteamRequest::all();
-
+        $subteamRequests = $this->dataSource->getAllSubteamRequests();
         return response()->json($subteamRequests);
-
     }
 
     function getPendingSubteamRequest(){
@@ -28,38 +25,28 @@ class SubteamRequestController extends Controller
     }
 
     public function getSubteamRequest($id){
-
-        $subteamRequest  = SubteamRequest::find($id);
-
+        $subteamRequest = $this->dataSource->getSubteamRequestById($id);
         return response()->json($subteamRequest);
     }
 
     public function saveSubteamRequest(Request $request){
-        $subteamRequest = SubteamRequest::create($request->all());
-
+        $subteamRequest = $this->dataSource->saveSubteamRequest(new SubteamRequest($request->all()));
         return response()->json($subteamRequest);
-
     }
 
     public function deleteSubteamRequest($id){
-        $subteamRequest  = SubteamRequest::find($id);
-
-        $subteamRequest->delete();
-
+        $this->dataSource->deleteSubteamRequestById($id);
         return response()->json('success');
     }
 
     public function updateSubteamRequest(Request $request,$id){
-        $subteamRequest  = SubteamRequest::find($id);
-
+        $subteamRequest = $this->dataSource->getSubteamRequestById($id);
         $subteamRequest->reportedBySubteam = $request->input('reportedBySubteam');
         $subteamRequest->project = $request->input('project');
         $subteamRequest->status = $request->input('status');
         $subteamRequest->needMorePeople = $request->input('needMorePeople');
         $subteamRequest->needBiggerBudget = $request->input('needBiggerBudget');
-
-        $subteamRequest->save();
-
+        $subteamRequest = $this->dataSource->saveSubteamRequest($subteamRequest);
         return response()->json($subteamRequest);
     }
 }

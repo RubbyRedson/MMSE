@@ -9,7 +9,7 @@
 namespace App\Data;
 
 
-use App\Client;
+
 
 interface DatabaseInterface
 {
@@ -28,12 +28,16 @@ interface DatabaseInterface
 
     //Subteam
     public function getAllSubteams();
-    public function saveSubteamRequest($subteamRequest);
-    public function saveProject($project);
+
+    //Subteam Request
+    public function getAllSubteamRequests();
     public function findSubteamRequests($subteamId);
+    public function getSubteamRequestById($id);
     public function getSubteamRequest($subteamId);
     public function getSubteamRequestByStatus($status);
-    
+    public function saveSubteamRequest($subteamRequest);
+    public function deleteSubteamRequestById($id);
+
     //Planning Request
     public function findPlanningRequest($clientId);
     public function savePlanningRequest($planningRequest);
@@ -41,7 +45,7 @@ interface DatabaseInterface
     public function getPlanningRequestById($id);
     public function getPlanningRequestsByStatusId($statusId);
     public function setPlanningRequestsStatus($requestId, $statusId);
-    public function deletePlanningRequestsById($requestId);
+    public function deletePlanningRequestById($id);
 
     //Session
     public function createSession($userId);
@@ -49,8 +53,14 @@ interface DatabaseInterface
 
     //Project
     public function getProjectCostSummation($clientId);
-    public function getProjects();
+    public function getAllProjects();
+    public function getProjectById($id);
+    public function saveProject($project);
+    public function deleteProjectById($id);
 
     //Roles
+    public function getAllRoles();
     public function getRoleById($id);
+    public function saveRole($role);
+    public function deleteRoleById($id);
 }

@@ -101,7 +101,7 @@ class PlanningRequestController extends Controller
     }
 
     public function deletePlanningRequest($id){
-        $this->dataSource->deletePlanningRequestsById($id);
+        $this->dataSource->deletePlanningRequestById($id);
 
         return response()->json('success');
     }
