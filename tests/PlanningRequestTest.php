@@ -92,24 +92,46 @@ class PlanningRequestTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testGetPendingAdministrationManager()
+    public function testIncorrectUpdateRequestFinancialManager()
     {
-
-        //$app->get('api/administration_manager/planning_request'
-
-        $this->markTestIncomplete(
-            'Should not return other stuff that stuses 3 that is intended for administartion manager'
-        );
+        $json = "{\"status\":5,\"feedback\":\"that's the stuff\"}";
+        $expected = 'Bad request. You cannot set this status.';
+        $actual = $this->putWithAuth('api/financial_manager/planning_request/4', $json, 3);
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testUpdateRequestAdminManager()
+    public function testGetPendingAdministrationManager()
     {
+        $expected = '[{"id":1,"client":1,"status":3,"feedback":"Feedback for request 1","description":'.
+            '"description for request 1"},{"id":1,"client":1,"status":3,"feedback":"Feedback for request 1",'.
+            '"description":"description for request 1"}]';
 
-        // $app->put('api/administration_manager/planning_request/{id}'
+        $actual = $this->getWithAuth('api/administration_manager/planning_request', 4);
+        $this->assertEquals($expected, $actual);
+    }
 
-        $this->markTestIncomplete(
-            'test that the correct statuses are set. 4 vs 5 (maybe we need more that one test for this)'
-        );
+    public function testUpdateRequestAdministrativeManager()
+    {
+        $json = "{\"status\":4,\"feedback\":\"that's the stuff\"}";
+        $expected = '{"client":1,"status":4,"feedback":"Feedback for request 1","description":"description for request 1"}';
+        $actual = $this->putWithAuth('api/administration_manager/planning_request/4', $json, 4);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testRejectRequestAdministrativeManager()
+    {
+        $json = "{\"status\":5,\"feedback\":\"that's the stuff\"}";
+        $expected = '{"client":1,"status":5,"feedback":"Feedback for request 1","description":"description for request 1"}';
+        $actual = $this->putWithAuth('api/administration_manager/planning_request/4', $json, 4);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testIncorrectUpdateRequestAdministrativeManager()
+    {
+        $json = "{\"status\":2,\"feedback\":\"that's the stuff\"}";
+        $expected = 'Bad request. You cannot set this status.';
+        $actual = $this->putWithAuth('api/administration_manager/planning_request/4', $json, 4);
+        $this->assertEquals($expected, $actual);
     }
 
     public function testGetAllFinishedPlanningRequests()
