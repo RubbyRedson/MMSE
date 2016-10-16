@@ -78,4 +78,12 @@ class SubteamRequestTest extends TestCase
         $response = $this->deleteWithAuth('/api/subteam_request/1');
         $this->assertEquals('"success"', $response);
     }
+
+
+    public function testGetSubteamRequestsByStatus(){
+        //$app->get('api/sub_team/subteam_request'
+        $this->markTestIncomplete("Need to test that only pending statuses on the subteam requests are returned");
+    }
 }
+
+
