@@ -29,8 +29,7 @@ class PlanningRequestController extends Controller
         $approved = $this->dataSource->getPlanningRequestsByStatusId(4);
         $rejected = $this->dataSource->getPlanningRequestsByStatusId(5);
 
-        $all = array_merge($approved->toArray(), $rejected->toArray());
-        return response()->json($all);
+        return array_merge($approved, $rejected);
     }
 
 

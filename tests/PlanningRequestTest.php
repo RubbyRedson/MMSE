@@ -136,12 +136,14 @@ class PlanningRequestTest extends TestCase
 
     public function testGetAllFinishedPlanningRequests()
     {
+        $expected = '[{"id":1,"client":1,"status":4,"feedback":"Feedback for request 1","description":'.
+            '"description for request 1"},{"id":1,"client":1,"status":4,"feedback":"Feedback for request 1",'.
+            '"description":"description for request 1"},{"id":1,"client":1,"status":5,"feedback":"Feedback for request 1","description":'.
+            '"description for request 1"},{"id":1,"client":1,"status":5,"feedback":"Feedback for request 1",'.
+            '"description":"description for request 1"}]';
 
-        // $app->get('api/customer_service_manager/finished_planning_request',
-
-        $this->markTestIncomplete(
-            'This shoudl onlu returned planning requests with status 4 or 5, Think about sorting also'
-        );
+        $actual = $this->getWithAuth('api/customer_service_manager/finished_planning_request', 2);
+        $this->assertEquals($expected, $actual);
     }
 
 
