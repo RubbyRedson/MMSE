@@ -271,4 +271,9 @@ class MockRepo implements DatabaseInterface
     {
         // do nothing
     }
+
+    public function deletePlanningRequestsById($requestId)
+    {
+        // do nothing
+    }
 }

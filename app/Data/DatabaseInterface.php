@@ -26,8 +26,6 @@ interface DatabaseInterface
     public function getUserById($id);
     public function getUserByUsername($username);
 
-    //Employee
-
     //Subteam
     public function getAllSubteams();
 
@@ -43,6 +41,7 @@ interface DatabaseInterface
     public function getPlanningRequestById($id);
     public function getPlanningRequestsByStatusId($statusId);
     public function setPlanningRequestsStatus($requestId, $statusId);
+    public function deletePlanningRequestsById($requestId);
 
     //Session
     public function createSession($userId);

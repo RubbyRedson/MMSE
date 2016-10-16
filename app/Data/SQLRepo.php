@@ -146,4 +146,9 @@ class SQLRepo implements DatabaseInterface
     {
         return Client::find($id)->delete();
     }
+
+    public function deletePlanningRequestsById($requestId)
+    {
+        return PlanningRequest::find($requestId)->delete();
+    }
 }

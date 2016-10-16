@@ -72,8 +72,6 @@ class PlanningRequestController extends Controller
 
             $planningRequest  = $this->dataSource->getPlanningRequestById($id);
 
-
-
             $planningRequest->feedback = $request->input("feedback");
             $planningRequest->status = $statusId;
 
@@ -87,7 +85,7 @@ class PlanningRequestController extends Controller
 
     public function getPlanningRequest($id){
 
-        $planningRequest  = $this->dataSource->getPlanningRequestById($id);
+        $planningRequest = $this->dataSource->getPlanningRequestById($id);
 
         return response()->json($planningRequest);
     }
@@ -103,21 +101,19 @@ class PlanningRequestController extends Controller
     }
 
     public function deletePlanningRequest($id){
-        $planningRequest  = PlanningRequest::find($id);
-
-        $planningRequest->delete();
+        $this->dataSource->deletePlanningRequestsById($id);
 
         return response()->json('success');
     }
 
     public function updatePlanningRequest(Request $request,$id){
-        $planningRequest  = PlanningRequest::find($id);
+        $planningRequest  = $this->dataSource->getPlanningRequestById($id);
 
         $planningRequest->client = $request->input('client');
         $planningRequest->status = $request->input('status');
         $planningRequest->feedback = $request->input('feedback');
 
-        $planningRequest->save();
+        $this->dataSource->savePlanningRequest($planningRequest);
 
         return response()->json($planningRequest);
     }
