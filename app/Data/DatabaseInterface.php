@@ -28,6 +28,9 @@ interface DatabaseInterface
 
     //Subteam
     public function getAllSubteams();
+    public function getSubteamById($id);
+    public function saveSubteam($subteam);
+    public function deleteSubteamById($id);
 
     //Subteam Request
     public function getAllSubteamRequests();

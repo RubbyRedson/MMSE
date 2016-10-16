@@ -76,21 +76,6 @@ class MockRepo implements DatabaseInterface
         return $client;
     }
 
-    public function getAllSubteams()
-    {
-        $first = new Subteam();
-        $first->name = 'IT';
-        $first->description = 'IT description';
-        $first->numberofpeople = 7;
-
-        $second = new Subteam();
-        $second->name = 'Music';
-        $second->description = 'Music description';
-        $second->numberofpeople = 7;
-
-        return [$first, $second];
-    }
-
     public function saveSubteamRequest($subteamRequest)
     {
         return $subteamRequest;
@@ -466,5 +451,50 @@ class MockRepo implements DatabaseInterface
         $second->needBiggerBudget = true;
 
         return [$first, $second];
+    }
+
+    public function getAllSubteams()
+    {
+        $first = new Subteam();
+        $first->name = 'IT';
+        $first->description = 'IT description';
+        $first->numberofpeople = 5;
+
+        $second = new Subteam();
+        $second->name = 'Music';
+        $second->description = 'Music description';
+        $second->numberofpeople = 7;
+
+        return [$first, $second];
+    }
+
+    public function getSubteamById($id)
+    {
+        switch ($id) {
+            case 1:
+                $first = new Subteam();
+                $first->name = 'IT';
+                $first->description = 'IT description';
+                $first->numberofpeople = 5;
+                return $first;
+                break;
+            case 2:
+                $second = new Subteam();
+                $second->name = 'Music';
+                $second->description = 'Music description';
+                $second->numberofpeople = 7;
+                return $second;
+                break;
+        }
+    }
+
+    public function saveSubteam($subteam)
+    {
+        return $subteam;
+    }
+
+    public function deleteSubteamById($id)
+    {
+        // do nothing
     }
 }

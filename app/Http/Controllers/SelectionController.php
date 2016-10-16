@@ -9,7 +9,6 @@
 namespace App\Http\Controllers;
 
 use App\Selection;
-use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Http\Request;
 
 

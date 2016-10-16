@@ -204,4 +204,20 @@ class SQLRepo implements DatabaseInterface
     {
         return SubteamRequest::where('status', $status)->get();
     }
+
+    public function getSubteamById($id)
+    {
+        return Subteam::find($id);
+    }
+
+    public function saveSubteam($subteam)
+    {
+        $subteam->save();
+        return $subteam;
+    }
+
+    public function deleteSubteamById($id)
+    {
+        return Subteam::find($id)->delete();
+    }
 }
