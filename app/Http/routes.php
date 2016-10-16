@@ -152,7 +152,6 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 
     $app->get('api/project','App\Http\Controllers\ProjectController@index');
     $app->get('api/project/{id}','App\Http\Controllers\ProjectController@getProject');
-    $app->get('api/project/total_cost/{id}','App\Http\Controllers\ProjectController@getTotalCost');
     $app->post('api/project','App\Http\Controllers\ProjectController@saveProject');
     $app->put('api/project/{id}','App\Http\Controllers\ProjectController@updateProject');
     $app->delete('api/project/{id}','App\Http\Controllers\ProjectController@deleteProject');

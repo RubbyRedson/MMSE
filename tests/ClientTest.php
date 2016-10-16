@@ -78,12 +78,15 @@ class ClientTest extends TestCase
         $this->assertEquals('"success"', $response);
     }
 
+    /**
+     * Test to get total costs of projects for a single client.
+     *
+     * @return void
+     */
     public function testGetClientProjectSum(){
-
-        // $app->get('api/customer_service_manager/client/{id}/project_sum'
-
-        $this->markTestIncomplete(
-            'This should return the sum of all previous projects for a customer or 0 if none'
+        $this->getWithAuth('api/customer_service_manager/client/2/project_sum', 2);
+        $this->assertEquals(
+            "1400", $this->response->getContent()
         );
     }
 }

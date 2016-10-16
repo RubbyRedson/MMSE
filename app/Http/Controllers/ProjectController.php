@@ -53,10 +53,4 @@ class ProjectController extends Controller
 
         return response()->json($project);
     }
-
-    public function getTotalCost($clientId)
-    {
-        $total = $this->dataSource->getProjectCostSummation($clientId);
-        return "{\"total\":" . $total . "}";
-    }
 }

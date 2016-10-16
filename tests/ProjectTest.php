@@ -3,19 +3,6 @@
 class ProjectTest extends TestCase
 {
     /**
-     * Test to get total costs of projects for a single client.
-     *
-     * @return void
-     */
-    public function testGetTotalCost()
-    {
-        $this->getWithAuth('/api/project/total_cost/2');
-        $this->assertEquals(
-            "{\"total\":1400}", $this->response->getContent()
-        );
-    }
-
-    /**
      * Test to get one of the projects.
      *
      * @return void
