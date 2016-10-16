@@ -50,10 +50,6 @@ class ProjectTest extends TestCase
         $this->assertEquals($jsonArr['cost'], 1500);
         $this->assertEquals($jsonArr['start'], '2002-10-05');
         $this->assertEquals($jsonArr['stop'], '2002-10-27');
-
-        $id = $jsonArr['id'];
-
-        $this->deleteWithAuth('/api/project/'.$id);
     }
 
     /**
@@ -78,9 +74,6 @@ class ProjectTest extends TestCase
         $this->assertEquals($jsonArr['cost'], 1500);
         $this->assertEquals($jsonArr['start'], '2002-10-05');
         $this->assertEquals($jsonArr['stop'], '2002-10-27');
-        $id = $jsonArr['id'];
-
-        $this->deleteWithAuth('/api/project/'.$id);
     }
     /**
      * Test to delete existing project.

@@ -137,6 +137,26 @@ class SQLRepo implements DatabaseInterface
     public function saveProject($project)
     {
         return Project::create($project);
-        // TODO: Implement saveProject() method.
+    }
+
+    public function saveClient($client)
+    {
+        $client->save();
+        return $client;
+    }
+
+    public function createClient($requestData)
+    {
+        return Client::create($requestData);
+    }
+
+    public function deleteClientById($id)
+    {
+        return Client::find($id)->delete();
+    }
+
+    public function deletePlanningRequestsById($requestId)
+    {
+        return PlanningRequest::find($requestId)->delete();
     }
 }

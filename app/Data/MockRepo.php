@@ -238,7 +238,12 @@ class MockRepo implements DatabaseInterface
 
     public function getClientById($id)
     {
-        // TODO: Implement getClientById() method.
+        $client1 = new Client();
+        $client1->id = $id;
+        $client1->name ='Pear LLC';
+        $client1->phone = '123123123';
+        $client1->discount = 0;
+        return $client1;
     }
 
     public function getProjectCostSummation($clientId)
@@ -246,8 +251,36 @@ class MockRepo implements DatabaseInterface
         return 200;
     }
 
+
+    public function saveClient($client)
+    {
+        return $client;
+    }
+
+    public function createClient($requestData)
+    {
+        $client1 = new Client();
+        $client1->id = 1;
+        $client1->name = $requestData['name'];
+        $client1->phone = $requestData['phone'];
+        $client1->discount = $requestData['discount'];
+
+        return $client1;
+    }
+
+    public function deleteClientById($id)
+    {
+        // do nothing
+    }
+
+    public function deletePlanningRequestsById($requestId)
+    {
+        // do nothing
+
+    }
+
     public function saveProject($project)
     {
-        // TODO: Implement saveProject() method.
+        return $project;
     }
 }

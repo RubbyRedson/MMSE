@@ -13,25 +13,43 @@ use App\Client;
 
 interface DatabaseInterface
 {
+
+    //Client
     public function getAllClients();
-    public function getProjects();
+    public function getClientById($id);
+    public function saveClient($client);
+    public function createClient($requestData);
     public function updateClient($client);
+    public function deleteClientById($id);
+
+    //User
+    public function getUserById($id);
+    public function getUserByUsername($username);
+
+    //Subteam
     public function getAllSubteams();
     public function saveSubteamRequest($subteamRequest);
     public function saveProject($project);
-    public function getSubteamRequest($subteamId);
-    public function findPlanningRequest($clientId);
     public function findSubteamRequests($subteamId);
+    public function getSubteamRequest($subteamId);
+
+    //Planning Request
+    public function findPlanningRequest($clientId);
     public function savePlanningRequest($planningRequest);
-    public function getUserById($id);
-    public function getUserByUsername($username);
-    public function createSession($userId);
-    public function getSessionByToken($token);
-    public function getRoleById($id);
-    public function getClientById($id);
     public function getAllPlanningRequests();
     public function getPlanningRequestById($id);
     public function getPlanningRequestsByStatusId($statusId);
     public function setPlanningRequestsStatus($requestId, $statusId);
+    public function deletePlanningRequestsById($requestId);
+
+    //Session
+    public function createSession($userId);
+    public function getSessionByToken($token);
+
+    //Project
     public function getProjectCostSummation($clientId);
+    public function getProjects();
+
+    //Roles
+    public function getRoleById($id);
 }
