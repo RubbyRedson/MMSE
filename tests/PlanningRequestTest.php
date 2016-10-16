@@ -38,19 +38,41 @@ class PlanningRequestTest extends TestCase
         $this->assertEquals(1, $res['status']);
     }
 
+    public function testServicemanagerGetPlanningRequest(){
+        $res = json_decode(
+            $this->getWithAuth('api/customer_service_manager/planning_request', 2),
+            true);
 
-    public function testServicemanagerPlanningRequest(){
-        $res = $this->getWithAuth('api/customer_service_manager/planning_request', 2);
-        var_dump($res);
+        //Check the format of each request
+        foreach ($res as $request){
+            $this->assertArrayHasKey('id', $request);
+            $this->assertArrayHasKey('client', $request);
+            $this->assertArrayHasKey('status', $request);
+            $this->assertArrayHasKey('feedback', $request);
+
+            //The service manager should only get request with this status
+            $this->assertEquals(1, $request['status']);
+        }
     }
 
-
-    /*
     public function testUpdatePlanningRequest(){
 
-        $this->putWithAuth('api/customer_service_manager/planning_request/1', );
+        $validInput = [
+            'status' => 5
+        ];
 
-        //
+        $res = json_decode(
+            $this->putWithAuth('api/customer_service_manager/planning_request/1', json_encode($validInput), 2),
+            true);
+
+        //ensure format of output
+        $this->assertArrayHasKey('id', $res);
+        $this->assertArrayHasKey('client', $res);
+        $this->assertArrayHasKey('status', $res);
+        $this->assertArrayHasKey('feedback', $res);
+        $this->assertArrayHasKey('description', $res);
     }
-    */
+
+    
+
 }

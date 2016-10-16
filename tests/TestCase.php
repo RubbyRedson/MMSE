@@ -29,7 +29,7 @@ class TestCase extends Laravel\Lumen\Testing\TestCase
     protected function putWithAuth($uri, $content, $userId = 1)
     {
         $response = $this->call('PUT', $uri, array(), array(), array(),
-            $this->transformHeadersToServerVars(['Authorization' => $this->getToken($userId ), 'CONTENT_TYPE' => 'application/json']),
+            $this->transformHeadersToServerVars(['Authorization' => $this->getToken($userId), 'CONTENT_TYPE' => 'application/json']),
             $content);
         return $response->getContent();
     }
@@ -41,12 +41,14 @@ class TestCase extends Laravel\Lumen\Testing\TestCase
         return $response->getContent();
     }
 
-    protected function getToken($userId = 1)
+    protected function getToken($userId)
     {
+        /*
         $json = '{"username":"Alice","password":"abc123"}';
 
         $tokenResponse = $this->call('POST', '/api/user/login', array(), array(), array(), ['CONTENT_TYPE' => 'application/json'], $json)->content();
         $token = json_decode($tokenResponse, true)['token'];
+        */
 
         return $userId;
     }

@@ -212,17 +212,20 @@ class MockRepo implements DatabaseInterface
 
     public function getAllPlanningRequests()
     {
-        // TODO: Implement getAllPlanningRequests() method.
+        $requests = "[{\"id\":4,\"client\":1,\"status\":1,\"feedback\":\"\",\"created_at\":\"2016-10-15 14:30:19\",\"updated_at\":\"2016-10-15 16:17:47\",\"description\":\"kmkmk\"},{\"id\":1,\"client\":1,\"status\":1,\"feedback\":\"Feedback for request 1\",\"created_at\":null,\"updated_at\":\"2016-10-15 16:17:41\",\"description\":\"\"}]";
+        return json_decode($requests, true);
     }
 
     public function getPlanningRequestsByStatusId($statusId)
     {
-
-        // TODO: Implement getPlanningRequestsByStatusId() method.
+        $requests = "[{\"id\":4,\"client\":1,\"status\":1,\"feedback\":\"\",\"created_at\":\"2016-10-15 14:30:19\",\"updated_at\":\"2016-10-15 16:17:47\",\"description\":\"kmkmk\"},{\"id\":1,\"client\":1,\"status\":1,\"feedback\":\"Feedback for request 1\",\"created_at\":null,\"updated_at\":\"2016-10-15 16:17:41\",\"description\":\"\"}]";
+        return json_decode($requests, true);
     }
 
     public function setPlanningRequestsStatus($requestId, $statusId)
     {
-        // TODO: Implement setPlanningRequestsStatus() method.
+        $res = "{\"id\":".$requestId.",\"client\":1,\"status\":".$statusId.",\"feedback\":\"Feedback for request 1\",\"created_at\":null,\"updated_at\":\"2016-10-16 09:21:03\",\"description\":\"\"}";
+
+        return json_decode($res, true);
     }
 }
