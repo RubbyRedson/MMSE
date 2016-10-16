@@ -9,7 +9,6 @@
 namespace App\Http\Controllers;
 
 use App\SubteamRequest;
-
 use Illuminate\Http\Request;
 
 
