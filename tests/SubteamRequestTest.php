@@ -9,11 +9,11 @@ class SubteamRequestTest extends TestCase
      */
     public function testGetAll()
     {
-        $expected = '[{"reportedBySubteam":1,"project":2,"status":1,"needMorePeople":false,"needBiggerBudget":true},'.
+        $expected = '[{"reportedBySubteam":1,"project":2,"status":1,"needMorePeople":false,"needBiggerBudget":true},' .
             '{"reportedBySubteam":2,"project":1,"status":2,"needMorePeople":false,"needBiggerBudget":true}]';
-        $this->assertEquals($expected, $this->getWithAuth('/api/subteam_request')
-        );
+        $this->assertEquals($expected, $this->getWithAuth('/api/subteam_request'));
     }
+
     /**
      * Test to get one of the subteam requests.
      *
@@ -32,7 +32,7 @@ class SubteamRequestTest extends TestCase
     }
 
     /**
-     * Test to create new subteam_request.
+     * Test to create new subteam request.
      *
      * @return void
      */
@@ -50,7 +50,7 @@ class SubteamRequestTest extends TestCase
     }
 
     /**
-     * Test to update existing subteam_request.
+     * Test to update existing subteam request.
      *
      * @return void
      */
@@ -69,7 +69,7 @@ class SubteamRequestTest extends TestCase
     }
 
     /**
-     * Test to delete existing subteam_request.
+     * Test to delete existing subteam request.
      *
      * @return void
      */
@@ -79,10 +79,16 @@ class SubteamRequestTest extends TestCase
         $this->assertEquals('"success"', $response);
     }
 
-
-    public function testGetSubteamRequestsByStatus(){
-        //$app->get('api/sub_team/subteam_request'
-        $this->markTestIncomplete("Need to test that only pending statuses on the subteam requests are returned");
+    /**
+     * Test to get only pending subteam requests.
+     *
+     * @return void
+     */
+    public function testGetSubteamRequestsByStatus()
+    {
+        $expected = '[{"id":1,"reportedBySubteam":1,"project":2,"status":1,"needMorePeople":false,'.
+            '"needBiggerBudget":true,"created_at":null,"updated_at":null}]';
+        $this->assertEquals($expected, $this->getWithAuth('/api/sub_team/subteam_request', 9));
     }
 }
 

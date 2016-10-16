@@ -193,6 +193,9 @@ class MockRepo implements DatabaseInterface
             case 8:
                 $role->tag = 'service_manager';
                 break;
+            case 9:
+                $role->tag = 'sub_team';
+                break;
         }
 
         return $role;
