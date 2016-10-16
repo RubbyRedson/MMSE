@@ -234,7 +234,7 @@ class MockRepo implements DatabaseInterface
 
     public function getPlanningRequestById($id)
     {
-        $res = "{\"id\":" . id . ",\"client\":1,\"status\":1,\"feedback\":\"Feedback for request 1\",\"created_at\":null,\"updated_at\":\"2016-10-16 09:21:03\",\"description\":\"\"}";
+        $res = "{\"id\":" . $id . ",\"client\":1,\"status\":1,\"feedback\":\"Feedback for request 1\",\"created_at\":null,\"updated_at\":\"2016-10-16 09:21:03\",\"description\":\"\"}";
 
         return json_decode($res, true);
     }
@@ -401,7 +401,7 @@ class MockRepo implements DatabaseInterface
         $administration_department->tag = 'administration_department';
 
         return [$customer_service, $customer_service_manager, $financial_manager, $administration_manager, $production_manager,
-        $hr_manager, $hr_team, $service_manager, $sub_team, $vice_president, $financial_department, $administration_department];
+            $hr_manager, $hr_team, $service_manager, $sub_team, $vice_president, $financial_department, $administration_department];
     }
 
     public function saveRole($role)
@@ -412,5 +412,54 @@ class MockRepo implements DatabaseInterface
     public function deleteRoleById($id)
     {
         // do nothing
+    }
+
+    public function getSubteamRequestById($id)
+    {
+        switch ($id) {
+            case 1:
+
+                $first = new SubteamRequest();
+                $first->reportedBySubteam = 1;
+                $first->project = 2;
+                $first->status = 1;
+                $first->needMorePeople = false;
+                $first->needBiggerBudget = true;
+                return $first;
+                break;
+            case 2:
+                $second = new SubteamRequest();
+                $second->reportedBySubteam = 2;
+                $second->project = 1;
+                $second->status = 2;
+                $second->needMorePeople = false;
+                $second->needBiggerBudget = true;
+                return $second;
+                break;
+        }
+    }
+
+    public function deleteSubteamRequestById($id)
+    {
+        // do nothing
+    }
+
+    public function getAllSubteamRequests()
+    {
+        $first = new SubteamRequest();
+        $first->reportedBySubteam = 1;
+        $first->project = 2;
+        $first->status = 1;
+        $first->needMorePeople = false;
+        $first->needBiggerBudget = true;
+
+        $second = new SubteamRequest();
+        $second->reportedBySubteam = 2;
+        $second->project = 1;
+        $second->status = 2;
+        $second->needMorePeople = false;
+        $second->needBiggerBudget = true;
+
+        return [$first, $second];
     }
 }

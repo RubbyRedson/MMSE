@@ -12,6 +12,7 @@ use App\Client;
 use App\PlanningRequest;
 use App\Project;
 use App\Role;
+use App\SubteamRequest;
 use App\User;
 use App\Session;
 
@@ -181,5 +182,20 @@ class SQLRepo implements DatabaseInterface
     public function deleteRoleById($id)
     {
         return Role::find($id)->delete();
+    }
+
+    public function getSubteamRequestById($id)
+    {
+        return SubteamRequest::find($id);
+    }
+
+    public function deleteSubteamRequestById($id)
+    {
+        return SubteamRequest::find($id)->delete();
+    }
+
+    public function getAllSubteamRequests()
+    {
+        return SubteamRequest::all();
     }
 }

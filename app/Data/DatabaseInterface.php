@@ -9,7 +9,7 @@
 namespace App\Data;
 
 
-use App\Client;
+
 
 interface DatabaseInterface
 {
@@ -30,9 +30,12 @@ interface DatabaseInterface
     public function getAllSubteams();
 
     //Subteam Request
+    public function getAllSubteamRequests();
     public function findSubteamRequests($subteamId);
+    public function getSubteamRequestById($id);
     public function getSubteamRequest($subteamId);
     public function saveSubteamRequest($subteamRequest);
+    public function deleteSubteamRequestById($id);
 
     //Planning Request
     public function findPlanningRequest($clientId);

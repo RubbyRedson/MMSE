@@ -158,13 +158,6 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
     $app->delete('api/project/{id}','App\Http\Controllers\ProjectController@deleteProject');
 
 
-    $app->get('api/subteam','App\Http\Controllers\SubteamController@index');
-    $app->get('api/subteam/{id}','App\Http\Controllers\SubteamController@getSubteam');
-    $app->post('api/subteam','App\Http\Controllers\SubteamController@saveSubteam');
-    $app->put('api/subteam/{id}','App\Http\Controllers\SubteamController@updateSubteam');
-    $app->delete('api/subteam/{id}','App\Http\Controllers\SubteamController@deleteSubteam');
-
-
     $app->get('api/subteam_request','App\Http\Controllers\SubteamRequestController@index');
     $app->get('api/subteam_request/{id}','App\Http\Controllers\SubteamRequestController@getSubteamRequest');
     $app->post('api/subteam_request','App\Http\Controllers\SubteamRequestController@saveSubteamRequest');
