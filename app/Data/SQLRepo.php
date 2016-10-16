@@ -166,4 +166,20 @@ class SQLRepo implements DatabaseInterface
     {
         return Project::find($id)->delete();
     }
+
+    public function getAllRoles()
+    {
+        return Role::all();
+    }
+
+    public function saveRole($role)
+    {
+        $role->save();
+        return $role;
+    }
+
+    public function deleteRoleById($id)
+    {
+        return Role::find($id)->delete();
+    }
 }

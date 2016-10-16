@@ -179,10 +179,12 @@ class MockRepo implements DatabaseInterface
         $role = new Role();
         $role->id = $id;
         $role->title = 'do not know, do not care';
-        $role->auth = 999;
+        $role->auth = 1;
 
         switch ($id) {
             case 1:
+                $role->title = 'Customer Service';
+                $role->description = 'Customer Service description';
                 $role->tag = 'customer_service';
                 break;
             case 2:
@@ -320,6 +322,94 @@ class MockRepo implements DatabaseInterface
     }
 
     public function deleteProjectById($id)
+    {
+        // do nothing
+    }
+
+    public function getAllRoles()
+    {
+        $customer_service = new Role();
+        $customer_service->title = 'Customer service';
+        $customer_service->description = 'Description of Customer service';
+        $customer_service->auth = 1;
+        $customer_service->tag = 'customer_service';
+
+        $customer_service_manager = new Role();
+        $customer_service_manager->title = 'Customer service manager';
+        $customer_service_manager->description = 'Description of Customer service manager';
+        $customer_service_manager->auth = 2;
+        $customer_service_manager->tag = 'customer_service_manager';
+
+        $financial_manager = new Role();
+        $financial_manager->title = 'Financial manager';
+        $financial_manager->description = 'Description of Financial manager';
+        $financial_manager->auth = 3;
+        $financial_manager->tag = 'financial_manager';
+
+        $administration_manager = new Role();
+        $administration_manager->title = 'Administration manager';
+        $administration_manager->description = 'Description of Administration manager';
+        $administration_manager->auth = 4;
+        $administration_manager->tag = 'administration_manager';
+
+        $production_manager = new Role();
+        $production_manager->title = 'Production manager';
+        $production_manager->description = 'Description of Production manager';
+        $production_manager->auth = 5;
+        $production_manager->tag = 'production_manager';
+
+        $hr_manager = new Role();
+        $hr_manager->title = 'HR manager';
+        $hr_manager->description = 'Description of HR manager';
+        $hr_manager->auth = 6;
+        $hr_manager->tag = 'hr_manager';
+
+        $hr_team = new Role();
+        $hr_team->title = 'HR team';
+        $hr_team->description = 'Description of HR team';
+        $hr_team->auth = 7;
+        $hr_team->tag = 'hr_team';
+
+        $service_manager = new Role();
+        $service_manager->title = 'Service manager';
+        $service_manager->description = 'Description of Service manager';
+        $service_manager->auth = 8;
+        $service_manager->tag = 'service_manager';
+
+        $sub_team = new Role();
+        $sub_team->title = 'Sub-team';
+        $sub_team->description = 'Description of Sub-team';
+        $sub_team->auth = 9;
+        $sub_team->tag = 'sub_team';
+
+        $vice_president = new Role();
+        $vice_president->title = 'Vice-president';
+        $vice_president->description = 'Description of Vice-president';
+        $vice_president->auth = 10;
+        $vice_president->tag = 'vice_president';
+
+        $financial_department = new Role();
+        $financial_department->title = 'Financial department';
+        $financial_department->description = 'Description of Financial department';
+        $financial_department->auth = 11;
+        $financial_department->tag = 'financial_department';
+
+        $administration_department = new Role();
+        $administration_department->title = 'Administration department';
+        $administration_department->description = 'Description of Administration department';
+        $administration_department->auth = 12;
+        $administration_department->tag = 'administration_department';
+
+        return [$customer_service, $customer_service_manager, $financial_manager, $administration_manager, $production_manager,
+        $hr_manager, $hr_team, $service_manager, $sub_team, $vice_president, $financial_department, $administration_department];
+    }
+
+    public function saveRole($role)
+    {
+        return $role;
+    }
+
+    public function deleteRoleById($id)
     {
         // do nothing
     }

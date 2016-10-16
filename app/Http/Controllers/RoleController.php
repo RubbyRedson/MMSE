@@ -17,7 +17,7 @@ class RoleController extends Controller
 {
     public function index(){
 
-        $roles  = Role::all();
+        $roles = $this->dataSource->getAllRoles();
 
         return response()->json($roles);
 
@@ -25,33 +25,31 @@ class RoleController extends Controller
 
     public function getRole($id){
 
-        $role  = Role::find($id);
+        $role = $this->dataSource->getRoleById($id);
 
         return response()->json($role);
     }
 
     public function saveRole(Request $request){
 
-        $role = Role::create($request->all());
+        $role = $this->dataSource->saveRole(new Role($request->all()));
 
         return response()->json($role);
 
     }
 
     public function deleteRole($id){
-        $role  = Role::find($id);
-
-        $role->delete();
-
+        $this->dataSource->deleteRoleById($id);
         return response()->json('success');
     }
 
     public function updateRole(Request $request,$id){
-        $role  = Role::find($id);
-        $role->name = $request->input('title');
-        $role->password = $request->input('description');
-        $role->role = $request->input('auth');
-        $role->save();
+        $role = $this->dataSource->getRoleById($id);
+        $role->title = $request->input('title');
+        $role->description = $request->input('description');
+        $role->auth = $request->input('auth');
+        $role->tag = $request->input('tag');
+        $role = $this->dataSource->saveRole($role);
 
         return response()->json($role);
     }

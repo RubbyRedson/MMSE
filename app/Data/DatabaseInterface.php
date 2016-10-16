@@ -55,5 +55,8 @@ interface DatabaseInterface
     public function deleteProjectById($id);
 
     //Roles
+    public function getAllRoles();
     public function getRoleById($id);
+    public function saveRole($role);
+    public function deleteRoleById($id);
 }
