@@ -25,7 +25,7 @@ class ClientTest extends TestCase
         $response = $this->getWithAuth('/api/client/1');
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['name'], 'Pear LLC 3');
+        $this->assertEquals($jsonArr['name'], 'Pear LLC');
         $this->assertEquals($jsonArr['phone'], '123321123');
         $this->assertEquals($jsonArr['discount'], '0');
     }

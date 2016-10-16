@@ -146,11 +146,13 @@ class PlanningRequestsTableSeeder extends Seeder
             'client' => 1,
             'status' => 1,
             'feedback' => 'Feedback for request 1',
+            'description' => 'description for request 1',
         ]);
         DB::table('planning_requests')->insert([
             'client' => 2,
             'status' => 4,
             'feedback' => 'Feedback for request 2',
+            'description' => 'description for request 2',
         ]);
     }
 }
