@@ -228,4 +228,11 @@ class MockRepo implements DatabaseInterface
 
         return json_decode($res, true);
     }
+
+    public function getPlanningRequestById($id)
+    {
+        $res = "{\"id\":".id.",\"client\":1,\"status\":1,\"feedback\":\"Feedback for request 1\",\"created_at\":null,\"updated_at\":\"2016-10-16 09:21:03\",\"description\":\"\"}";
+
+        return json_decode($res, true);
+    }
 }
