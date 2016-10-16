@@ -28,10 +28,11 @@ interface DatabaseInterface
 
     //Subteam
     public function getAllSubteams();
-    public function saveSubteamRequest($subteamRequest);
-    public function saveProject($project);
+
+    //Subteam Request
     public function findSubteamRequests($subteamId);
     public function getSubteamRequest($subteamId);
+    public function saveSubteamRequest($subteamRequest);
 
     //Planning Request
     public function findPlanningRequest($clientId);
@@ -40,7 +41,7 @@ interface DatabaseInterface
     public function getPlanningRequestById($id);
     public function getPlanningRequestsByStatusId($statusId);
     public function setPlanningRequestsStatus($requestId, $statusId);
-    public function deletePlanningRequestsById($requestId);
+    public function deletePlanningRequestById($id);
 
     //Session
     public function createSession($userId);
@@ -48,7 +49,10 @@ interface DatabaseInterface
 
     //Project
     public function getProjectCostSummation($clientId);
-    public function getProjects();
+    public function getAllProjects();
+    public function getProjectById($id);
+    public function saveProject($project);
+    public function deleteProjectById($id);
 
     //Roles
     public function getRoleById($id);

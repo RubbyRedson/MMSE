@@ -11,6 +11,7 @@ namespace App\Data;
 
 use App\Client;
 use App\PlanningRequest;
+use App\Project;
 use App\Role;
 use App\Session;
 use App\Subteam;
@@ -29,40 +30,40 @@ class MockRepo implements DatabaseInterface
     public function getAllClients()
     {
         $client1 = new Client();
-        $client1->name ='Pear LLC';
+        $client1->name = 'Pear LLC';
         $client1->phone = '123123123';
         $client1->discount = 0;
 
         $client2 = new Client();
-        $client2->name ='AEKI';
+        $client2->name = 'AEKI';
         $client2->phone = '0987654321';
         $client2->discount = 75;
 
         return [$client1, $client2];
     }
 
-    public function getProjects()
+    public function getAllProjects()
     {
-        $first = new Subteam();
+        $first = new Project();
         $first->name = 'Birthday Party';
         $first->client = 1;
-        $first->description ='Birthday Party description';
+        $first->description = 'Birthday Party description';
         $first->cost = 500;
         $first->start = date('2001-10-05');
         $first->stop = date('2001-10-27');
 
-        $second = new Subteam();
+        $second = new Project();
         $second->name = 'Fika';
         $second->client = 2;
-        $second->description ='Fika description';
+        $second->description = 'Fika description';
         $second->cost = 700;
         $second->start = date('2007-11-13');
         $second->stop = date('2007-12-27');
 
-        $third = new Subteam();
+        $third = new Project();
         $third->name = 'Fika 2';
         $third->client = 2;
-        $third->description ='Fika 2 description';
+        $third->description = 'Fika 2 description';
         $third->cost = 700;
         $third->start = date('2008-11-13');
         $third->stop = date('2008-12-27');
@@ -78,12 +79,12 @@ class MockRepo implements DatabaseInterface
     public function getAllSubteams()
     {
         $first = new Subteam();
-        $first->name ='IT';
+        $first->name = 'IT';
         $first->description = 'IT description';
         $first->numberofpeople = 7;
 
         $second = new Subteam();
-        $second->name ='Music';
+        $second->name = 'Music';
         $second->description = 'Music description';
         $second->numberofpeople = 7;
 
@@ -99,9 +100,9 @@ class MockRepo implements DatabaseInterface
     {
         $result = new SubteamRequest();
 
-        $result -> reportedBySubteam = 1;
-        $result -> needMorePeople = false;
-        $result -> needBiggerBudget = true;
+        $result->reportedBySubteam = 1;
+        $result->needMorePeople = false;
+        $result->needBiggerBudget = true;
 
         return $result;
     }
@@ -110,8 +111,8 @@ class MockRepo implements DatabaseInterface
     {
         $result = new PlanningRequest();
 
-        $result -> client = 1;
-        $result -> feedback = 'Test feedback';
+        $result->client = 1;
+        $result->feedback = 'Test feedback';
 
         return $result;
     }
@@ -120,9 +121,9 @@ class MockRepo implements DatabaseInterface
     {
         $result = new SubteamRequest();
 
-        $result -> reportedBySubteam = $subteamId;
-        $result -> needMorePeople = false;
-        $result -> needBiggerBudget = true;
+        $result->reportedBySubteam = $subteamId;
+        $result->needMorePeople = false;
+        $result->needBiggerBudget = true;
 
         return $result;
     }
@@ -137,7 +138,7 @@ class MockRepo implements DatabaseInterface
         $user1 = new User();
         $user1->id = $id;
         $user1->salt = $this->salt1;
-        $user1->password = sha1($user1->salt ."abc123");
+        $user1->password = sha1($user1->salt . "abc123");
         $user1->username = 'Alice';
         $user1->role = $id;
 
@@ -148,7 +149,7 @@ class MockRepo implements DatabaseInterface
     {
         $user1 = new User();
         $user1->salt = $this->salt1;
-        $user1->password = sha1($user1->salt ."abc123");
+        $user1->password = sha1($user1->salt . "abc123");
         $user1->username = $username;
         $user1->role = 1;
 
@@ -176,34 +177,34 @@ class MockRepo implements DatabaseInterface
     public function getRoleById($id)
     {
         $role = new Role();
-        $role -> id = $id;
-        $role -> title = 'do not know, do not care';
-        $role -> auth = 999;
+        $role->id = $id;
+        $role->title = 'do not know, do not care';
+        $role->auth = 999;
 
-        switch ($id){
+        switch ($id) {
             case 1:
-                $role->tag =  'customer_service';
+                $role->tag = 'customer_service';
                 break;
             case 2:
-                $role->tag =  'customer_service_manager';
+                $role->tag = 'customer_service_manager';
                 break;
             case 3:
-                $role->tag =  'financial_manager';
+                $role->tag = 'financial_manager';
                 break;
             case 4:
-                $role->tag =  'administration_manager';
+                $role->tag = 'administration_manager';
                 break;
             case 5:
-                $role->tag =  'production_manager';
+                $role->tag = 'production_manager';
                 break;
             case 6:
-                $role->tag =  'hr_manager';
+                $role->tag = 'hr_manager';
                 break;
             case 7:
-                $role->tag =  'hr_team';
+                $role->tag = 'hr_team';
                 break;
             case 8:
-                $role->tag =  'service_manager';
+                $role->tag = 'service_manager';
                 break;
         }
 
@@ -224,14 +225,14 @@ class MockRepo implements DatabaseInterface
 
     public function setPlanningRequestsStatus($requestId, $statusId)
     {
-        $res = "{\"id\":".$requestId.",\"client\":1,\"status\":".$statusId.",\"feedback\":\"Feedback for request 1\",\"created_at\":null,\"updated_at\":\"2016-10-16 09:21:03\",\"description\":\"\"}";
+        $res = "{\"id\":" . $requestId . ",\"client\":1,\"status\":" . $statusId . ",\"feedback\":\"Feedback for request 1\",\"created_at\":null,\"updated_at\":\"2016-10-16 09:21:03\",\"description\":\"\"}";
 
         return json_decode($res, true);
     }
 
     public function getPlanningRequestById($id)
     {
-        $res = "{\"id\":".id.",\"client\":1,\"status\":1,\"feedback\":\"Feedback for request 1\",\"created_at\":null,\"updated_at\":\"2016-10-16 09:21:03\",\"description\":\"\"}";
+        $res = "{\"id\":" . id . ",\"client\":1,\"status\":1,\"feedback\":\"Feedback for request 1\",\"created_at\":null,\"updated_at\":\"2016-10-16 09:21:03\",\"description\":\"\"}";
 
         return json_decode($res, true);
     }
@@ -240,7 +241,7 @@ class MockRepo implements DatabaseInterface
     {
         $client1 = new Client();
         $client1->id = $id;
-        $client1->name ='Pear LLC';
+        $client1->name = 'Pear LLC';
         $client1->phone = '123123123';
         $client1->discount = 0;
         return $client1;
@@ -248,9 +249,8 @@ class MockRepo implements DatabaseInterface
 
     public function getProjectCostSummation($clientId)
     {
-        return 200;
+        return 1400;
     }
-
 
     public function saveClient($client)
     {
@@ -273,14 +273,54 @@ class MockRepo implements DatabaseInterface
         // do nothing
     }
 
-    public function deletePlanningRequestsById($requestId)
+    public function deletePlanningRequestById($id)
     {
         // do nothing
+    }
 
+    public function getProjectById($id)
+    {
+        switch ($id) {
+            case 1:
+                $first = new Project();
+                $first->name = 'Birthday Party';
+                $first->client = 1;
+                $first->description = 'Birthday Party description';
+                $first->cost = 500;
+                $first->start = date('2001-10-05');
+                $first->stop = date('2001-10-27');
+                return $first;
+                break;
+            case 2:
+                $second = new Project();
+                $second->name = 'Fika';
+                $second->client = 2;
+                $second->description = 'Fika description';
+                $second->cost = 700;
+                $second->start = date('2007-11-13');
+                $second->stop = date('2007-12-27');
+                return $second;
+                break;
+            case 3:
+                $third = new Project();
+                $third->name = 'Fika 2';
+                $third->client = 2;
+                $third->description = 'Fika 2 description';
+                $third->cost = 700;
+                $third->start = date('2008-11-13');
+                $third->stop = date('2008-12-27');
+                return $third;
+                break;
+        }
     }
 
     public function saveProject($project)
     {
         return $project;
+    }
+
+    public function deleteProjectById($id)
+    {
+        // do nothing
     }
 }
