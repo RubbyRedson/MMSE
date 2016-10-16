@@ -48,8 +48,10 @@ class Authenticate
         //Check if there is a token
         if ($token) {
 
+
             //Get the session
             $session = $this->dataSource->getSessionByToken($token);
+
             if($session){
 
                 //Check for a user

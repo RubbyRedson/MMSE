@@ -12,41 +12,43 @@ class TestCase extends Laravel\Lumen\Testing\TestCase
         return require __DIR__.'/../bootstrap/app.php';
     }
 
-    protected function getWithAuth($uri)
+    protected function getWithAuth($uri, $userId = 1)
     {
-        $response = $this->call('GET', $uri, array(), array(), array(), $this->transformHeadersToServerVars(['Authorization' => $this->getToken()]));
+        $response = $this->call('GET', $uri, array(), array(), array(), $this->transformHeadersToServerVars(['Authorization' => $this->getToken($userId)]));
         return $response->getContent();
     }
 
-    protected function postWithAuth($uri, $content)
+    protected function postWithAuth($uri, $content, $userId = 1)
     {
         $response = $this->call('POST', $uri, array(), array(), array(),
-            $this->transformHeadersToServerVars(['Authorization' => $this->getToken(), 'CONTENT_TYPE' => 'application/json']),
+            $this->transformHeadersToServerVars(['Authorization' => $this->getToken($userId ), 'CONTENT_TYPE' => 'application/json']),
             $content);
         return $response->getContent();
     }
 
-    protected function putWithAuth($uri, $content)
+    protected function putWithAuth($uri, $content, $userId = 1)
     {
         $response = $this->call('PUT', $uri, array(), array(), array(),
-            $this->transformHeadersToServerVars(['Authorization' => $this->getToken(), 'CONTENT_TYPE' => 'application/json']),
+            $this->transformHeadersToServerVars(['Authorization' => $this->getToken($userId ), 'CONTENT_TYPE' => 'application/json']),
             $content);
         return $response->getContent();
     }
 
-    protected function deleteWithAuth($uri)
+    protected function deleteWithAuth($uri, $userId = 1)
     {
         $response = $this->call('DELETE', $uri, array(), array(), array(),
-            $this->transformHeadersToServerVars(['Authorization' => $this->getToken()]));
+            $this->transformHeadersToServerVars(['Authorization' => $this->getToken($userId )]));
         return $response->getContent();
     }
 
-    protected function getToken()
+    protected function getToken($userId = 1)
     {
         $json = '{"username":"Alice","password":"abc123"}';
+
         $tokenResponse = $this->call('POST', '/api/user/login', array(), array(), array(), ['CONTENT_TYPE' => 'application/json'], $json)->content();
         $token = json_decode($tokenResponse, true)['token'];
-        return $token;
+
+        return $userId;
     }
 
     protected function getNow()

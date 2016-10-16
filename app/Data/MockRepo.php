@@ -139,7 +139,7 @@ class MockRepo implements DatabaseInterface
         $user1->salt = $this->salt1;
         $user1->password = sha1($user1->salt ."abc123");
         $user1->username = 'Alice';
-        $user1->role = 1;
+        $user1->role = $id;
 
         return $user1;
     }
@@ -165,7 +165,7 @@ class MockRepo implements DatabaseInterface
     public function getSessionByToken($token)
     {
         $session = new Session();
-        $session->user_id = 1;
+        $session->user_id = $token;
         $session->token = $token;
         $newExpiry = new \DateTime();
         $newExpiry->setTimestamp((new \DateTime())->getTimestamp() + 3600);
@@ -179,7 +179,33 @@ class MockRepo implements DatabaseInterface
         $role -> id = $id;
         $role -> title = 'do not know, do not care';
         $role -> auth = 999;
-        $role -> tag = 'customer_service';
+
+        switch ($id){
+            case 1:
+                $role->tag =  'customer_service';
+                break;
+            case 2:
+                $role->tag =  'customer_service_manager';
+                break;
+            case 3:
+                $role->tag =  'financial_manager';
+                break;
+            case 4:
+                $role->tag =  'administration_manager';
+                break;
+            case 5:
+                $role->tag =  'production_manager';
+                break;
+            case 6:
+                $role->tag =  'hr_manager';
+                break;
+            case 7:
+                $role->tag =  'hr_team';
+                break;
+            case 8:
+                $role->tag =  'service_manager';
+                break;
+        }
 
         return $role;
     }
@@ -191,6 +217,7 @@ class MockRepo implements DatabaseInterface
 
     public function getPlanningRequestsByStatusId($statusId)
     {
+
         // TODO: Implement getPlanningRequestsByStatusId() method.
     }
 
