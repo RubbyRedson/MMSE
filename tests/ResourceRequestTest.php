@@ -9,6 +9,8 @@
 namespace tests;
 
 
+use TestCase;
+
 class ResourceRequestTest extends TestCase
 {
 

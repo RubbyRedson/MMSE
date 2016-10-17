@@ -53,4 +53,9 @@ class ProjectController extends Controller
 
         return response()->json($project);
     }
+
+    public function saveProductionmanagerProject(Request $request)
+    {
+        return $this->saveProject($request);
+    }
 }
