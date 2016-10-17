@@ -59,17 +59,24 @@ class ResourceRequestController extends Controller
     public function setResourceRequestStatus(Request $request, $id)
     {
         $approved = $request->input('approved');
-        $result = "success";
-        if ($approved == 1) {
-            $resourceRequest = $this->dataSource->getResourceRequestById($id);
-            if ($resourceRequest->type == 'budget') {
+        $result = "fail";
+
+        $resourceRequest = $this->dataSource->getResourceRequestById($id);
+        if ($resourceRequest->type == 'budget') {
+
+            if($approved == 1){
                 $project = $this->dataSource->getProjectById($resourceRequest->project);
                 $project->cost = $resourceRequest->proposal;
                 $this->dataSource->saveProject($project);
             }
+
+            $this->dataSource->deleteResourceRequestById($id);
+
+        }else{
+            return response("Uauthorized. You are not authorized to edit this resource.", 401);
         }
-        $this->removeResourceRequestHR($id);
-        return response()->json($result);
+
+
     }
 
 }
