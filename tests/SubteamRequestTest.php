@@ -10,7 +10,7 @@ class SubteamRequestTest extends TestCase
     public function testGetAll()
     {
         $expected = '[{"reportedBySubteam":1,"project":2,"status":1,"needMorePeople":false,"needBiggerBudget":true},' .
-            '{"reportedBySubteam":2,"project":1,"status":2,"needMorePeople":false,"needBiggerBudget":true}]';
+            '{"reportedBySubteam":2,"project":1,"status":1,"needMorePeople":false,"needBiggerBudget":true}]';
         $this->assertEquals($expected, $this->getWithAuth('/api/subteam_request'));
     }
 
@@ -56,7 +56,7 @@ class SubteamRequestTest extends TestCase
      */
     public function testUpdateExisting()
     {
-        $json = "{\"reportedBySubteam\":1,\"project\":2,\"status\":1,\"needMorePeople\":false,\"needBiggerBudget\":false}";
+        $json = "{\"reportedBySubteam\":1,\"project\":2,\"status\":2,\"needMorePeople\":true,\"needBiggerBudget\":false}";
         $response = $this->putWithAuth('/api/subteam_request/1', $json);
 
         $jsonArr = json_decode($response, true);
@@ -64,6 +64,25 @@ class SubteamRequestTest extends TestCase
         $this->assertEquals($jsonArr['reportedBySubteam'], 1);
         $this->assertEquals($jsonArr['project'], 2);
         $this->assertEquals($jsonArr['status'], 1);
+        $this->assertEquals($jsonArr['needMorePeople'], true);
+        $this->assertEquals($jsonArr['needBiggerBudget'], false);
+    }
+
+    /**
+     * Test to update existing subteam request with both false.
+     *
+     * @return void
+     */
+    public function testUpdateExistingNoAdditionalResources()
+    {
+        $json = "{\"reportedBySubteam\":1,\"project\":2,\"status\":2,\"needMorePeople\":false,\"needBiggerBudget\":false}";
+        $response = $this->putWithAuth('/api/subteam_request/1', $json);
+
+        $jsonArr = json_decode($response, true);
+
+        $this->assertEquals($jsonArr['reportedBySubteam'], 1);
+        $this->assertEquals($jsonArr['project'], 2);
+        $this->assertEquals($jsonArr['status'], 3);
         $this->assertEquals($jsonArr['needMorePeople'], false);
         $this->assertEquals($jsonArr['needBiggerBudget'], false);
     }
@@ -86,8 +105,8 @@ class SubteamRequestTest extends TestCase
      */
     public function testGetSubteamRequestsByStatus()
     {
-        $expected = '[{"id":1,"reportedBySubteam":1,"project":2,"status":1,"needMorePeople":false,'.
-            '"needBiggerBudget":true,"created_at":null,"updated_at":null}]';
+        $expected = '[{"id":2,"reportedBySubteam":2,"project":1,"status":1,"needMorePeople":false,'.
+            '"needBiggerBudget":true}]';
         $this->assertEquals($expected, $this->getWithAuth('/api/sub_team/subteam_request', 9));
     }
 

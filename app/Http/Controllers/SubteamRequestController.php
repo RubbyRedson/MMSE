@@ -43,14 +43,15 @@ class SubteamRequestController extends Controller
     }
 
     public function updateSubteamRequest(Request $request,$id){
-
-        
         $subteamRequest = $this->dataSource->getSubteamRequestById($id);
         $subteamRequest->reportedBySubteam = $request->input('reportedBySubteam');
         $subteamRequest->project = $request->input('project');
-        $subteamRequest->status = $request->input('status');
         $subteamRequest->needMorePeople = $request->input('needMorePeople');
         $subteamRequest->needBiggerBudget = $request->input('needBiggerBudget');
+
+        if ($request->input('needMorePeople') == false and $request->input('needBiggerBudget') == false )
+            $subteamRequest->status = 3;
+
         $subteamRequest = $this->dataSource->saveSubteamRequest($subteamRequest);
         return response()->json($subteamRequest);
     }
