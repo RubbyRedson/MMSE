@@ -42,6 +42,9 @@ interface DatabaseInterface
     public function deleteSubteamRequestById($id);
     public function getConflictingSubteamRequests();
 
+    //Resource requests
+    public function createResourceRequest($data);
+
     //Planning Request
     public function findPlanningRequest($clientId);
     public function savePlanningRequest($planningRequest);

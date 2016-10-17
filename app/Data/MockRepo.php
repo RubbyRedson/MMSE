@@ -547,4 +547,9 @@ class MockRepo implements DatabaseInterface
     {
         // TODO: Implement getConflictingSubteamRequests() method.
     }
+
+    public function createResourceRequest($data)
+    {
+        // TODO: Implement createResourceRequest() method.
+    }
 }

@@ -11,6 +11,7 @@ namespace App\Data;
 use App\Client;
 use App\PlanningRequest;
 use App\Project;
+use App\ResourceRequest;
 use App\Role;
 use App\Subteam;
 use App\SubteamRequest;
@@ -224,8 +225,14 @@ class SQLRepo implements DatabaseInterface
 
     public function getConflictingSubteamRequests()
     {
-        return SubteamRequest::where(function($query){
-            $query->where('needBiggerBudget', 1)->orWhere('needMorePeople', 1);
-        })->get();
+        return SubteamRequest::where('status', 1)
+            ->where(function($query){
+                $query->where('needMorePeople', 1)->orWhere('needBiggerBudget', 1);
+            })->get();
+    }
+
+    public function createResourceRequest($data)
+    {
+        return ResourceRequest::create($data);
     }
 }
