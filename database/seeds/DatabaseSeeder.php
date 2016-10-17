@@ -48,7 +48,7 @@ class ResourceRequestSeeder extends Seeder
         DB::table('resource_requests')->insert([
             'project' => 1,
             'approved' => false,
-            'proposal' => 2,
+            'proposal' => 300,
             'type' => 'people'
         ]);
     }

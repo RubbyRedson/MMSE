@@ -552,4 +552,9 @@ class MockRepo implements DatabaseInterface
     {
         // TODO: Implement createResourceRequest() method.
     }
+
+    public function getResourceRequestByType($type)
+    {
+        // TODO: Implement getResourceRequestByType() method.
+    }
 }
