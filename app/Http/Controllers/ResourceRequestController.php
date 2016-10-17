@@ -48,4 +48,8 @@ class ResourceRequestController extends Controller
         return $this->dataSource->getResourceRequestByType('people');
     }
 
+    public function getFinancialRequests(Request $request){
+        return $this->dataSource->getResourceRequestByType('budget');
+    }
+
 }

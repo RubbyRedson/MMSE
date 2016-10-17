@@ -47,4 +47,11 @@ class ResourceRequestTest extends TestCase
         $response = $this->deleteWithAuth('api/hr_team/resource_request/1', 7);
         $this->assertEquals('Unauthorized. You are not authorized to remove this resource request type.', $response);
     }
+
+
+    public function testGetFinancialRequests(){
+        //$app->get('api/financial_department/resource_request',
+
+        $this->markTestIncomplete("Test that the requests that get returned only contains type 'budget' ")
+    }
 }
