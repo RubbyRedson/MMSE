@@ -13,6 +13,7 @@ use App\Client;
 use App\JobAdvertisement;
 use App\PlanningRequest;
 use App\Project;
+use App\ResourceRequest;
 use App\Role;
 use App\Session;
 use App\Subteam;
@@ -556,14 +557,50 @@ class MockRepo implements DatabaseInterface
         // TODO: Implement getConflictingSubteamRequests() method.
     }
 
+    public function getResourceRequestById($id)
+    {
+        switch ($id) {
+            case 1:
+                $first = new ResourceRequest();
+                $first->id = 1;
+                $first->project = 1;
+                $first->approved = false;
+                $first->type = 'budget';
+                $first->proposal = 3;
+                return $first;
+                break;
+            case 2:
+                $first = new ResourceRequest();
+                $first->id = 2;
+                $first->project = 1;
+                $first->approved = false;
+                $first->type = 'people';
+                $first->proposal = 3;
+                return $first;
+                break;
+        }
+    }
+
+    public function deleteResourceRequestById($id)
+    {
+        // do nothing
+    }
+
     public function createResourceRequest($data)
     {
-        // TODO: Implement createResourceRequest() method.
+        $first = new ResourceRequest($data);
+        return $first;
     }
 
     public function getResourceRequestByType($type)
     {
-        // TODO: Implement getResourceRequestByType() method.
+        $first = new ResourceRequest();
+        $first->id = 1;
+        $first->project = 1;
+        $first->approved = false;
+        $first->type = $type;
+        $first->proposal = 3;
+        return $first;
     }
 
     public function getAllJobAdvertisements()
@@ -605,15 +642,5 @@ class MockRepo implements DatabaseInterface
     public function deleteJobAdvertisementById($id)
     {
         // do nothing
-    }
-
-    public function getResourceRequestById($id)
-    {
-        // TODO: Implement getResourceRequestById() method.
-    }
-
-    public function deleteResourceRequestById($id)
-    {
-        // TODO: Implement deleteResourceRequestById() method.
     }
 }
