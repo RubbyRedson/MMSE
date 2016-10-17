@@ -48,6 +48,7 @@ class SubteamRequestController extends Controller
         $subteamRequest->project = $request->input('project');
         $subteamRequest->needMorePeople = $request->input('needMorePeople');
         $subteamRequest->needBiggerBudget = $request->input('needBiggerBudget');
+        $subteamRequest->status = $request->input('status');
 
         if ($request->input('needMorePeople') == false and $request->input('needBiggerBudget') == false )
             $subteamRequest->status = 3;

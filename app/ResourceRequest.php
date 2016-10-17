@@ -12,5 +12,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ResourceRequest extends Model
 {
-    protected $fillable = ['project', 'approved', 'type', 'proposal'];
+    protected $fillable = ['project', 'approved', 'type', 'proposal', 'subteam'];
 }
