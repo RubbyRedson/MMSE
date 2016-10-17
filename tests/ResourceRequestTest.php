@@ -49,7 +49,7 @@ class ResourceRequestTest extends TestCase
 
     public function testApproveBudgetResourceRequest(){
         $json = "{\"project\":1,\"approved\":1}";
-        $response = $this->postWithAuth('api/financial_department/set_resource_request_status/1', $json, 10);
+        $response = $this->putWithAuth('api/financial_department/set_resource_request_status/1', $json, 10);
         $this->assertEquals('"success"', $response);
     }
 
