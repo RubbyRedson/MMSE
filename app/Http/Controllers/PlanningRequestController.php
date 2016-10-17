@@ -29,6 +29,9 @@ class PlanningRequestController extends Controller
         $approved = $this->dataSource->getPlanningRequestsByStatusId(4);
         $rejected = $this->dataSource->getPlanningRequestsByStatusId(5);
 
+        $approved  = is_array($approved) ?  $approved :  $approved->toArray();
+        $rejected  = is_array($rejected) ?  $rejected :  $rejected->toArray();
+
         return array_merge($approved, $rejected);
     }
 
