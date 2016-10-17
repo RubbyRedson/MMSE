@@ -33,7 +33,7 @@ class SQLRepo implements DatabaseInterface
 
     public function updateClient($client)
     {
-        // TODO: Implement updateClient() method.
+       return $client->save();
     }
 
     public function getAllSubteams()
