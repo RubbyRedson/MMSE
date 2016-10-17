@@ -49,11 +49,26 @@ class ResourceRequestSeeder extends Seeder
         ]);
 
         DB::table('resource_requests')->insert([
+            'project' => 2,
+            'approved' => false,
+            'proposal' => 5,
+            'type' => 'people',
+            'subteam' => 2
+        ]);
+
+        DB::table('resource_requests')->insert([
+            'project' => 2,
+            'approved' => false,
+            'proposal' => 3,
+            'type' => 'people',
+            'subteam' => 1
+        ]);
+        DB::table('resource_requests')->insert([
             'project' => 1,
             'approved' => false,
             'proposal' => 300,
-            'type' => 'people',
-            'subteam' => 1
+            'type' => 'budget',
+            'subteam' => 2
         ]);
     }
 }
@@ -176,7 +191,7 @@ class PlanningRequestsTableSeeder extends Seeder
         DB::table('planning_requests')->insert([
             'client' => 1,
             'status' => 1,
-            'feedback' => 'Feedback for request 1',
+            'feedback' => '',
             'description' => 'description for request 1',
             'proposed_budget' => 500,
         ]);
@@ -186,6 +201,51 @@ class PlanningRequestsTableSeeder extends Seeder
             'feedback' => 'Feedback for request 2',
             'description' => 'description for request 2',
             'proposed_budget' => 700,
+        ]);
+
+        DB::table('planning_requests')->insert([
+            'client' => 1,
+            'status' => 2,
+            'feedback' => '',
+            'description' => 'description for request 3',
+            'proposed_budget' => 100,
+        ]);
+        DB::table('planning_requests')->insert([
+            'client' => 2,
+            'status' => 2,
+            'feedback' => '',
+            'description' => 'description for request 4',
+            'proposed_budget' => 240,
+        ]);
+
+        DB::table('planning_requests')->insert([
+            'client' => 2,
+            'status' => 3,
+            'feedback' => 'Feedback for request 5',
+            'description' => 'description for request 5',
+            'proposed_budget' => 700,
+        ]);
+
+        DB::table('planning_requests')->insert([
+            'client' => 1,
+            'status' => 3,
+            'feedback' => 'Feedback for request 6',
+            'description' => 'description for request 6',
+            'proposed_budget' => 120,
+        ]);
+        DB::table('planning_requests')->insert([
+            'client' => 2,
+            'status' => 4,
+            'feedback' => 'Feedback for request 7',
+            'description' => 'description for request 7',
+            'proposed_budget' => 1700,
+        ]);
+        DB::table('planning_requests')->insert([
+            'client' => 1,
+            'status' => 5,
+            'feedback' => 'Feedback for request 8',
+            'description' => 'description for request 8',
+            'proposed_budget' => 10700,
         ]);
     }
 }
@@ -270,6 +330,48 @@ class SubteamRequestsTableSeeder extends Seeder
             'status' => 2,
             'needMorePeople' => false,
             'needBiggerBudget' => true,
+        ]);
+        DB::table('subteam_requests')->insert([
+            'reportedBySubteam' => 1,
+            'project' => 2,
+            'status' => 2,
+            'needMorePeople' => true,
+            'needBiggerBudget' => true,
+        ]);
+        DB::table('subteam_requests')->insert([
+            'reportedBySubteam' => 2,
+            'project' => 1,
+            'status' => 1,
+            'needMorePeople' => false,
+            'needBiggerBudget' => true,
+        ]);
+        DB::table('subteam_requests')->insert([
+            'reportedBySubteam' => 2,
+            'project' => 1,
+            'status' => 3,
+            'needMorePeople' => true,
+            'needBiggerBudget' => false,
+        ]);
+        DB::table('subteam_requests')->insert([
+            'reportedBySubteam' => 1,
+            'project' => 2,
+            'status' => 3,
+            'needMorePeople' => false,
+            'needBiggerBudget' => true,
+        ]);
+        DB::table('subteam_requests')->insert([
+            'reportedBySubteam' => 1,
+            'project' => 2,
+            'status' => 4,
+            'needMorePeople' => false,
+            'needBiggerBudget' => true,
+        ]);
+        DB::table('subteam_requests')->insert([
+            'reportedBySubteam' => 2,
+            'project' => 2,
+            'status' => 4,
+            'needMorePeople' => true,
+            'needBiggerBudget' => false,
         ]);
     }
 }
