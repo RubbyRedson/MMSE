@@ -24,11 +24,11 @@ class SubteamRequestTest extends TestCase
         $response = $this->getWithAuth('/api/subteam_request/1');
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['reportedBySubteam'], 1);
-        $this->assertEquals($jsonArr['project'], 2);
-        $this->assertEquals($jsonArr['status'], 1);
-        $this->assertEquals($jsonArr['needMorePeople'], false);
-        $this->assertEquals($jsonArr['needBiggerBudget'], true);
+        $this->assertEquals(1, $jsonArr['reportedBySubteam']);
+        $this->assertEquals(2, $jsonArr['project']);
+        $this->assertEquals(1, $jsonArr['status']);
+        $this->assertEquals(false, $jsonArr['needMorePeople']);
+        $this->assertEquals(true, $jsonArr['needBiggerBudget']);
     }
 
     /**
@@ -42,11 +42,11 @@ class SubteamRequestTest extends TestCase
         $response = $this->postWithAuth('/api/subteam_request', $json);
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['reportedBySubteam'], 1);
-        $this->assertEquals($jsonArr['project'], 2);
-        $this->assertEquals($jsonArr['status'], 1);
-        $this->assertEquals($jsonArr['needMorePeople'], false);
-        $this->assertEquals($jsonArr['needBiggerBudget'], false);
+        $this->assertEquals(1, $jsonArr['reportedBySubteam']);
+        $this->assertEquals(2, $jsonArr['project']);
+        $this->assertEquals(1, $jsonArr['status']);
+        $this->assertEquals(false, $jsonArr['needMorePeople']);
+        $this->assertEquals(false, $jsonArr['needBiggerBudget']);
     }
 
     /**
@@ -61,11 +61,11 @@ class SubteamRequestTest extends TestCase
 
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['reportedBySubteam'], 1);
-        $this->assertEquals($jsonArr['project'], 2);
-        $this->assertEquals($jsonArr['status'], 1);
-        $this->assertEquals($jsonArr['needMorePeople'], true);
-        $this->assertEquals($jsonArr['needBiggerBudget'], false);
+        $this->assertEquals(1, $jsonArr['reportedBySubteam']);
+        $this->assertEquals(2, $jsonArr['project']);
+        $this->assertEquals(1, $jsonArr['status']);
+        $this->assertEquals(true, $jsonArr['needMorePeople']);
+        $this->assertEquals(false, $jsonArr['needBiggerBudget']);
     }
 
     /**
@@ -80,11 +80,11 @@ class SubteamRequestTest extends TestCase
 
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['reportedBySubteam'], 1);
-        $this->assertEquals($jsonArr['project'], 2);
-        $this->assertEquals($jsonArr['status'], 3);
-        $this->assertEquals($jsonArr['needMorePeople'], false);
-        $this->assertEquals($jsonArr['needBiggerBudget'], false);
+        $this->assertEquals(1, $jsonArr['reportedBySubteam']);
+        $this->assertEquals(2, $jsonArr['project']);
+        $this->assertEquals(3, $jsonArr['status']);
+        $this->assertEquals(false, $jsonArr['needMorePeople']);
+        $this->assertEquals(false, $jsonArr['needBiggerBudget']);
     }
 
     /**

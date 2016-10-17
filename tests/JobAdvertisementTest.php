@@ -26,10 +26,10 @@ class JobAdvertisementTest extends TestCase
         $response = $this->getWithAuth('/api/job_advertisement/2');
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['title'], 'Music Composer');
-        $this->assertEquals($jsonArr['description'], 'Music Composer description');
-        $this->assertEquals($jsonArr['salary'], 5500);
-        $this->assertEquals($jsonArr['count'], 2);
+        $this->assertEquals('Music Composer', $jsonArr['title']);
+        $this->assertEquals('Music Composer description', $jsonArr['description']);
+        $this->assertEquals(5500, $jsonArr['salary']);
+        $this->assertEquals(2, $jsonArr['count']);
     }
 
     /**
@@ -60,9 +60,9 @@ class JobAdvertisementTest extends TestCase
         $response = $this->putWithAuth('/api/job_advertisement/1', $json);
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['title'], 'CEO');
-        $this->assertEquals($jsonArr['description'], 'CEO description');
-        $this->assertEquals($jsonArr['salary'], '10000');
+        $this->assertEquals('CEO', $jsonArr['title']);
+        $this->assertEquals('CEO description', $jsonArr['description']);
+        $this->assertEquals('10000', $jsonArr['salary']);
         $this->assertEquals('1', $jsonArr['count']);
     }
     /**

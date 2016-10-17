@@ -25,9 +25,9 @@ class SubteamTest extends TestCase
         $response = $this->getWithAuth('/api/subteam/1');
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['name'], 'IT');
-        $this->assertEquals($jsonArr['description'], 'IT description');
-        $this->assertEquals($jsonArr['numberofpeople'], 5);
+        $this->assertEquals('IT', $jsonArr['name']);
+        $this->assertEquals('IT description', $jsonArr['description']);
+        $this->assertEquals(5, $jsonArr['numberofpeople']);
     }
 
     /**
@@ -41,9 +41,9 @@ class SubteamTest extends TestCase
         $response = $this->postWithAuth('/api/subteam', $json);
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['name'], 'Org');
-        $this->assertEquals($jsonArr['description'], 'Org descr');
-        $this->assertEquals($jsonArr['numberofpeople'], '1');
+        $this->assertEquals('Org', $jsonArr['name']);
+        $this->assertEquals('Org descr', $jsonArr['description']);
+        $this->assertEquals('1', $jsonArr['numberofpeople']);
     }
 
     /**
@@ -57,9 +57,9 @@ class SubteamTest extends TestCase
         $response = $this->putWithAuth('/api/subteam/1', $json);
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['name'], 'Org1');
-        $this->assertEquals($jsonArr['description'], 'Org descr1');
-        $this->assertEquals($jsonArr['numberofpeople'], '12');
+        $this->assertEquals('Org1', $jsonArr['name']);
+        $this->assertEquals('Org descr1', $jsonArr['description']);
+        $this->assertEquals('12', $jsonArr['numberofpeople']);
     }
     /**
      * Test to delete existing subteam.
