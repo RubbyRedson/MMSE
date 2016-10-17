@@ -130,6 +130,9 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
         $app->post('api/financial_department/project','App\Http\Controllers\ProjectController@saveProject');
         $app->put('api/financial_department/project/{id}','App\Http\Controllers\ProjectController@updateProject');
         $app->delete('api/financial_department/project/{id}','App\Http\Controllers\ProjectController@deleteProject');
+
+        $app->post('api/financial_department/set_resource_request_status/{id}',
+            'App\Http\Controllers\ResourceRequestController@setResourceRequestStatus');
     });
 
 

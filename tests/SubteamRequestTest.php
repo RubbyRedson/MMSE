@@ -63,7 +63,7 @@ class SubteamRequestTest extends TestCase
 
         $this->assertEquals(1, $jsonArr['reportedBySubteam']);
         $this->assertEquals(2, $jsonArr['project']);
-        $this->assertEquals(1, $jsonArr['status']);
+        $this->assertEquals(2, $jsonArr['status']);
         $this->assertEquals(true, $jsonArr['needMorePeople']);
         $this->assertEquals(false, $jsonArr['needBiggerBudget']);
     }

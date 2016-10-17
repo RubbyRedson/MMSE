@@ -30,7 +30,6 @@ class ResourceRequestTest extends TestCase
         $response = $this->getWithAuth('api/hr_team/resource_request', 7);
 
         $jsonArr = json_decode($response, true);
-
         $this->assertEquals(1, $jsonArr['id']);
         $this->assertEquals(1, $jsonArr['project']);
         $this->assertEquals(false, $jsonArr['approved']);
@@ -48,10 +47,15 @@ class ResourceRequestTest extends TestCase
         $this->assertEquals('Unauthorized. You are not authorized to remove this resource request type.', $response);
     }
 
+    public function testApproveBudgetResourceRequest(){
+        $json = "{\"project\":1,\"approved\":1}";
+        $response = $this->postWithAuth('api/financial_department/set_resource_request_status/1', $json, 10);
+        $this->assertEquals('"success"', $response);
+    }
 
     public function testGetFinancialRequests(){
         //$app->get('api/financial_department/resource_request',
 
-        $this->markTestIncomplete("Test that the requests that get returned only contains type 'budget' ")
+        $this->markTestIncomplete("Test that the requests that get returned only contains type 'budget' ");
     }
 }
