@@ -51,7 +51,7 @@ class SubteamRequestController extends Controller
         $subteamRequest->status = $request->input('status');
 
         if ($request->input('needMorePeople') == false and $request->input('needBiggerBudget') == false )
-            $subteamRequest->status = 3;
+            $subteamRequest->status = 4;
 
         $subteamRequest = $this->dataSource->saveSubteamRequest($subteamRequest);
         return response()->json($subteamRequest);

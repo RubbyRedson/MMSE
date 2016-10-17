@@ -452,7 +452,10 @@ class SubteamRequestStatusTableSeeder extends Seeder
             'status' => 'Pending',
         ]);
         DB::table('subteam_request_status')->insert([
-            'status' => 'Reviewed',
+            'status' => 'Reviewed_by_subteam',
+        ]);
+        DB::table('subteam_request_status')->insert([
+            'status' => 'Reviewed_by_department_manager',
         ]);
         DB::table('subteam_request_status')->insert([
             'status' => 'Approved',

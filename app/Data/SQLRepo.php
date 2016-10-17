@@ -38,7 +38,7 @@ class SQLRepo implements DatabaseInterface
 
     public function getAllSubteams()
     {
-        // TODO: Implement getAllSubteams() method.
+        return Subteam::all();
     }
 
     public function saveSubteamRequest($subteamRequest)
@@ -226,7 +226,7 @@ class SQLRepo implements DatabaseInterface
 
     public function getConflictingSubteamRequests()
     {
-        return SubteamRequest::where('status', 1)
+        return SubteamRequest::where('status', 2)
             ->where(function($query){
                 $query->where('needMorePeople', 1)->orWhere('needBiggerBudget', 1);
             })->get();

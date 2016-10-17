@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\SubteamRequest;
 use Illuminate\Http\Request;
 
 
@@ -56,6 +57,25 @@ class ProjectController extends Controller
 
     public function saveProductionmanagerProject(Request $request)
     {
-        return $this->saveProject($request);
+        $project = $this->dataSource->saveProject(new Project($request->all()));
+
+        $subteams = $this->dataSource->getAllSubteams();
+
+        $subteams = is_array($subteams) ? $subteams : $subteams->toArray();
+
+        //Don't you dare remove this
+        foreach($subteams as $subteam){
+            $subteamReq = new SubteamRequest();
+            $subteamReq->reportedBySubteam = $subteam['id'];
+            $subteamReq->project = $project->id;
+            $subteamReq->status = 1;
+            $subteamReq->needMorePeople = 0;
+            $subteamReq->needBiggerBudget = 0;
+            $subteamReq->needMorePeople = 0;
+
+            $this->dataSource->saveSubteamRequest($subteamReq);
+        }
+
+        return response()->json($project);
     }
 }
