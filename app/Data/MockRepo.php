@@ -573,12 +573,14 @@ class MockRepo implements DatabaseInterface
         $first->title = 'IT Engineer';
         $first->description = 'IT Engineer description';
         $first->salary = 5000;
+        $first->count = 3;
 
         $second = new JobAdvertisement();
         $second->id = 2;
         $second->title = 'Music Composer';
         $second->description = 'Music Composer description';
         $second->salary = 5500;
+        $second->count = 2;
 
         return [$first, $second];
     }
@@ -590,6 +592,7 @@ class MockRepo implements DatabaseInterface
         $second->title = 'Music Composer';
         $second->description = 'Music Composer description';
         $second->salary = 5500;
+        $second->count = 2;
 
         return $second;
     }

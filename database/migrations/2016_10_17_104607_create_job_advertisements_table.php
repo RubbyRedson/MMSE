@@ -18,6 +18,7 @@ class CreateJobAdvertisementsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->integer('salary');
+            $table->integer('count');
             $table->timestamps();
         });
     }

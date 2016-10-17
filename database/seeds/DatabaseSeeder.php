@@ -471,14 +471,16 @@ class JobAdvertisementsTableSeeder extends Seeder
     public function run()
     {
         DB::table('job_advertisements')->insert([
-            'name' => 'IT Engineer',
+            'title' => 'IT Engineer',
             'description' => 'IT Engineer description',
-            'numberofpeople' => 5000,
+            'salary' => 5000,
+            'count' => 3,
         ]);
         DB::table('job_advertisements')->insert([
-            'name' => 'Music Composer',
+            'title' => 'Music Composer',
             'description' => 'Music Composer description',
-            'numberofpeople' => 5500,
+            'salary' => 5500,
+            'count' => 2,
         ]);
     }
 }

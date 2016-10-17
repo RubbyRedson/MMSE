@@ -12,5 +12,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class JobAdvertisement extends Model
 {
-    protected $fillable = ['title', 'description', 'salary'];
+    protected $fillable = ['title', 'description', 'salary', 'count'];
 }

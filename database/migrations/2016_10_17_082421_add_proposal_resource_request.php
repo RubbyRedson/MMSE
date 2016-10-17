@@ -25,7 +25,7 @@ class AddProposalResourceRequest extends Migration
      */
     public function down()
     {
-        Schema::table('planning_requests', function ($table) {
+        Schema::table('resource_requests', function ($table) {
             $table->dropColumn('proposal');
         });
     }

@@ -46,6 +46,7 @@ class JobAdvertisementController extends Controller
         $jobAdvertisement->title = $request->input('title');
         $jobAdvertisement->description = $request->input('description');
         $jobAdvertisement->salary = $request->input('salary');
+        $jobAdvertisement->count = $request->input('count');
         $jobAdvertisement = $this->dataSource->saveJobAdvertisement($jobAdvertisement);
 
         return response()->json($jobAdvertisement);
