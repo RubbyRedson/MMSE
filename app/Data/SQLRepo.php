@@ -237,6 +237,11 @@ class SQLRepo implements DatabaseInterface
         return ResourceRequest::create($data);
     }
 
+    public function getResourceRequestByType($type)
+    {
+        return ResourceRequest::where('type', $type)->get();
+    }
+
     public function getAllJobAdvertisements()
     {
         return JobAdvertisement::all();

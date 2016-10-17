@@ -44,6 +44,7 @@ interface DatabaseInterface
 
     //Resource requests
     public function createResourceRequest($data);
+    public function getResourceRequestByType($type);
 
     //Planning Request
     public function findPlanningRequest($clientId);

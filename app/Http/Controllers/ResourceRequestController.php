@@ -22,13 +22,16 @@ class ResourceRequestController extends Controller
 
         $data['approved'] = false;
 
-
-
         if($data['type'] == 'budget' || $data['type'] == 'people'){
             return $this->dataSource->createResourceRequest($data);
         }else{
             return response("Bad request, the type needs to be either: people or budget.", 400);
         }
+    }
+
+
+    public function getHrRequests(Request $request){
+        return $this->dataSource->getResourceRequestByType('people');
     }
 
 }

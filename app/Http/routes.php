@@ -102,6 +102,7 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
     $app->group(['middleware' => 'authorize:hr_team'], function () use ($app) {
         //To see subteam requests
         $app->get('api/hr_team/subteam_request','App\Http\Controllers\SubteamRequestController@index');
+        $app->get('api/hr_team/resource_request','App\Http\Controllers\ResourceRequestController@getHrRequests');
         $app->get('api/hr_team/subteam_request/{id}','App\Http\Controllers\SubteamRequestController@getSubteamRequest');
 
         //To see job advertisement

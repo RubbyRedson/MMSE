@@ -10,7 +10,6 @@ namespace App\Data;
 
 
 use App\Client;
-use App\JobAdvertisement;
 use App\PlanningRequest;
 use App\Project;
 use App\Role;
@@ -559,6 +558,11 @@ class MockRepo implements DatabaseInterface
     public function createResourceRequest($data)
     {
         // TODO: Implement createResourceRequest() method.
+    }
+
+    public function getResourceRequestByType($type)
+    {
+        // TODO: Implement getResourceRequestByType() method.
     }
 
     public function getAllJobAdvertisements()

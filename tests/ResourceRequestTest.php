@@ -21,4 +21,13 @@ class ResourceRequestTest extends TestCase
             "Test so that its created correct. This is a totaly new controller btw"
         );
     }
+
+    public function testGetResourceRequestByType(){
+        //$app->get('api/hr_team/resource_request',
+
+        $this->markTestIncomplete(
+            "Test so that the roight resources are returned. The HR team should only get 'people' and finanacial manager should only get 'money' type"
+        );
+    }
+
 }
