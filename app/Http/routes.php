@@ -54,6 +54,9 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
         $app->get('api/financial_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@getPlanningRequest');
         $app->put('api/financial_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@updatePlanningRequestFromFinancialManager');
 
+        //get resource requests
+        $app->get('api/financial_manager/resource_request','App\Http\Controllers\ResourceRequestController@getFinancialRequests');
+
         //To modify projects, negotiations for budget with department manager
         $app->get('api/financial_manager/project','App\Http\Controllers\ProjectController@index');
         $app->get('api/financial_manager/project/{id}','App\Http\Controllers\ProjectController@getProject');
@@ -123,7 +126,6 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
     $app->group(['middleware' => 'authorize:financial_department'], function () use ($app) {
         //To modify projects, negotiations for budget from administration department
         $app->get('api/financial_department/project','App\Http\Controllers\ProjectController@index');
-        $app->get('api/financial_department/resource_request','App\Http\Controllers\ResourceRequestController@getFinancialRequests');
         $app->get('api/financial_department/project/{id}','App\Http\Controllers\ProjectController@getProject');
         $app->post('api/financial_department/project','App\Http\Controllers\ProjectController@saveProject');
         $app->put('api/financial_department/project/{id}','App\Http\Controllers\ProjectController@updateProject');
