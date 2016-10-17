@@ -30,4 +30,12 @@ class ResourceRequestTest extends TestCase
         );
     }
 
+    public function testDeleteResourceRequestForHR(){
+        //$app->delete('api/hr_team/resource_request/{id}'
+
+        $this->markTestIncomplete(
+            "Test so that the HR team can only remove 'people' request and not budget stuff"
+        );
+    }
+
 }

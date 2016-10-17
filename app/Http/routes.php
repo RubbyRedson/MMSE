@@ -103,6 +103,7 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
         //To see subteam requests
         $app->get('api/hr_team/subteam_request','App\Http\Controllers\SubteamRequestController@index');
         $app->get('api/hr_team/resource_request','App\Http\Controllers\ResourceRequestController@getHrRequests');
+        $app->delete('api/hr_team/resource_request/{id}','App\Http\Controllers\ResourceRequestController@removeResourceRequestHR');
         $app->get('api/hr_team/subteam_request/{id}','App\Http\Controllers\SubteamRequestController@getSubteamRequest');
 
         //To see job advertisement

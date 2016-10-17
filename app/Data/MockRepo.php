@@ -606,4 +606,14 @@ class MockRepo implements DatabaseInterface
     {
         // do nothing
     }
+
+    public function getResourceRequestById($id)
+    {
+        // TODO: Implement getResourceRequestById() method.
+    }
+
+    public function deleteResourceRequestById($id)
+    {
+        // TODO: Implement deleteResourceRequestById() method.
+    }
 }

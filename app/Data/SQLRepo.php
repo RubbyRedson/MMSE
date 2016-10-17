@@ -262,4 +262,17 @@ class SQLRepo implements DatabaseInterface
     {
         return JobAdvertisement::find($id)->delete();
     }
+
+    public function getResourceRequestById($id)
+    {
+        return ResourceRequest::find($id);
+    }
+
+    public function deleteResourceRequestById($id)
+    {
+        $res = ResourceRequest::find($id);
+        $response = $res->toArray();
+        $res->delete();
+        return $response;
+    }
 }

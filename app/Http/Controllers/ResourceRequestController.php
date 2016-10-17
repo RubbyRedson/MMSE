@@ -29,6 +29,19 @@ class ResourceRequestController extends Controller
         }
     }
 
+    public function removeResourceRequestHR($id){
+        $res = $this->dataSource->getResourceRequestById($id);
+
+        if($res){
+            if($res->type == 'people'){
+                return $this->dataSource->deleteResourceRequestById($id);
+            }else{
+                return response("Unauthorized. You are not authorized to remove this resource request type.", 401);
+            }
+        }else{
+            return response("ok");
+        }
+    }
 
     public function getHrRequests(Request $request){
         return $this->dataSource->getResourceRequestByType('people');
