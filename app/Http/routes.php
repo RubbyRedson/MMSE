@@ -88,6 +88,10 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
         $app->put('api/production_manager/subteam_request/{id}','App\Http\Controllers\SubteamRequestController@updateSubteamRequest');
         $app->delete('api/production_manager/subteam_request/{id}','App\Http\Controllers\SubteamRequestController@deleteSubteamRequest');
 
+        //To create resource requests
+        $app->post('api/production_manager/resource_request','App\Http\Controllers\ResourceRequestController@createNewRequest');
+
+
         //To modify projects, negotiations for budget
         $app->get('api/production_manager/project','App\Http\Controllers\ProjectController@index');
         $app->get('api/production_manager/project/{id}','App\Http\Controllers\ProjectController@getProject');
