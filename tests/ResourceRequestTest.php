@@ -50,12 +50,17 @@ class ResourceRequestTest extends TestCase
     public function testApproveBudgetResourceRequest(){
         $json = "{\"project\":1,\"approved\":1}";
         $response = $this->putWithAuth('api/financial_manager/set_resource_request_status/1', $json, 3);
-        $this->assertEquals('"success"', $response);
+        $this->assertEquals('', $response);
     }
 
     public function testGetFinancialRequests(){
-        //$app->get('api/financial_department/resource_request',
+        $response = $this->getWithAuth('api/financial_manager/resource_request', 3);
 
-        $this->markTestIncomplete("Test that the requests that get returned only contains type 'budget' ");
+        $jsonArr = json_decode($response, true);
+        $this->assertEquals(1, $jsonArr['id']);
+        $this->assertEquals(1, $jsonArr['project']);
+        $this->assertEquals(false, $jsonArr['approved']);
+        $this->assertEquals("budget", $jsonArr['type']);
+        $this->assertEquals(3, $jsonArr['proposal']);
     }
 }
