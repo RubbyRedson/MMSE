@@ -554,7 +554,23 @@ class MockRepo implements DatabaseInterface
 
     public function getConflictingSubteamRequests()
     {
-        // TODO: Implement getConflictingSubteamRequests() method.
+        $first = new SubteamRequest();
+        $first->id = 3;
+        $first->reportedBySubteam = 1;
+        $first->project = 2;
+        $first->status = 1;
+        $first->needMorePeople = true;
+        $first->needBiggerBudget = false;
+
+        $second = new SubteamRequest();
+        $first->id = 4;
+        $second->reportedBySubteam = 2;
+        $second->project = 1;
+        $second->status = 1;
+        $second->needMorePeople = false;
+        $second->needBiggerBudget = true;
+
+        return [$first, $second];
     }
 
     public function getResourceRequestById($id)

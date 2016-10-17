@@ -105,18 +105,17 @@ class SubteamRequestTest extends TestCase
      */
     public function testGetSubteamRequestsByStatus()
     {
-        $expected = '[{"id":2,"reportedBySubteam":2,"project":1,"status":1,"needMorePeople":false,'.
+        $expected = '[{"id":2,"reportedBySubteam":2,"project":1,"status":1,"needMorePeople":false,' .
             '"needBiggerBudget":true}]';
         $this->assertEquals($expected, $this->getWithAuth('/api/sub_team/subteam_request', 9));
     }
 
-    public function testGetConflictingResourceRequests(){
+    public function testGetConflictingResourceRequests()
+    {
+        $expected = '[{"id":4,"reportedBySubteam":1,"project":2,"status":1,"needMorePeople":true,"needBiggerBudget"'.
+            ':false},{"reportedBySubteam":2,"project":1,"status":1,"needMorePeople":false,"needBiggerBudget":true}]';
+        $this->assertEquals($expected, $this->getWithAuth('api/production_manager/subteam_request/conflict', 5));
 
-        //$app->get('api/production_manager/subteam_request/conflict',
-
-        $this->markTestIncomplete(
-            "Make sure that this endpoint only returns resource request that either needs more people of bigger budget"
-        );
     }
 }
 
