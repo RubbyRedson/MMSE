@@ -82,6 +82,7 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 
         //To send resource requests from subteams to hr team
         $app->get('api/production_manager/subteam_request','App\Http\Controllers\SubteamRequestController@index');
+        $app->get('api/production_manager/subteam_request/conflict','App\Http\Controllers\SubteamRequestController@getConflictingRequest');
         $app->get('api/production_manager/subteam_request/{id}','App\Http\Controllers\SubteamRequestController@getSubteamRequest');
         $app->post('api/production_manager/subteam_request','App\Http\Controllers\SubteamRequestController@saveSubteamRequest');
         $app->put('api/production_manager/subteam_request/{id}','App\Http\Controllers\SubteamRequestController@updateSubteamRequest');

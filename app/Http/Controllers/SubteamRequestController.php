@@ -28,6 +28,10 @@ class SubteamRequestController extends Controller
         return response()->json($subteamRequest);
     }
 
+    public function getConflictingRequest(){
+        return $this->dataSource->getConflictingSubteamRequests();
+    }
+
     public function saveSubteamRequest(Request $request){
         $subteamRequest = $this->dataSource->saveSubteamRequest(new SubteamRequest($request->all()));
         return response()->json($subteamRequest);

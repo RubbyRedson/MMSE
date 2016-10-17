@@ -40,6 +40,7 @@ interface DatabaseInterface
     public function getSubteamRequestByStatus($status);
     public function saveSubteamRequest($subteamRequest);
     public function deleteSubteamRequestById($id);
+    public function getConflictingSubteamRequests();
 
     //Planning Request
     public function findPlanningRequest($clientId);

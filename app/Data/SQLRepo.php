@@ -221,4 +221,11 @@ class SQLRepo implements DatabaseInterface
     {
         return Subteam::find($id)->delete();
     }
+
+    public function getConflictingSubteamRequests()
+    {
+        return SubteamRequest::where(function($query){
+            $query->where('needBiggerBudget', 1)->orWhere('needMorePeople', 1);
+        })->get();
+    }
 }

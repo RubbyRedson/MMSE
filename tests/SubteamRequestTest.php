@@ -90,6 +90,15 @@ class SubteamRequestTest extends TestCase
             '"needBiggerBudget":true,"created_at":null,"updated_at":null}]';
         $this->assertEquals($expected, $this->getWithAuth('/api/sub_team/subteam_request', 9));
     }
+
+    public function testGetConflictingResourceRequests(){
+
+        //$app->get('api/production_manager/subteam_request/conflict',
+
+        $this->markTestIncomplete(
+            "Make sure that this endpoint only returns resource request that either needs more people of bigger budget"
+        );
+    }
 }
 
 

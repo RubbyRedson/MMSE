@@ -542,4 +542,9 @@ class MockRepo implements DatabaseInterface
     {
         // do nothing
     }
+
+    public function getConflictingSubteamRequests()
+    {
+        // TODO: Implement getConflictingSubteamRequests() method.
+    }
 }
