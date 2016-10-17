@@ -66,7 +66,7 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
         //To modify planning requests
         $app->get('api/administration_manager/planning_request','App\Http\Controllers\PlanningRequestController@getPlanningRequestForAdministrationManager');
         $app->get('api/administration_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@getPlanningRequest');
-        $app->put('api/administration_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@updatePlanningRequestFromAdministationManager');
+        $app->put('api/administration_manager/planning_request/{id}','App\Http\Controllers\PlanningRequestController@updatePlanningRequestFromAdministrationManager');
     });
 
     $app->group(['middleware' => 'authorize:sub_team'], function () use ($app) {

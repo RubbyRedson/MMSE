@@ -55,7 +55,7 @@ class PlanningRequestController extends Controller
         }
     }
 
-    public function updatePlanningRequestFromAdministationManager(Request $request, $id){
+    public function updatePlanningRequestFromAdministrationManager(Request $request, $id){
         $statusId = $request->input("status");
         if($statusId  == 4 || $statusId  == 5){
             return $this->dataSource->setPlanningRequestsStatus($id, $statusId);
