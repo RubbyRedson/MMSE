@@ -10,6 +10,7 @@ namespace App\Data;
 
 
 use App\Client;
+use App\JobAdvertisement;
 use App\PlanningRequest;
 use App\Project;
 use App\Role;
