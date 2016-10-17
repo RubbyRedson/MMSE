@@ -103,6 +103,13 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
         //To see subteam requests
         $app->get('api/hr_team/subteam_request','App\Http\Controllers\SubteamRequestController@index');
         $app->get('api/hr_team/subteam_request/{id}','App\Http\Controllers\SubteamRequestController@getSubteamRequest');
+
+        //To see job advertisement
+        $app->get('api/hr_team/job_advertisement','App\Http\Controllers\JobAdvertisementController@index');
+        $app->get('api/hr_team/job_advertisement/{id}','App\Http\Controllers\JobAdvertisementController@getJobAdvertisement');
+        $app->post('api/hr_team/job_advertisement','App\Http\Controllers\JobAdvertisementController@saveJobAdvertisement');
+        $app->put('api/hr_team/job_advertisement/{id}','App\Http\Controllers\JobAdvertisementController@updateJobAdvertisement');
+        $app->delete('api/hr_team/job_advertisement/{id}','App\Http\Controllers\JobAdvertisementController@deleteJobAdvertisement');
     });
 
     $app->group(['middleware' => 'authorize:administration_department'], function () use ($app) {
@@ -153,6 +160,13 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
     $app->post('api/subteam','App\Http\Controllers\SubteamController@saveSubteam');
     $app->put('api/subteam/{id}','App\Http\Controllers\SubteamController@updateSubteam');
     $app->delete('api/subteam/{id}','App\Http\Controllers\SubteamController@deleteSubteam');
+
+
+    $app->get('api/job_advertisement','App\Http\Controllers\JobAdvertisementController@index');
+    $app->get('api/job_advertisement/{id}','App\Http\Controllers\JobAdvertisementController@getJobAdvertisement');
+    $app->post('api/job_advertisement','App\Http\Controllers\JobAdvertisementController@saveJobAdvertisement');
+    $app->put('api/job_advertisement/{id}','App\Http\Controllers\JobAdvertisementController@updateJobAdvertisement');
+    $app->delete('api/job_advertisement/{id}','App\Http\Controllers\JobAdvertisementController@deleteJobAdvertisement');
 
 
     $app->get('api/project','App\Http\Controllers\ProjectController@index');

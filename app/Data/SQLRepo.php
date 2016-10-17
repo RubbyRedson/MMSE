@@ -9,6 +9,7 @@
 namespace App\Data;
 
 use App\Client;
+use App\JobAdvertisement;
 use App\PlanningRequest;
 use App\Project;
 use App\ResourceRequest;
@@ -234,5 +235,26 @@ class SQLRepo implements DatabaseInterface
     public function createResourceRequest($data)
     {
         return ResourceRequest::create($data);
+    }
+
+    public function getAllJobAdvertisements()
+    {
+        return JobAdvertisement::all();
+    }
+
+    public function getJobAdvertisementById($id)
+    {
+        return JobAdvertisement::find($id);
+    }
+
+    public function saveJobAdvertisement($jobAdvertisement)
+    {
+        $jobAdvertisement->save();
+        return $jobAdvertisement;
+    }
+
+    public function deleteJobAdvertisementById($id)
+    {
+        return JobAdvertisement::find($id)->delete();
     }
 }

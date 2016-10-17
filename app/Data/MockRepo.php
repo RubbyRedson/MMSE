@@ -10,6 +10,7 @@ namespace App\Data;
 
 
 use App\Client;
+use App\JobAdvertisement;
 use App\PlanningRequest;
 use App\Project;
 use App\Role;
@@ -558,5 +559,43 @@ class MockRepo implements DatabaseInterface
     public function createResourceRequest($data)
     {
         // TODO: Implement createResourceRequest() method.
+    }
+
+    public function getAllJobAdvertisements()
+    {
+        $first = new JobAdvertisement();
+        $first->id = 1;
+        $first->title = 'IT Engineer';
+        $first->description = 'IT Engineer description';
+        $first->salary = 5000;
+
+        $second = new JobAdvertisement();
+        $second->id = 2;
+        $second->title = 'Music Composer';
+        $second->description = 'Music Composer description';
+        $second->salary = 5500;
+
+        return [$first, $second];
+    }
+
+    public function getJobAdvertisementById($id)
+    {
+        $second = new JobAdvertisement();
+        $second->id = $id;
+        $second->title = 'Music Composer';
+        $second->description = 'Music Composer description';
+        $second->salary = 5500;
+
+        return $second;
+    }
+
+    public function saveJobAdvertisement($jobAdvertisement)
+    {
+        return $jobAdvertisement;
+    }
+
+    public function deleteJobAdvertisementById($id)
+    {
+        // do nothing
     }
 }

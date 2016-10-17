@@ -70,4 +70,10 @@ interface DatabaseInterface
     public function getRoleById($id);
     public function saveRole($role);
     public function deleteRoleById($id);
+
+    //Job Advertisements
+    public function getAllJobAdvertisements();
+    public function getJobAdvertisementById($id);
+    public function saveJobAdvertisement($jobAdvertisement);
+    public function deleteJobAdvertisementById($id);
 }

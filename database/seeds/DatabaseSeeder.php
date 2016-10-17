@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PlanningRequestStatusTableSeeder::class);  // PlanningRequestStatus must be before PlanningRequest
         $this->call(PlanningRequestsTableSeeder::class);
         $this->call(ResourceRequestSeeder::class);
+
+        $this->call(JobAdvertisementsTableSeeder::class);
     }
 }
 
@@ -455,6 +457,28 @@ class SubteamRequestStatusTableSeeder extends Seeder
         ]);
         DB::table('subteam_request_status')->insert([
             'status' => 'Rejected',
+        ]);
+    }
+}
+
+class JobAdvertisementsTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('job_advertisements')->insert([
+            'name' => 'IT Engineer',
+            'description' => 'IT Engineer description',
+            'numberofpeople' => 5000,
+        ]);
+        DB::table('job_advertisements')->insert([
+            'name' => 'Music Composer',
+            'description' => 'Music Composer description',
+            'numberofpeople' => 5500,
         ]);
     }
 }
