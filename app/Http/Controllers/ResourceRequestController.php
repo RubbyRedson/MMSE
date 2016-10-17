@@ -34,7 +34,8 @@ class ResourceRequestController extends Controller
 
         if($res){
             if($res->type == 'people'){
-                return $this->dataSource->deleteResourceRequestById($id);
+                $this->dataSource->deleteResourceRequestById($id);
+                return response()->json('success');
             }else{
                 return response("Unauthorized. You are not authorized to remove this resource request type.", 401);
             }

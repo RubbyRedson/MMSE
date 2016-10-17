@@ -12,12 +12,12 @@ class ProjectTest extends TestCase
         $response = $this->getWithAuth('/api/project/1');
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['name'], 'Birthday Party');
-        $this->assertEquals($jsonArr['client'], 1);
-        $this->assertEquals($jsonArr['description'], 'Birthday Party description');
-        $this->assertEquals($jsonArr['cost'], 500);
-        $this->assertEquals($jsonArr['start'], '2001-10-05');
-        $this->assertEquals($jsonArr['stop'], '2001-10-27');
+        $this->assertEquals('Birthday Party', $jsonArr['name']);
+        $this->assertEquals(1, $jsonArr['client']);
+        $this->assertEquals('Birthday Party description', $jsonArr['description']);
+        $this->assertEquals(500, $jsonArr['cost']);
+        $this->assertEquals('2001-10-05', $jsonArr['start']);
+        $this->assertEquals('2001-10-27', $jsonArr['stop']);
     }
 
     /**
@@ -31,12 +31,12 @@ class ProjectTest extends TestCase
         $response = $this->postWithAuth('/api/project', $json);
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['name'], 'Birthday Party 2');
-        $this->assertEquals($jsonArr['client'], 1);
-        $this->assertEquals($jsonArr['description'], 'Birthday Party description 2');
-        $this->assertEquals($jsonArr['cost'], 1500);
-        $this->assertEquals($jsonArr['start'], '2002-10-05');
-        $this->assertEquals($jsonArr['stop'], '2002-10-27');
+        $this->assertEquals('Birthday Party 2', $jsonArr['name']);
+        $this->assertEquals(1, $jsonArr['client']);
+        $this->assertEquals('Birthday Party description 2', $jsonArr['description']);
+        $this->assertEquals(1500, $jsonArr['cost']);
+        $this->assertEquals('2002-10-05', $jsonArr['start']);
+        $this->assertEquals('2002-10-27', $jsonArr['stop']);
     }
 
     /**
@@ -50,12 +50,12 @@ class ProjectTest extends TestCase
         $response = $this->putWithAuth('/api/project/1', $json);
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['name'], 'Birthday Party 2');
-        $this->assertEquals($jsonArr['client'], 1);
-        $this->assertEquals($jsonArr['description'], 'Birthday Party description 2');
-        $this->assertEquals($jsonArr['cost'], 1500);
-        $this->assertEquals($jsonArr['start'], '2002-10-05');
-        $this->assertEquals($jsonArr['stop'], '2002-10-27');
+        $this->assertEquals('Birthday Party 2', $jsonArr['name']);
+        $this->assertEquals(1, $jsonArr['client']);
+        $this->assertEquals('Birthday Party description 2', $jsonArr['description']);
+        $this->assertEquals(1500, $jsonArr['cost']);
+        $this->assertEquals('2002-10-05', $jsonArr['start']);
+        $this->assertEquals('2002-10-27', $jsonArr['stop']);
     }
 
     /**

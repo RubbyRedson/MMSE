@@ -36,10 +36,10 @@ class RoleTest extends TestCase
         $response = $this->getWithAuth('/api/role/1');
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['title'], 'Customer Service');
-        $this->assertEquals($jsonArr['description'], 'Customer Service description');
-        $this->assertEquals($jsonArr['auth'], 1);
-        $this->assertEquals($jsonArr['tag'], 'customer_service');
+        $this->assertEquals('Customer Service', $jsonArr['title']);
+        $this->assertEquals('Customer Service description', $jsonArr['description']);
+        $this->assertEquals(1, $jsonArr['auth']);
+        $this->assertEquals('customer_service', $jsonArr['tag']);
     }
 
     /**
@@ -53,10 +53,10 @@ class RoleTest extends TestCase
         $response = $this->postWithAuth('/api/role', $json);
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['title'], 'Rock n Role');
-        $this->assertEquals($jsonArr['description'], 'jada jada');
-        $this->assertEquals($jsonArr['auth'], 666);
-        $this->assertEquals($jsonArr['tag'], 'glowing_fork');
+        $this->assertEquals('Rock n Role', $jsonArr['title']);
+        $this->assertEquals('jada jada', $jsonArr['description']);
+        $this->assertEquals(666, $jsonArr['auth']);
+        $this->assertEquals('glowing_fork', $jsonArr['tag']);
     }
 
     /**
@@ -71,10 +71,10 @@ class RoleTest extends TestCase
 
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['title'], 'Rock n Role');
-        $this->assertEquals($jsonArr['description'], 'jada jada');
-        $this->assertEquals($jsonArr['auth'], 666);
-        $this->assertEquals($jsonArr['tag'], 'glowing_fork');
+        $this->assertEquals('Rock n Role', $jsonArr['title']);
+        $this->assertEquals('jada jada', $jsonArr['description']);
+        $this->assertEquals(666, $jsonArr['auth']);
+        $this->assertEquals('glowing_fork', $jsonArr['tag']);
     }
 
     /**

@@ -39,9 +39,9 @@ class ClientTest extends TestCase
         $response = $this->getWithAuth('/api/client/1');
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['name'], 'Pear LLC');
-        $this->assertEquals($jsonArr['phone'], '123123123');
-        $this->assertEquals($jsonArr['discount'], '0');
+        $this->assertEquals('Pear LLC', $jsonArr['name']);
+        $this->assertEquals('123123123', $jsonArr['phone']);
+        $this->assertEquals('0', $jsonArr['discount']);
     }
 
     /**
@@ -55,9 +55,9 @@ class ClientTest extends TestCase
         $response = $this->postWithAuth('/api/client', $json);
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['name'], 'Pear LLC 4');
-        $this->assertEquals($jsonArr['phone'], '1233211233');
-        $this->assertEquals($jsonArr['discount'], '1');
+        $this->assertEquals('Pear LLC 4', $jsonArr['name']);
+        $this->assertEquals('1233211233', $jsonArr['phone']);
+        $this->assertEquals('1', $jsonArr['discount']);
     }
 
     /**
@@ -71,9 +71,9 @@ class ClientTest extends TestCase
         $response = $this->putWithAuth('/api/client/1', $json);
         $jsonArr = json_decode($response, true);
 
-        $this->assertEquals($jsonArr['name'], 'Pear LLC 31');
-        $this->assertEquals($jsonArr['phone'], '1233211233');
-        $this->assertEquals($jsonArr['discount'], '0');
+        $this->assertEquals('Pear LLC 31', $jsonArr['name']);
+        $this->assertEquals('1233211233', $jsonArr['phone']);
+        $this->assertEquals('0', $jsonArr['discount']);
     }
     /**
      * Test to delete existing client.
@@ -99,8 +99,6 @@ class ClientTest extends TestCase
      */
     public function testGetClientProjectSum(){
         $this->getWithAuth('api/customer_service_manager/client/2/project_sum', 2);
-        $this->assertEquals(
-            "1400", $this->response->getContent()
-        );
+        $this->assertEquals("1400", $this->response->getContent());
     }
 }

@@ -15,27 +15,36 @@ class ResourceRequestTest extends TestCase
 {
 
     public function testCreateResourceRequest(){
-        //$app->post('api/production_manager/resource_request',
+        $json = "{\"project\":1,\"approved\":false,\"type\":\"budget\",\"proposal\":500}";
+        $response = $this->postWithAuth('api/production_manager/resource_request', $json, 5);
 
-        $this->markTestIncomplete(
-            "Test so that its created correct. This is a totaly new controller btw"
-        );
+        $jsonArr = json_decode($response, true);
+
+        $this->assertEquals(1, $jsonArr['project']);
+        $this->assertEquals(false, $jsonArr['approved']);
+        $this->assertEquals("budget", $jsonArr['type']);
+        $this->assertEquals(500, $jsonArr['proposal']);
     }
 
-    public function testGetResourceRequestByType(){
-        //$app->get('api/hr_team/resource_request',
+    public function testGetResourceRequestByTypePeople(){
+        $response = $this->getWithAuth('api/hr_team/resource_request', 7);
 
-        $this->markTestIncomplete(
-            "Test so that the roight resources are returned. The HR team should only get 'people' and finanacial manager should only get 'money' type"
-        );
+        $jsonArr = json_decode($response, true);
+
+        $this->assertEquals(1, $jsonArr['id']);
+        $this->assertEquals(1, $jsonArr['project']);
+        $this->assertEquals(false, $jsonArr['approved']);
+        $this->assertEquals("people", $jsonArr['type']);
+        $this->assertEquals(3, $jsonArr['proposal']);
     }
 
-    public function testDeleteResourceRequestForHR(){
-        //$app->delete('api/hr_team/resource_request/{id}'
-
-        $this->markTestIncomplete(
-            "Test so that the HR team can only remove 'people' request and not budget stuff"
-        );
+    public function testDeletePeopleResourceRequestForHR(){
+        $response = $this->deleteWithAuth('api/hr_team/resource_request/2', 7);
+        $this->assertEquals('"success"', $response);
     }
 
+    public function testDeleteBudgetResourceRequestForHR(){
+        $response = $this->deleteWithAuth('api/hr_team/resource_request/1', 7);
+        $this->assertEquals('Unauthorized. You are not authorized to remove this resource request type.', $response);
+    }
 }
