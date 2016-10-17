@@ -353,7 +353,14 @@ class MockRepo implements DatabaseInterface
 
     public function getSubteamRequestByStatus($status)
     {
-        return SubteamRequest::where('status', $status)->get();
+        $second = new SubteamRequest();
+        $second->id = 2;
+        $second->reportedBySubteam = 2;
+        $second->project = 1;
+        $second->status = $status;
+        $second->needMorePeople = false;
+        $second->needBiggerBudget = true;
+        return [$second];
     }
 
     public function deleteProjectById($id)
@@ -491,7 +498,7 @@ class MockRepo implements DatabaseInterface
         $second = new SubteamRequest();
         $second->reportedBySubteam = 2;
         $second->project = 1;
-        $second->status = 2;
+        $second->status = 1;
         $second->needMorePeople = false;
         $second->needBiggerBudget = true;
 
