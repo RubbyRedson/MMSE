@@ -1,21 +1,48 @@
-# Lumen PHP Framework
+# Setup
+## Prerequisites
+It assumed that you know (and have): 
+- PHP 5.6
+- Composer
+- Artisan
+- MVC architecure
+- Some way of hosting a PHP application
+- MySQL
+- Lumen framework (Or laravel)
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+## Install
+- `git clone <project.git>`
+- `composer install`
+- setup the `.env` file (see next section)
+- run `php artisan migrate``
+- run `php artisan db:seed`
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Environment
+Before you can migrate and seed you database you will need to setup you environment file. 
 
-## Official Documentation
+```
+APP_ENV=local
+APP_DEBUG=true
+APP_KEY=<some random hash>
+APP_TIMEZONE=UTC
+
+DB_CONNECTION=mysql
+DB_HOST=<ip to your db, like localhost>
+DB_PORT=<port to you db, like 3306>
+DB_DATABASE=mmseproject
+DB_USERNAME=<db username>
+DB_PASSWORD=<db password>
+
+CACHE_DRIVER=memcached
+QUEUE_DRIVER=sync
+USE_MOCK=false
+```
+
+If you want to mock your database and just use the mock implementation of the datalayer (as in the unit tests) you can set you `USE_MOCK` flag to `true`. 
+```
+USE_MOCK=true
+```
+Then you can mock out your entire data layer. 
+
+## Lumen docs
 
 Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
