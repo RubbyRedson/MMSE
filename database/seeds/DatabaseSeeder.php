@@ -44,14 +44,16 @@ class ResourceRequestSeeder extends Seeder
             'project' => 1,
             'approved' => false,
             'proposal' => 200,
-            'type' => 'budget'
+            'type' => 'budget',
+            'subteam' => 1
         ]);
 
         DB::table('resource_requests')->insert([
             'project' => 1,
             'approved' => false,
             'proposal' => 300,
-            'type' => 'people'
+            'type' => 'people',
+            'subteam' => 1
         ]);
     }
 }
